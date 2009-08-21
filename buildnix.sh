@@ -1,22 +1,38 @@
 #!/bin/bash
 #if [ "$DEBUG" != "1" ]; then stty -echo; fi
+#<KHeader>
 #+=========================================================================
-#|               Embedded API Development Kit 
+#I               EApiDK Embedded Application Development Kit
 #+=========================================================================
-#| 
-#|  Copyright (c) 2009, Kontron Embedded Modules GmbH                                         
-#|  All rights reserved. This program and the accompanying materials                          
-#|  are licensed and made available under the terms and conditions of the BSD License         
-#|  which accompanies this distribution.  The full text of the license may be found at        
-#|  http://opensource.org/licenses/bsd-license.php                                            
-#|                                                                                            
-#|  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,                     
-#|  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.             
-#|
-#|  Author: John Kearney,                      John.Kearney@kontron.com
-#| 
-#|  $Date: 2009-08-21 14:07:05 +0200 (Fr, 21. Aug 2009) $$Rev: 3 $
+#I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/buildnix.sh $
 #+=========================================================================
+#I   Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH
+#I      Author: John Kearney,                  John.Kearney@kontron.com
+#I
+#I     License: All rights reserved. This program and the accompanying 
+#I              materials are licensed and made available under the 
+#I              terms and conditions of the BSD License which 
+#I              accompanies this distribution. The full text of the 
+#I              license may be found at 
+#I              http://opensource.org/licenses/bsd-license.php
+#I              
+#I              THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "
+#I              AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF 
+#I              ANY KIND, EITHER EXPRESS OR IMPLIED.
+#I
+#I Description: Auto Created for SOURCES
+#I
+#+------------------------------------------------------------------------=
+#I
+#I  File Name            : SOURCES
+#I  File Location        : apps\EApiValidateAPI\WINNT
+#I  Last committed       : $Revision: 4 $
+#I  Last changed by      : $Author: dethrophes $
+#I  Last changed date    : $Date: 2009-08-21 14:43:27 +0200 (Fr, 21. Aug 2009) $
+#I  ID                   : $Id: buildnix.sh 4 2009-08-21 12:43:27Z dethrophes $
+#I
+#+=========================================================================
+#</KHeader>
 ScriptDir=$(cd "$(dirname "$0")"; pwd)
 EAPILIBBASE=$ScriptDir/lib
 EAPIAPPSBASE=$ScriptDir/apps
@@ -186,7 +202,7 @@ function PACK {
 function Usage {
 	echo .
 	echo +==============================================================================
-	echo I  $(basename $0) ................................................... \$Rev: 3 $
+	echo I  $(basename $0) ................................................... \$Rev: 4 $
 	echo +==============================================================================
 	echo I  
 	echo I  Description:

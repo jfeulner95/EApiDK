@@ -24,13 +24,14 @@
 #I
 #I  File Name            : SOURCES
 #I  File Location        : lib\WINNT
-#I  Last committed       : $Revision: 1 $
+#I  Last committed       : $Revision: 4 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
-#I  ID                   : $Id: SOURCES 1 2009-08-21 11:26:22Z dethrophes $
+#I  Last changed date    : $Date: 2009-08-21 14:43:27 +0200 (Fr, 21. Aug 2009) $
+#I  ID                   : $Id: SOURCES 4 2009-08-21 12:43:27Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
+TARGETNAME=EApi
 TARGETPATH=obj
 TARGETTYPE=DYNLINK
 
