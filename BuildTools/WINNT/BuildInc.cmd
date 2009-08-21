@@ -27,10 +27,10 @@ REM +------------------------------------------------------------------------=
 REM I
 REM I  File Name            : BuildInc.cmd
 REM I  File Location        : BuildTools\WINNT
-REM I  Last committed       : $Revision: 1 $
+REM I  Last committed       : $Revision: 5 $
 REM I  Last changed by      : $Author: dethrophes $
-REM I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
-REM I  ID                   : $Id: BuildInc.cmd 1 2009-08-21 11:26:22Z dethrophes $
+REM I  Last changed date    : $Date: 2009-08-21 20:16:09 +0200 (Fr, 21. Aug 2009) $
+REM I  ID                   : $Id: BuildInc.cmd 5 2009-08-21 18:16:09Z dethrophes $
 REM I
 REM +=========================================================================
 REM </KHeader>
@@ -47,7 +47,7 @@ REM ########################################################################
 :Main_Program
   IF NOT EXIST "%~1" GOTO Error_Exit
   IF EXIST "%~1.tmp" erase /q "%~1.tmp"
-  for /f "tokens=1-3* " %%a in ('TYPE "%~1"') do call :BuildIcrement "%%a" "%%b" "%%c" "%%d" "%~1.tmp" "%~2"
+  for /f "tokens=1-3* " %%a in ('TYPE "%~1"') do call :BuildIcrement "%%a" "%%b" "%%c" "%%d " "%~1.tmp" "%~2"
   IF ERRORLEVEL 1 GOTO Error_Exit
   move  /y "%~1.tmp" %1
   GOTO Exit
@@ -63,11 +63,17 @@ REM ########################################################################
   ECHO #
   ECHO # in %~dpn5
 
-  ECHO %~1 %~2 %VALUE% %~4 1>> %5
-  GOTO :EOF
+  SET TMP_VAL="%~1 %~2 %VALUE% %~4"
+  GOTO :PrintLine
   
   :NormalLine
-  ECHO %~1 %~2 %~3 %~4 1>> %5
+  SET TMP_VAL="%~1 %~2 %~3 %~4"
+
+  :PrintLine
+  SET TMP_VAL=%TMP_VAL:>=^>%
+  SET TMP_VAL=%TMP_VAL:<=^<%
+  SET TMP_VAL=%TMP_VAL:|=^|%
+  ECHO %TMP_VAL:"=% 1>> %5
   GOTO :EOF
 
 
@@ -76,7 +82,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $Revision: 1 $
+  ECHO I  %~nx0                                              $Revision: 5 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

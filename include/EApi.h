@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApi.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 5 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApi.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-08-21 20:16:09 +0200 (Fr, 21. Aug 2009) $
+ *I  ID                   : $Id: EApi.h 5 2009-08-21 18:16:09Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -918,7 +918,7 @@ uint32_t
 EAPI_CALLTYPE
 EApiI2CProbeDevice(
     __IN  uint32_t  Id      , /* I2C Bus Id */
-    __IN  uint32_t  Addr    , /* Encoded 7/10Bit I2C Device Address */
+    __IN  uint32_t  Addr      /* Encoded 7/10Bit I2C Device Address */
     );
 
 /*
