@@ -27,10 +27,10 @@ REM +------------------------------------------------------------------------=
 REM I
 REM I  File Name            : BuildInc.cmd
 REM I  File Location        : BuildTools\WINNT
-REM I  Last committed       : $Revision: 5 $
+REM I  Last committed       : $Revision: 7 $
 REM I  Last changed by      : $Author: dethrophes $
-REM I  Last changed date    : $Date: 2009-08-21 20:16:09 +0200 (Fr, 21. Aug 2009) $
-REM I  ID                   : $Id: BuildInc.cmd 5 2009-08-21 18:16:09Z dethrophes $
+REM I  Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $
+REM I  ID                   : $Id: BuildInc.cmd 7 2009-09-09 03:07:08Z dethrophes $
 REM I
 REM +=========================================================================
 REM </KHeader>
@@ -47,7 +47,7 @@ REM ########################################################################
 :Main_Program
   IF NOT EXIST "%~1" GOTO Error_Exit
   IF EXIST "%~1.tmp" erase /q "%~1.tmp"
-  for /f "tokens=1-3* " %%a in ('TYPE "%~1"') do call :BuildIcrement "%%a" "%%b" "%%c" "%%d " "%~1.tmp" "%~2"
+  for /f "tokens=1-3* " %%a in ('TYPE "%~1"') do call :BuildIcrement "%%a" "%%b" "%%c" "%%d" "%~1.tmp" "%~2"
   IF ERRORLEVEL 1 GOTO Error_Exit
   move  /y "%~1.tmp" %1
   GOTO Exit
@@ -82,7 +82,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $Revision: 5 $
+  ECHO I  %~nx0                                              $Revision: 7 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

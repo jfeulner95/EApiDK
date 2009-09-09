@@ -27,10 +27,10 @@ REM +------------------------------------------------------------------------=
 REM I
 REM I  File Name            : buildnt.cmd
 REM I  File Location        : 
-REM I  Last committed       : $Revision: 3 $
+REM I  Last committed       : $Revision: 7 $
 REM I  Last changed by      : $Author: dethrophes $
-REM I  Last changed date    : $Date: 2009-08-21 14:07:05 +0200 (Fr, 21. Aug 2009) $
-REM I  ID                   : $Id: buildnt.cmd 3 2009-08-21 12:07:05Z dethrophes $
+REM I  Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $
+REM I  ID                   : $Id: buildnt.cmd 7 2009-09-09 03:07:08Z dethrophes $
 REM I
 REM +=========================================================================
 REM </KHeader>
@@ -196,9 +196,9 @@ REM ########################################################################
   goto LoopFiles
   :Continue
   call :CopyFiles "%APPSBASE%\%~1"    "%APPSBASE%\%~1\WINNT" %LCLFILES%
-  SET ERRORM= ERROR: Build Lib First missing "lib\winnt\%TARGETARCH%\EApi.lib"
-  IF NOT EXIST "%EAPILIBBASE%\lib\winnt\%TARGETARCH%\EApi.lib" GOTO ERRORM
-  call :CopyFiles "%EAPILIBBASE%\lib\winnt\%TARGETARCH%"  "%APPSBASE%\%~1\WINNT" "EApi.lib"
+  SET ERRORM= ERROR: Build Lib First missing "lib\winnt\%TARGETARCHENV%\EApi.lib"
+  IF NOT EXIST "%EAPILIBBASE%\lib\winnt\%TARGETARCHENV%\EApi.lib" GOTO ERRORM
+  call :CopyFiles "%EAPILIBBASE%\lib\winnt\%TARGETARCHENV%"  "%APPSBASE%\%~1\WINNT" "EApi.lib"
 
   call :BuildProject checked  "%APPSBASE%\%~1\WINNT"
   IF ERRORLEVEL 1 GOTO Error_Exit
@@ -269,7 +269,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 3 $
+  ECHO I  %~nx0                                              $$Rev: 7 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

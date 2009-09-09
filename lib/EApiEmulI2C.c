@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulI2C.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 7 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiEmulI2C.c 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $
+ *I  ID                   : $Id: EApiEmulI2C.c 7 2009-09-09 03:07:08Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -536,9 +536,9 @@ EApiI2CWriteReadEmul(
             return EmulatedInterfaces[i].DevicesList[i2].Emulator(
                 EmulatedInterfaces[i].DevicesList[i2].Arg1, 
                 pWBuffer, 
-                WriteBCnt, 
+                (WriteBCnt?WriteBCnt-1:0), 
                 pRBuffer, 
-                ReadBCnt
+                (ReadBCnt?ReadBCnt-1:0)
                 );
           }
         }
