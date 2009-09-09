@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApi.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 7 $
+ *I  Last committed       : $Revision: 8 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $
- *I  ID                   : $Id: EApi.h 7 2009-09-09 03:07:08Z dethrophes $
+ *I  Last changed date    : $Date: 2009-09-09 07:15:21 +0200 (Mi, 09. Sep 2009) $
+ *I  ID                   : $Id: EApi.h 8 2009-09-09 05:15:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -314,7 +314,7 @@ extern "C" {
 uint32_t 
 EAPI_CALLTYPE 
 EApiLibInitialize(void)   ; /* Should be called before 
-                             * calling any otherAPI 
+                             * calling any other API 
                              * function is called
                              */
 /* 
@@ -687,13 +687,13 @@ EApiI2CGetBusCap(
  * Condition                                | Return Values 
  * -----------------------------------------+------------------------------
  * Library Uninitialized                    | EAPI_STATUS_NOT_INITIALIZED
- * WriteBCnt&&(pWBuffer==NULL)              | EAPI_STATUS_INVALID_PARAMETER
- * ReadBCnt&&(pRBuffer==NULL)               | EAPI_STATUS_INVALID_PARAMETER
- * ReadBCnt&&(RBufLen==0)                   | EAPI_STATUS_INVALID_PARAMETER
+ * (WriteBCnt>1)&&(pWBuffer==NULL)          | EAPI_STATUS_INVALID_PARAMETER
+ * (ReadBCnt>1)&&(pRBuffer==NULL)           | EAPI_STATUS_INVALID_PARAMETER
+ * (ReadBCnt>1)&&(RBufLen==0)               | EAPI_STATUS_INVALID_PARAMETER
  * ((WriteBCnt==0)&&(ReadBCnt==0))          | EAPI_STATUS_INVALID_PARAMETER
  * unknown Id                               | EAPI_STATUS_UNSUPPORTED
- * WriteBCnt>pMaxBlkLen                     | EAPI_STATUS_INVALID_BLOCK_LENGTH
- * ReadBCnt>pMaxBlkLen                      | EAPI_STATUS_INVALID_BLOCK_LENGTH
+ * WriteBCnt>(pMaxBlkLen+1)                 | EAPI_STATUS_INVALID_BLOCK_LENGTH
+ * ReadBCnt>(pMaxBlkLen+1)                  | EAPI_STATUS_INVALID_BLOCK_LENGTH
  * Bus Busy  SDA/SDC low                    | EAPI_STATUS_BUSY_COLLISION
  * Arbitration Error/Collision Error        | EAPI_STATUS_BUSY_COLLISION
  *   On Write 1 write cycle                 |
@@ -702,7 +702,7 @@ EApiI2CGetBusCap(
  * start<Addr Byte 1><W>Nak                 | EAPI_STATUS_NOT_FOUND
  * start<Addr Byte 1><R>Nak                 | EAPI_STATUS_NOT_FOUND
  * start<Addr Byte 1><W>Ack<Data Byte 1>Nak | EAPI_STATUS_WRITE_ERROR
- * ReadBCnt>RBufLen                         | EAPI_STATUS_MORE_DATA
+ * ReadBCnt>(RBufLen+1)                     | EAPI_STATUS_MORE_DATA
  * Common Error                             | Common Error Code
  * Else                                     | EAPI_STATUS_SUCCESS
  */
@@ -907,7 +907,7 @@ EApiI2CWriteTransfer(
  * Start<Addr Byte 1><W>Ack Stop
  *
  * Probe Type 2: 
- * Address Format : 7Bit
+ * Address Format : 10Bit
  * Start<Addr Byte 2><W>Ack<Addr Byte 1>Ack Stop
  *
  */
