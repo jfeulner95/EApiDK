@@ -1,34 +1,34 @@
 /*    
 *<KHeader>    
 *+=========================================================================    
-*I EApiDK Embedded Application Development Kit                           
+*I EApiDK Embedded Application Development Kit                              
 *+=========================================================================    
-*I $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/apps/EApiValidateAPI/AppVer.h $                           
+*I $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/apps/EApiValidateAPI/AppVer.h $                              
 *+=========================================================================    
-*I Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH                           
-*I Author: John Kearney,                  John.Kearney@kontron.com                           
+*I Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH                              
+*I Author: John Kearney,                  John.Kearney@kontron.com                              
 *I    
-*I License: All rights reserved. This program and the accompanying                            
-*I materials are licensed and made available under the                            
-*I terms and conditions of the BSD License which                            
-*I accompanies this distribution. The full text of the                            
-*I license may be found at                            
+*I License: All rights reserved. This program and the accompanying                               
+*I materials are licensed and made available under the                               
+*I terms and conditions of the BSD License which                               
+*I accompanies this distribution. The full text of the                               
+*I license may be found at                               
 *I http://opensource.org/licenses/bsd-license.php   
 *I    
-*I THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN                          
-*I 'AS IS' BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF                    
-*I ANY KIND, EITHER EXPRESS OR IMPLIED.                         
+*I THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN                             
+*I 'AS IS' BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF                       
+*I ANY KIND, EITHER EXPRESS OR IMPLIED.                            
 *I    
-*I Description: Auto Created for AppVer.h                           
+*I Description: Auto Created for AppVer.h                              
 *I    
 *+------------------------------------------------------------------------=    
 *I    
-*I File Name : AppVer.h                           
-*I File Location : apps\EApiValidateAPI                           
-*I Last committed : $Revision: 7 $                           
-*I Last changed by      : $Author: dethrophes $                           
-*I Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $                           
-*I ID : $Id: AppVer.h 7 2009-09-09 03:07:08Z dethrophes $                           
+*I File Name : AppVer.h                              
+*I File Location : apps\EApiValidateAPI                              
+*I Last committed : $Revision: 9 $                              
+*I Last changed by      : $Author: dethrophes $                              
+*I Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $                              
+*I ID : $Id: AppVer.h 9 2009-09-29 18:58:20Z dethrophes $                              
 *I    
 *+=========================================================================    
 *</KHeader>    
@@ -38,5 +38,5 @@
 /****************************************************************************/    
 #define APP_VERSION 0  
 #define APP_REVISION 5  
-#define APP_BUILD 554  
+#define APP_BUILD 559  
 #endif    

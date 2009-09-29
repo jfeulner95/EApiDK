@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulI2C.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 7 $
+ *I  Last committed       : $Revision: 9 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $
- *I  ID                   : $Id: EApiEmulI2C.c 7 2009-09-09 03:07:08Z dethrophes $
+ *I  Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $
+ *I  ID                   : $Id: EApiEmulI2C.c 9 2009-09-29 18:58:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -513,6 +513,18 @@ EApiI2CWriteReadEmul(
   {
       if(EmulatedInterfaces[i].Id==Id)
       {
+	EAPI_LIB_RETURN_ERROR_IF(
+	    EApiI2CWriteReadEmul, 
+	    (WriteBCnt>EmulatedInterfaces[i].MaxBlockLen+1), 
+	    EAPI_STATUS_INVALID_BLOCK_LENGTH,
+	    "WriteBCnt>(pMaxBlkLen+1)"
+	    );
+	EAPI_LIB_RETURN_ERROR_IF(
+	    EApiI2CWriteReadEmul, 
+	    (ReadBCnt>(EmulatedInterfaces[i].MaxBlockLen+1)), 
+	    EAPI_STATUS_INVALID_BLOCK_LENGTH,
+	    "ReadBCnt>(pMaxBlkLen+1)"
+	    );
         if(EAPI_I2C_IS_10BIT_ADDR(Addr<<8)){
           LclAddr=Addr<<8;
           LclAddr|=*((uint8_t *)pWBuffer);

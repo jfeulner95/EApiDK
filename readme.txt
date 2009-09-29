@@ -24,25 +24,16 @@
 #I
 #I  File Name            : readme.txt
 #I  File Location        : 
-#I  Last committed       : $Revision: 3 $
+#I  Last committed       : $Revision: 9 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2009-08-21 14:07:05 +0200 (Fr, 21. Aug 2009) $
-#I  ID                   : $Id: readme.txt 3 2009-08-21 12:07:05Z dethrophes $
+#I  Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $
+#I  ID                   : $Id: readme.txt 9 2009-09-29 18:58:20Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
-/*              Embedded API Development Kit 
- *
- * The library is free for all purposes without any express
- * guarantee it works.
- *
- * John Kearney,                      John.Kearney@kontron.com
- *
- * $Date: 2009-08-21 14:07:05 +0200 (Fr, 21. Aug 2009) $$Rev: 3 $
- */
 
 Build Instruction WINNT
-Currently building with 2003 DDK, 
+Currently building with 2003 SP1 DDK, 
 You can download it from here.
 http://www.microsoft.com/whdc/devtools/ddk/default.mspx
 

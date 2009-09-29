@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulWDT.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 9 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiEmulWDT.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $
+ *I  ID                   : $Id: EApiEmulWDT.h 9 2009-09-29 18:58:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -43,9 +43,31 @@ extern "C" {
 #endif
 
 uint32_t 
+EAPI_CALLTYPE
+EApiWDogGetCapEmul(
+    __OUTOPT uint32_t *pMaxDelay       ,/* Maximum Supported 
+                                         * Delay in milliseconds
+                                         */
+    __OUTOPT uint32_t *pMaxEventTimeout,/* Maximum Supported 
+                                         * Event Timeout in 
+                                         * milliseconds
+                                         * 0 == Unsupported
+                                         */
+    __OUTOPT uint32_t *pMaxResetTimeout /* Maximum Supported 
+                                         * Reset Timeout in 
+                                         * milliseconds
+                                         */
+    );
+	
+uint32_t 
 EApiWDogStartEmul(
-    __IN uint32_t timeout, 
-    __IN uint32_t delay
+    __IN  uint32_t Delay       , /* Delay in milliseconds */
+    __IN  uint32_t EventTimeout, /* Event Timeout in 
+                                  * milliseconds 
+                                  */
+    __IN  uint32_t ResetTimeout  /* Reset Timeout in 
+                                  * milliseconds 
+                                  */
     );
 uint32_t
 EApiWDogTriggerEmul(void);

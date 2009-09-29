@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAPI.cpp
  *I  File Location        : lib
- *I  Last committed       : $Revision: 7 $
+ *I  Last committed       : $Revision: 9 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-09-09 05:07:08 +0200 (Mi, 09. Sep 2009) $
- *I  ID                   : $Id: EApiAPI.cpp 7 2009-09-09 03:07:08Z dethrophes $
+ *I  Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $
+ *I  ID                   : $Id: EApiAPI.cpp 9 2009-09-29 18:58:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -608,14 +608,50 @@ EApiLibUnInitialize(void)
  *
  */
 uint32_t 
+EAPI_CALLTYPE
+EApiWDogGetCap(
+    __OUTOPT uint32_t *pMaxDelay       ,/* Maximum Supported 
+                                         * Delay in milliseconds
+                                         */
+    __OUTOPT uint32_t *pMaxEventTimeout,/* Maximum Supported 
+                                         * Event Timeout in 
+                                         * milliseconds
+                                         * 0 == Unsupported
+                                         */
+    __OUTOPT uint32_t *pMaxResetTimeout /* Maximum Supported 
+                                         * Reset Timeout in 
+                                         * milliseconds
+                                         */
+    )
+{
+  uint32_t DummyData;
+  EAPI_CHECK_INITIALIZED(EApiWDogGetCap);
+  EAPI_LIB_ASSERT_PARAMATER_CHECK(
+    EApiWDogGetCap, 
+    ((pMaxDelay==NULL)&&(pMaxEventTimeout==NULL)&&(pMaxResetTimeout==NULL)), 
+   "((pMaxDelay==NULL)&&(pMaxEventTimeout==NULL)&&(pMaxResetTimeout==NULL))"
+  );
+
+   if(pMaxDelay       ==NULL) pMaxDelay       =&DummyData;
+   if(pMaxEventTimeout==NULL) pMaxEventTimeout=&DummyData;
+   if(pMaxResetTimeout==NULL) pMaxResetTimeout=&DummyData;
+  return EApiWDogGetCapEmul(pMaxDelay, pMaxEventTimeout, pMaxResetTimeout);
+}
+
+uint32_t 
 EAPI_CALLTYPE 
 EApiWDogStart(
-    __IN  uint32_t delay   , /* Delay in milliseconds */
-    __IN  uint32_t timeout   /* Timeout in milliseconds */
+    __IN  uint32_t Delay       , /* Delay in milliseconds */
+    __IN  uint32_t EventTimeout, /* Event Timeout in 
+                                  * milliseconds 
+                                  */
+    __IN  uint32_t ResetTimeout  /* Reset Timeout in 
+                                  * milliseconds 
+                                  */
     )
 {
   EAPI_CHECK_INITIALIZED(EApiWDogStart);
-  return EApiWDogStartEmul(timeout, delay);
+  return EApiWDogStartEmul(Delay, EventTimeout, ResetTimeout);
 }
 uint32_t 
 EAPI_CALLTYPE 
