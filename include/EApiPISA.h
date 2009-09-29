@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiPISA.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 11 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiPISA.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-09-29 22:16:12 +0200 (Di, 29. Sep 2009) $
+ *I  ID                   : $Id: EApiPISA.h 11 2009-09-29 20:16:12Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -68,6 +68,22 @@
 #define EAPI_PISA_ID_BOARD_LIB_VERSION_VAL       EAPI_ID_BOARD_LIB_VERSION_VAL
 
 #define EAPI_PISA_REV_1_0      EAPI_VER_CREATE(1, 0, 0)
+
+
+#define EAPI_PISA_ID_HWMON_CPU_TEMP      EAPI_ID_HWMON_CPU_TEMP     
+#define EAPI_PISA_ID_HWMON_CHIPSET_TEMP  EAPI_ID_HWMON_CHIPSET_TEMP 
+#define EAPI_PISA_ID_HWMON_SYSTEM_TEMP   EAPI_ID_HWMON_SYSTEM_TEMP  
+                                                               
+#define EAPI_PISA_ID_HWMON_VOLTAGE_VCORE EAPI_ID_HWMON_VOLTAGE_VCORE
+#define EAPI_PISA_ID_HWMON_VOLTAGE_2V5   EAPI_ID_HWMON_VOLTAGE_2V5  
+#define EAPI_PISA_ID_HWMON_VOLTAGE_3V3   EAPI_ID_HWMON_VOLTAGE_3V3  
+#define EAPI_PISA_ID_HWMON_VOLTAGE_VBAT  EAPI_ID_HWMON_VOLTAGE_VBAT 
+#define EAPI_PISA_ID_HWMON_VOLTAGE_5V    EAPI_ID_HWMON_VOLTAGE_5V   
+#define EAPI_PISA_ID_HWMON_VOLTAGE_5VSB  EAPI_ID_HWMON_VOLTAGE_5VSB 
+#define EAPI_PISA_ID_HWMON_VOLTAGE_12V   EAPI_ID_HWMON_VOLTAGE_12V 
+                                                               
+#define EAPI_PISA_ID_HWMON_FAN_CPU       EAPI_ID_HWMON_FAN_CPU     
+#define EAPI_PISA_ID_HWMON_FAN_SYSTEM    EAPI_ID_HWMON_FAN_SYSTEM   
 
 /*
  *
@@ -110,13 +126,6 @@
  */
 
 
-/*
- *
- *      T E M P E R A T U R E
- *
- */
-/* IDs */
-#define EAPI_PISA_ID_TEMP_CPU  EAPI_ID_TEMP_CPU
 
 
 
