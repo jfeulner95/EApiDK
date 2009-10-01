@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApi.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 11 $
+ *I  Last committed       : $Revision: 13 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-09-29 22:16:12 +0200 (Di, 29. Sep 2009) $
- *I  ID                   : $Id: EApi.h 11 2009-09-29 20:16:12Z dethrophes $
+ *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+ *I  ID                   : $Id: EApi.h 13 2009-10-01 05:37:26Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -102,7 +102,16 @@ extern "C" {
 #  define EAPI_UINT32_C(x) ((uint32_t)(x))
 #endif
 /************************************************************************
- * All version numbers are bits 31..24: major, 23..16: minor, 15..0 build#
+ * All version numbers 
+ * +=========+===============================+
+ * | Bits    | Descriptions                  |
+ * +=========+===============================+
+ * | 24 - 31 | Version Number                |
+ * +---------+-------------------------------+
+ * | 16 - 23 | Revision Number               |
+ * +---------+-------------------------------+
+ * | 0  - 15 | Build Number                  |
+ * +=========+===============================+
  */
 #define EAPI_VER_MASK_VER     EAPI_UINT32_C(0xFF000000)
 #define EAPI_VER_MASK_REV     EAPI_UINT32_C(0x00FF0000)

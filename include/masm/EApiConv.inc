@@ -30,10 +30,46 @@ option casemap:none
 ;  *I
 ;  *I  File Name            : EApiConv.h
 ;  *I  File Location        : includemasm
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
+;  *I
+;  *+=========================================================================
+;  *</KHeader>
+;  
+; Begin of file include\masm\h2inc.h
+; 
+;  *<KHeader>
+;  *+=========================================================================
+;  *I               EApiDK Embedded Application Development Kit
+;  *+=========================================================================
+;  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/masm/EApiConv.inc $
+;  *+=========================================================================
+;  *I   Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH
+;  *I      Author: John Kearney,                  John.Kearney@kontron.com
+;  *I
+;  *I     License: All rights reserved. This program and the accompanying 
+;  *I              materials are licensed and made available under the 
+;  *I              terms and conditions of the BSD License which 
+;  *I              accompanies this distribution. The full text of the 
+;  *I              license may be found at 
+;  *I              http://opensource.org/licenses/bsd-license.php
+;  *I              
+;  *I              THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "
+;  *I              AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF 
+;  *I              ANY KIND, EITHER EXPRESS OR IMPLIED.
+;  *I
+;  *I Description: Auto Created for EApiConv.h
+;  *I
+;  *+------------------------------------------------------------------------=
+;  *I
+;  *I  File Name            : EApiConv.h
+;  *I  File Location        : includemasm
+;  *I  Last committed       : $Revision: 13 $
+;  *I  Last changed by      : $Author: dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -57,8 +93,7 @@ option casemap:none
 ;  
 uint64_t		TYPEDEF		QWORD
 
-int64_t		TYPEDEF		SDWORD
-
+; typedef   signed long   int64_t;
 uint32_t		TYPEDEF		DWORD
 
 int32_t		TYPEDEF		SDWORD
@@ -75,6 +110,12 @@ size_t		TYPEDEF		int32_t
 
 wchar_t		TYPEDEF		uint16_t
 
+COM0_INT32_C		TEXTEQU		<>
+COM0_INT16_C		TEXTEQU		<>
+COM0_INT8_C		TEXTEQU		<>
+COM0_UINT32_C		TEXTEQU		<>
+COM0_UINT16_C		TEXTEQU		<>
+COM0_UINT8_C		TEXTEQU		<>
 EAPI_INT32_C		TEXTEQU		<>
 EAPI_INT16_C		TEXTEQU		<>
 EAPI_INT8_C		TEXTEQU		<>
@@ -95,6 +136,7 @@ UINT32_MAX		EQU		0ffffffffh
 INT32_MAX		EQU		07fffffffh
 UINT64_MAX		EQU		0ffffffffh
 INT64_MAX		EQU		0ffffffffh
+; End of file include\masm\h2inc.h
 ; Begin of file include\masm\..\EApi.h
 ; 
 ;  *<KHeader>
@@ -123,10 +165,10 @@ INT64_MAX		EQU		0ffffffffh
 ;  *I
 ;  *I  File Name            : EApi.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -135,7 +177,16 @@ _EAPI_H_		TEXTEQU		<>
 ; *********************************************************************
 EAPI_CALLTYPE		TEXTEQU		<>
 ; ***********************************************************************
-;  * All version numbers are bits 31..24: major, 23..16: minor, 15..0 build#
+;  * All version numbers 
+;  * +=========+===============================+
+;  * | Bits    | Descriptions                  |
+;  * +=========+===============================+
+;  * | 24 - 31 | Version Number                |
+;  * +---------+-------------------------------+
+;  * | 16 - 23 | Revision Number               |
+;  * +---------+-------------------------------+
+;  * | 0  - 15 | Build Number                  |
+;  * +=========+===============================+
 ;  
 EAPI_VER_MASK_VER		EQU		0ff000000h
 EAPI_VER_MASK_REV		EQU		000ff0000h
@@ -1237,10 +1288,10 @@ EApiGPIOSetLevel		PROTO		@proto_24
 ;  *I
 ;  *I  File Name            : EApiCOM0.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -1368,10 +1419,10 @@ EAPI_COM0_ID_GPIO_GPO3		EQU		000000007h
 ;  *I
 ;  *I  File Name            : EApiTCA.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -1482,10 +1533,10 @@ EAPI_TCA_ID_I2C_LVDS_2		EQU		000000002h
 ;  *I
 ;  *I  File Name            : EApiETX.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -1594,10 +1645,10 @@ EAPI_ETX_ID_I2C_LVDS_2		EQU		000000002h
 ;  *I
 ;  *I  File Name            : EApiQ7.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -1705,10 +1756,10 @@ EAPI_Q7_ID_I2C_LVDS_2		EQU		000000002h
 ;  *I
 ;  *I  File Name            : EApiMOPS.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -1816,10 +1867,10 @@ EAPI_MOPS_ID_I2C_LVDS_2		EQU		000000002h
 ;  *I
 ;  *I  File Name            : EApiPISA.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -1927,10 +1978,10 @@ EAPI_PISA_ID_I2C_LVDS_2		EQU		000000002h
 ;  *I
 ;  *I  File Name            : EApiEPIC.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 12 $
+;  *I  Last committed       : $Revision: 13 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-09-29 22:18:28 +0200 (Di, 29. Sep 2009) $
-;  *I  ID                   : $Id: EApiConv.inc 12 2009-09-29 20:18:28Z dethrophes $
+;  *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
+;  *I  ID                   : $Id: EApiConv.inc 13 2009-10-01 05:37:26Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
