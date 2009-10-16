@@ -25,10 +25,10 @@
  *I
  *I  File Name            : STDEEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 18 $
+ *I  Last committed       : $Revision: 19 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-16 11:42:34 +0200 (Fr, 16. Okt 2009) $
- *I  ID                   : $Id: EeeP.h 18 2009-10-16 09:42:34Z dethrophes $
+ *I  Last changed date    : $Date: 2009-10-16 12:11:18 +0200 (Fr, 16. Okt 2009) $
+ *I  ID                   : $Id: EeeP.h 19 2009-10-16 10:11:18Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -146,7 +146,16 @@ typedef struct StdEep_s{
                               * +--------+------------------------+
                               * | 4      | Std/Ext Index          |
                               * +--------+------------------------+
-                              * | 5 - 7  | Reserved               |
+                              * | 5 - 7  | Page Write Length/     |
+                              * |        | Alignment              |
+                              * |        | 0 = 1 Byte             |
+                              * |        | 1 = 8 Byte             |
+                              * |        | 2 = 16 Byte            |
+                              * |        | 3 = 32 Byte            |
+                              * |        | 4 = 64 Byte            |
+                              * |        | 5 = 128 Byte           |
+                              * |        | 6 = 256 Byte           |
+                              * |        | 7 = 512 Byte           |
                               * +========+========================+
                               */
     uint8_t     VendId[2]  ; /* 0x06 Compressed PNPID            */
