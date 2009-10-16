@@ -27,10 +27,10 @@ REM +------------------------------------------------------------------------=
 REM I
 REM I  File Name            : buildnt.cmd
 REM I  File Location        : 
-REM I  Last committed       : $Revision: 13 $
+REM I  Last committed       : $Revision: 18 $
 REM I  Last changed by      : $Author: dethrophes $
-REM I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
-REM I  ID                   : $Id: buildnt.cmd 13 2009-10-01 05:37:26Z dethrophes $
+REM I  Last changed date    : $Date: 2009-10-16 11:42:34 +0200 (Fr, 16. Okt 2009) $
+REM I  ID                   : $Id: buildnt.cmd 18 2009-10-16 09:42:34Z dethrophes $
 REM I
 REM +=========================================================================
 REM </KHeader>
@@ -131,7 +131,7 @@ IF /I "%~1"=="BUILD_LIB" GOTO Exit
   GOTO exit
 
 :BUILD_INC 
-  call :RunProg h2inc /Zu /C /Zp4 /WIN32 /Ht /zu /znCOM0 /Fa"include\masm\COM0EEPConv.inc" "include\masm\COM0EEPConv.h"
+  call :RunProg h2inc /Zu /C /Zp4 /WIN32 /Ht /zu /znCOM0 /Fa"include\masm\EeePConv.inc" "include\masm\EeePConv.h"
   IF ERRORLEVEL 1 GOTO Error_Exit
   call :RunProg h2inc /Zu /C /Zp4 /WIN32 /Ht /zu /znEApi /Fa"include\masm\EApiConv.inc" "include\masm\EApiConv.h"
   IF ERRORLEVEL 1 GOTO Error_Exit
@@ -272,7 +272,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 13 $
+  ECHO I  %~nx0                                              $$Rev: 18 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

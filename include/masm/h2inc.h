@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiConv.h
  *I  File Location        : include\masm
- *I  Last committed       : $Revision: 13 $
+ *I  Last committed       : $Revision: 18 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
- *I  ID                   : $Id: h2inc.h 13 2009-10-01 05:37:26Z dethrophes $
+ *I  Last changed date    : $Date: 2009-10-16 11:42:34 +0200 (Fr, 16. Okt 2009) $
+ *I  ID                   : $Id: h2inc.h 18 2009-10-16 09:42:34Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -61,12 +61,12 @@ typedef   signed char   int8_t;
 typedef   int32_t       size_t;
 typedef   uint16_t      wchar_t;
 
-# define COM0_INT32_C 
-# define COM0_INT16_C 
-# define COM0_INT8_C  
-# define COM0_UINT32_C 
-# define COM0_UINT16_C 
-# define COM0_UINT8_C  
+# define EEEP_INT32_C 
+# define EEEP_INT16_C 
+# define EEEP_INT8_C  
+# define EEEP_UINT32_C 
+# define EEEP_UINT16_C 
+# define EEEP_UINT8_C  
 # define EAPI_INT32_C 
 # define EAPI_INT16_C 
 # define EAPI_INT8_C  

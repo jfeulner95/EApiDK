@@ -2,7 +2,7 @@
 ;+=========================================================================
 ;I               EApiDK Embedded Application Development Kit
 ;+=========================================================================
-;I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/masm/COM0EEP.inc $
+;I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/masm/EeeP.inc $
 ;+=========================================================================
 ;I   Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH
 ;I      Author: John Kearney,                  John.Kearney@kontron.com
@@ -24,16 +24,16 @@
 ;I
 ;I  File Name            : EApi.inc
 ;I  File Location        : include\masm
-;I  Last committed       : $Revision: 13 $
+;I  Last committed       : $Revision: 18 $
 ;I  Last changed by      : $Author: dethrophes $
-;I  Last changed date    : $Date: 2009-10-01 07:37:26 +0200 (Do, 01. Okt 2009) $
-;I  ID                   : $Id: COM0EEP.inc 13 2009-10-01 05:37:26Z dethrophes $
+;I  Last changed date    : $Date: 2009-10-16 11:42:34 +0200 (Fr, 16. Okt 2009) $
+;I  ID                   : $Id: EeeP.inc 18 2009-10-16 09:42:34Z dethrophes $
 ;I
 ;+=========================================================================
 ;</KHeader>
-IFNDEF __COM0EEP_INC__
-__COM0EEP_INC__ TEXTEQU <>
+IFNDEF __EEEP_INC__
+__EEEP_INC__ TEXTEQU <>
 
-        include <COM0EEPConv.inc>
+        include <EeePConv.inc>
 
-ENDIF  __COM0EEP_INC__
+ENDIF  __EEEP_INC__
