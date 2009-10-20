@@ -25,10 +25,10 @@
  *I
  *I  File Name            : STDEEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 21 $
+ *I  Last committed       : $Revision: 22 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-20 17:10:24 +0200 (Di, 20. Okt 2009) $
- *I  ID                   : $Id: EeeP.h 21 2009-10-20 15:10:24Z dethrophes $
+ *I  Last changed date    : $Date: 2009-10-20 21:34:48 +0200 (Di, 20. Okt 2009) $
+ *I  ID                   : $Id: EeeP.h 22 2009-10-20 19:34:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -240,6 +240,7 @@ typedef struct DBlockIdHdr_s{
 typedef struct CRC16ChkBlock_s{
     DBlockIdHdr_t DBHdr         ; /* 0x00 Dynamic Block Header  */
     uint8_t       CrC16[2]      ; /* 0x03 CRC16 Checksum */
+    uint8_t       AlignmentByte ; /* 0x05 Alignment Byte */
 }CRC16ChkBlock_t;
 
 

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : COM0EEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 21 $
+ *I  Last committed       : $Revision: 22 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-20 17:10:24 +0200 (Di, 20. Okt 2009) $
- *I  ID                   : $Id: COM0EEP.h 21 2009-10-20 15:10:24Z dethrophes $
+ *I  Last changed date    : $Date: 2009-10-20 21:34:48 +0200 (Di, 20. Okt 2009) $
+ *I  ID                   : $Id: COM0EEP.h 22 2009-10-20 19:34:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -104,7 +104,7 @@ typedef struct COM0R20_CB_s{
 #       define COM0R20_USB_PCNT_MASK         EEEP_UINT8_C(0x0F)
 #       define COM0R20_USB_PCNT_OFFSET       EEEP_UINT8_C(0x00)
 
-    uint8_t     SasDesc;   /* 0x13 LAN Descriptor Byte
+    uint8_t     SasDesc;   /* 0x13 SATA/SAS Descriptor Byte
                             *      
                             *      +=======+=====+=======+===================+
                             *      | SAS/  | Bit | Value | Meaning           |
