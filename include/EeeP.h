@@ -25,10 +25,10 @@
  *I
  *I  File Name            : STDEEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 20 $
+ *I  Last committed       : $Revision: 21 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-16 16:54:23 +0200 (Fr, 16. Okt 2009) $
- *I  ID                   : $Id: EeeP.h 20 2009-10-16 14:54:23Z dethrophes $
+ *I  Last changed date    : $Date: 2009-10-20 17:10:24 +0200 (Di, 20. Okt 2009) $
+ *I  ID                   : $Id: EeeP.h 21 2009-10-20 15:10:24Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -168,10 +168,10 @@ typedef struct EeePCmn_s{
  *
  */
 typedef struct UDIdEep_s{
-    uint8_t     VendId[2]  ; /* 0x06 Vendor Unique PNPID         */
-    uint8_t     DeviceId[2]; /* 0x08 Vendor Specific Device ID   */
-    uint8_t     DeviceFlav ; /* 0x0A Device Specific Flavor ID   */
-    uint8_t     RevId      ; /* 0x0B Device Specific Revision ID */
+    uint8_t     VendId[2]  ; /* 0x00 Vendor Unique PNPID         */
+    uint8_t     DeviceId[2]; /* 0x02 Vendor Specific Device ID   */
+    uint8_t     DeviceFlav ; /* 0x04 Device Specific Flavor ID   */
+    uint8_t     RevId      ; /* 0x05 Device Specific Revision ID */
 }UDIdEep_t; 
 
 /*
@@ -188,7 +188,7 @@ typedef struct Exp_EEP_s{
 
 
 /*
- * Block Common Header
+ * Dynamic Block Common Header
  *
  */
 typedef struct DBlockIdHdr_s{
@@ -424,7 +424,7 @@ typedef struct ExtI2CDeviceDesc_s{
  */
 void
 EeeP_Set16BitValue_BE(
-    uint8_t  pBuffer,
+    uint8_t *pBuffer,
     uint16_t Value
      )
 {
@@ -433,14 +433,14 @@ EeeP_Set16BitValue_BE(
 }
 uint16_t
 EeeP_Get16BitValue_BE(
-    uint8_t  pBuffer
+    uint8_t *pBuffer
      )
 {
   return (pBuffer[1]    ) |
          (pBuffer[0]<< 8) ;
 }
 EeeP_Set32BitValue_BE(
-    uint8_t  pBuffer,
+    uint8_t *pBuffer,
     uint32_t Value
      )
 {
@@ -451,7 +451,7 @@ EeeP_Set32BitValue_BE(
 }
 uint32_t
 EeeP_Get32BitValue_BE(
-    uint8_t  pBuffer
+    uint8_t *pBuffer
      )
 {
   return (pBuffer[3]    ) |
@@ -465,7 +465,7 @@ EeeP_Get32BitValue_BE(
  */
 void
 EeeP_Set16BitValue_LE(
-    uint8_t  pBuffer,
+    uint8_t *pBuffer,
     uint16_t Value
      )
 {
@@ -474,14 +474,14 @@ EeeP_Set16BitValue_LE(
 }
 uint16_t
 EeeP_Get16BitValue_LE(
-    uint8_t  pBuffer
+    uint8_t *pBuffer
      )
 {
   return (pBuffer[0]    ) |
          (pBuffer[1]<< 8) ;
 }
 EeeP_Set32BitValue_LE(
-    uint8_t  pBuffer,
+    uint8_t *pBuffer,
     uint32_t Value
      )
 {
@@ -492,7 +492,7 @@ EeeP_Set32BitValue_LE(
 }
 uint32_t
 EeeP_Get32BitValue_LE(
-    uint8_t  pBuffer
+    uint8_t *pBuffer
      )
 {
   return (pBuffer[0]    ) |
