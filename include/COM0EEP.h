@@ -25,10 +25,10 @@
  *I
  *I  File Name            : COM0EEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 22 $
+ *I  Last committed       : $Revision: 23 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-20 21:34:48 +0200 (Di, 20. Okt 2009) $
- *I  ID                   : $Id: COM0EEP.h 22 2009-10-20 19:34:48Z dethrophes $
+ *I  Last changed date    : $Date: 2009-11-09 07:57:37 +0100 (Mo, 09. Nov 2009) $
+ *I  ID                   : $Id: COM0EEP.h 23 2009-11-09 06:57:37Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -75,7 +75,8 @@
  */
 typedef struct COM0R20_CB_s{
     EeePCmn_t   EeePHdr  ; /* 0x00 EeeP Common Header */
-    uint8_t     GenId[4] ; /* 0x06 "COM0"   */
+    uint8_t     GenId[4] ; /* 0x06 "Com0"   */
+    #define COM0R20_CB_HEADER_ID "Com0"
     UDIdEep_t   DevId    ; /* 0x0C Unique Device Id   */
     uint8_t     CBType   ; /* 0x10 Carrier Board Type     */
     uint8_t     SpecRev  ; /* 0x11 COM0 Specification Revision
@@ -417,7 +418,8 @@ typedef struct COM0R20_CB_s{
  */
 typedef struct COM0R20_M_s{
     EeePCmn_t   EeePHdr  ; /* 0x00 EeeP Common Header */
-    uint8_t     GenId[4] ; /* 0x06 "COM0"   */
+    uint8_t     GenId[4] ; /* 0x06 "coM0"   */
+    #define COM0R20_M_HEADER_ID "coM0"
     UDIdEep_t   DevId    ; /* 0x0A Unique Device Id   */
     uint8_t     MType    ; /* 0x10 Module Type        */
     uint8_t     SpecRev  ; /* 0x11 COM0 Specification Revision
