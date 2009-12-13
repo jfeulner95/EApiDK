@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiValidateAPI.c
  *I  File Location        : apps\EApiValidateAPI
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 25 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiValidateAPI.c 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
+ *I  ID                   : $Id: EApiValidateAPI.c 25 2009-12-13 04:13:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -269,7 +269,7 @@ void EApiValidateValuesApi (void)
  */
 
 typedef struct EApiI2CLLInterfaceValidate_s{
-  const uint_least8_t  Address     ; /* Address */
+  const uint8_t   Address     ; /* Address */
         void *    WBufPtr     ; /* Write Buffer Pointer */
   const uint32_t  WByteCnt    ; /* Write Byte Count  */
         void *    RBufPtr     ; /* Read  Buffer Pointer */
@@ -365,7 +365,7 @@ void EApiValidateI2CApi (void)
 #else
         ARRAY_SIZE(TmpStrBuf) , /* For Debug Purposes */
 #endif
-        I2CDevices[i2].DevSize
+        (uint32_t)I2CDevices[i2].DevSize
         );
       if(ReturnValue==EAPI_STATUS_SUCCESS)
       {
@@ -382,7 +382,7 @@ void EApiValidateI2CApi (void)
           &I2CDevices[i2]   , 
           13                , 
           TmpStrBuf         , 
-          I2CDevices[i2].DevSize/5
+          (uint32_t)I2CDevices[i2].DevSize/5
           );
         if(ReturnValue==EAPI_STATUS_SUCCESS)
         {
@@ -837,7 +837,7 @@ typedef enum ProgramReturnValues_e{
 }ProgramReturnValues_t;
 int 
 __cdecl 
-main()
+main(void)
 {
   unsigned i;
   LogStream=EAPI_fopen(TEXT("EApiValidateAPI.log"), TEXT("w"));

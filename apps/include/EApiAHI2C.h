@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHI2C.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 25 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiAHI2C.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
+ *I  ID                   : $Id: EApiAHI2C.h 25 2009-12-13 04:13:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -45,7 +45,8 @@ extern "C" {
 typedef enum EApiCmdTypes_e{
   EApiAPI2CStdIndex=1,
   EApiAPI2CExtIndex=2
-}EApiCmdTypes_t;
+};
+typedef uint16_t EApiCmdTypes_t;
 
 typedef struct I2CDeviceDesc_s{
   uint16_t        DeviceAddr   ; /* Encodded Device Address */
@@ -56,27 +57,21 @@ typedef struct I2CDeviceDesc_s{
 }I2CDeviceDesc_t;
 
 uint32_t 
-EApiAHI2CProbeDevice(
-    __IN  uint32_t              Id    , 
-    __IN  uint32_t              EncAddr
-    );
-
-uint32_t
 EApiAHI2CWriteEeprom(
     __IN uint32_t               Id          , 
     __IN const I2CDeviceDesc_t *const pDDesc, 
-    __IN const uint32_t         ByteOffset  , 
+    __IN const size_t           ByteOffset  , 
     __IN void *                 pBuffer     , 
-    __IN uint32_t               ByteCnt 
+    __IN size_t                 ByteCnt 
     );
 uint32_t
 EApiAHI2CReadEeprom(
     __IN uint32_t              Id           , 
     __IN const I2CDeviceDesc_t *const pDDesc, 
-    __IN const uint32_t        ByteOffset   , 
+    __IN const size_t          ByteOffset   , 
     __IN void *                pBuffer      , 
-    __IN const uint32_t        BufLength    , 
-    __IN uint32_t              ByteCnt 
+    __IN const size_t          BufLength    , 
+    __IN size_t                ByteCnt 
     );
 
 #ifdef __cplusplus
