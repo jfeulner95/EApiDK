@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStr.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 25 $
+ *I  Last committed       : $Revision: 26 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
- *I  ID                   : $Id: EApiAHStr.h 25 2009-12-13 04:13:21Z dethrophes $
+ *I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
+ *I  ID                   : $Id: EApiAHStr.h 26 2009-12-13 06:19:46Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -129,13 +129,13 @@ EApiAHCreateErrorString(
 /* Dynamic pBuffer Allocation */
 
 
-void 
+uint32_t 
 EApiAHGetStringAlloc(
     __IN  uint32_t        StringID, /* EApi String ID */
     __OUT TCHAR * *const  pString   /* Pointer to where string pointer should be stored */
     );
 
-void 
+uint32_t 
 EApiAHCreateErrorStringAlloc(
     __IN  uint32_t        StatusCode  ,
     __OUT TCHAR * *const   pString  /* Pointer to where string pointer should be stored */

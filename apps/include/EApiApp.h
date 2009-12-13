@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiApp.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 25 $
+ *I  Last committed       : $Revision: 26 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
- *I  ID                   : $Id: EApiApp.h 25 2009-12-13 04:13:21Z dethrophes $
+ *I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
+ *I  ID                   : $Id: EApiApp.h 26 2009-12-13 06:19:46Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -74,7 +74,6 @@
 #  endif
 #endif
 
-#define KUXE_VOID_RETURN
 
 #if (STRICT_VALIDATION>0)
 #define EAPI_FORMATED_MES(type, func, err, desc) \

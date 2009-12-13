@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStorage.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 26 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiAHStorage.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
+ *I  ID                   : $Id: EApiAHStorage.h 26 2009-12-13 06:19:46Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -41,6 +41,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 uint32_t 
 EApiAHWriteStorage(
     __IN  uint32_t         Id          , 

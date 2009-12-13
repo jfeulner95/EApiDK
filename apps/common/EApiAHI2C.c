@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHI2C.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 25 $
+ *I  Last committed       : $Revision: 26 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
- *I  ID                   : $Id: EApiAHI2C.c 25 2009-12-13 04:13:21Z dethrophes $
+ *I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
+ *I  ID                   : $Id: EApiAHI2C.c 26 2009-12-13 06:19:46Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -233,7 +233,7 @@ EApiAHI2CWriteEeprom(
       CurOffset+=BlockLength;
       BlockLength=BlockLengthStd; /* Restore Standard Block Length */
       if(pDDesc->WRecTimems)
-        EApiSleep((DWORD)pDDesc->WRecTimems); /* Allow Device Time to Recover */
+        EApiSleep((uint32_t)pDDesc->WRecTimems); /* Allow Device Time to Recover */
     }
     return ReturnValue;
 }
