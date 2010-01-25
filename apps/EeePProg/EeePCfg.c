@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePCfg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 35 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeePCfg.c 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 22:21:19 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EeePCfg.c 35 2010-01-25 21:21:19Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -1463,6 +1463,7 @@ HandleVendorBlock(
 
   DO(EeePAddBlock(BHandel, pHeader, NULL, pVendorBlock->aulInsideCrc[0]));
   free(pvFileBuffer);
+  pvFileBuffer=NULL;
   free(pHeader);
   pHeader=NULL;
 

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 33 $
+ *I  Last committed       : $Revision: 35 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 09:33:13 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: BinFuncs.c 33 2010-01-25 08:33:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 22:21:19 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: BinFuncs.c 35 2010-01-25 21:21:19Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -282,7 +282,11 @@ WriteBinaryFile(
       EAPI_STATUS_WRITE_ERROR,
       LclFilePtr
     );
-  fwrite(pcvBuffer, stWriteBCnt, sizeof(uint8_t), LclFilePtr);
+  EAPI_APP_RETURN_ERROR_IF_S(
+      ReadBinaryFile,
+      (stWriteBCnt!=fwrite(pcvBuffer, sizeof(uint8_t), stWriteBCnt, LclFilePtr))*sizeof(uint8_t),
+      EAPI_STATUS_WRITE_ERROR
+    );
   fclose(LclFilePtr);
   return EAPI_STATUS_SUCCESS;
 }
@@ -329,10 +333,19 @@ ReadBinaryFile(
       *pvBuffer
     );
 
-  *pstReadBCnt=fread(*pvBuffer, stFileLen, sizeof(uint8_t), LclFilePtr);
+  if(stFileLen!=fread(*pvBuffer, sizeof(uint8_t), stFileLen, LclFilePtr)*sizeof(uint8_t)){
+    free(*pvBuffer);
+    *pvBuffer=NULL;
+    EAPI_APP_RETURN_ERROR(
+        ReadBinaryFile,
+        EAPI_STATUS_READ_ERROR,
+        TEXT("(stFileLen!=fread(*pvBuffer, sizeof(uint8_t), stFileLen, LclFilePtr)*sizeof(uint8_t))")
+      );
+  }
+  *pstReadBCnt=stFileLen;
   fclose(LclFilePtr);
 
-  return (*pstReadBCnt==stFileLen?EAPI_STATUS_SUCCESS:EAPI_STATUS_READ_ERROR);
+  return EAPI_STATUS_SUCCESS;
 }
 
 

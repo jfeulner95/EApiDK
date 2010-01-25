@@ -25,10 +25,10 @@
  *I
  *I  File Name            : ArgParse.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 33 $
+ *I  Last committed       : $Revision: 35 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 09:33:13 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: ArgParse.c 33 2010-01-25 08:33:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 22:21:19 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: ArgParse.c 35 2010-01-25 21:21:19Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -44,7 +44,7 @@ StringArg(
 {
   pArgs=pArgs;
   *(void**)cszCurArg=EAPI_strdup(cszArg);
-  printf("StringArg: %s\n", *(char**)cszCurArg);
+/*   printf("StringArg: %s\n", *(char**)cszCurArg); */
   return EAPI_STATUS_SUCCESS;
 }
 
@@ -57,7 +57,7 @@ NumberArg(
 {
   pArgs=pArgs;
   *(unsigned long*)pvalue=ulConvertStr2Num(cszArg, NULL);
-  printf("StringArg: %s(0x%lX)\n", cszArg, *(unsigned long*)pvalue);
+/*   printf("StringArg: %s(0x%lX)\n", cszArg, *(unsigned long*)pvalue); */
   return EAPI_STATUS_SUCCESS;
 }
 
@@ -200,7 +200,7 @@ ParseArgs(
       if(pszCurArg[0][1]=='-'){
         while(stI --){
           if(!strcmp(pszCurArg[0]+2, pCurArgDesc->cszLong)){
-            printf("[%u][%lu]--%s==--%s\n", siArgc, (unsigned long)stI, pszCurArg[0]+2, pCurArgDesc->cszLong);
+/*             printf("[%u][%lu]--%s==--%s\n", siArgc, (unsigned long)stI, pszCurArg[0]+2, pCurArgDesc->cszLong); */
             ++uiValid;
             stI=0;
             continue;
@@ -210,7 +210,7 @@ ParseArgs(
       }else{
         while(stI --){
           if(pszCurArg[0][1]==pCurArgDesc->cShort){
-            printf("[%u][%lu]-%c==-%c\n", siArgc, (unsigned long)stI, pszCurArg[0][1], pCurArgDesc->cShort);
+/*             printf("[%u][%lu]-%c==-%c\n", siArgc, (unsigned long)stI, pszCurArg[0][1], pCurArgDesc->cShort); */
             ++uiValid;
             stI=0;
             continue;
@@ -239,7 +239,7 @@ ParseArgs(
   }
   return EAPI_STATUS_SUCCESS;
 }
-#if TEST_EEPCFG
+#if TEST_EEPARG
 
 typedef struct OptionsTest_s{
   unsigned int uiHelp;
@@ -319,7 +319,7 @@ main(void)
   _CrtSetDbgFlag( _CRTDBG_LEAK_CHECK_DF | _CrtSetDbgFlag());
 #endif
 
-  PrintUsage(stderr, Args, ARRAY_SIZE(Args), cszHeader, cszFooter);
+  PrintUsage(stderr, Args, ARRAY_SIZE(Args));
   ParseArgs(ARRAY_SIZE(DummyArgs1), DummyArgs1, Args, ARRAY_SIZE(Args));
 
   exit(EApiStatusCode);
