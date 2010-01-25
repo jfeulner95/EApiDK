@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeeP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 34 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeeP.h 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 10:34:12 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EeeP.h 34 2010-01-25 09:34:12Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -47,7 +47,7 @@
 #  define EEEP_LO_UINT32(x) EEEP_UINT32_C((x)&UINT32_MAX)
 #endif
 
-#pragma pack(push)  /* push current alignment to stack */
+#pragma pack(push, 1)  /* push current alignment to stack */
 #pragma pack(1)     /* set alignment to 1 byte boundary */
 
 
