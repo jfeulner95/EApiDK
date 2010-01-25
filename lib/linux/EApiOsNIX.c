@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOsNIX.c
  *I  File Location        : lib\linux
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 31 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EApiOsNIX.c 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:48:08 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiOsNIX.c 31 2010-01-25 07:48:08Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -54,14 +54,14 @@ void fini (void)
 }
 
 
-void EApiSleepns(unsigned long long ns)  
+void EApiSleepns(unsigned long ns)  
 { 
 #if _POSIX_C_SOURCE >= 199309L
   struct timespec Request;
   struct timespec Remain;
   Request.tv_sec=ns/1000000000;
   Request.tv_nsec=ns%1000000000;
-  nanosleep(Request, &Remain);
+  nanosleep(&Request, &Remain);
 #else
   usleep(ns/1000000);
 #endif
