@@ -25,10 +25,10 @@
  *I
  *I  File Name            : BinFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: BinFuncs.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: BinFuncs.h 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -42,19 +42,16 @@ extern "C" {
 #endif
 
 uint32_t 
-__stdcall
 u32ChecksumBlock(
     const void *pcvBuffer, 
     size_t      stLength
   );
 uint16_t 
-__stdcall
 u16ChecksumBlock(
     const void *pcvBuffer, 
     size_t      stLength
   );
 uint8_t  
-__stdcall
 u8ChecksumBlock (
     const void *pcvBuffer, 
     size_t      stLength
@@ -92,12 +89,10 @@ u16CRC_CCITT (
 #define HEXTBL_NORM32_ATTRIB  (HEXTBL_NORMAL_ATTRIB|HEXTBL_32BIT_ELEMENT|4)
 #define HEXTBL_NORM64_ATTRIB  (HEXTBL_NORMAL_ATTRIB|HEXTBL_64BIT_ELEMENT|2)
 TCHAR
-__stdcall
 cBin2Ascii_c(
     __IN  unsigned  uiValue
   );
 int
-__stdcall
 siBin2Ascii_s(
     __OUT TCHAR           *szString   ,
     __IN  size_t          stBufLength ,
@@ -108,7 +103,6 @@ siBin2Ascii_s(
 
 
 void 
-__stdcall
 PrintHexAsciiTableEx(
 	__IN    const void *   pcvBuffer	,
 	__IN    const size_t   stBufSize	,
@@ -118,7 +112,6 @@ PrintHexAsciiTableEx(
 	);
 
 void 
-__stdcall
 PrintHexAsciiTable(
 	__IN    const void *const pcvBuffer	    ,
 	__IN    const size_t      cu16BufSize		,

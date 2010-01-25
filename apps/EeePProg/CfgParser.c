@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: CfgParser.c 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: CfgParser.c 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -200,17 +200,17 @@ ParseCfgFile(
       EAPI_STATUS_INVALID_PARAMETER
     );
   while(!feof(pCfgFile)){
-    fgets(LineBuffer, ARRAY_SIZE(LineBuffer), pCfgFile);
-    //
-    // Remove Comments And New Lines etc..
-    //
+    pszName=fgets(LineBuffer, ARRAY_SIZE(LineBuffer), pCfgFile);
+    /*
+     * Remove Comments And New Lines etc..
+     */
     i=strcspn(LineBuffer, "#\n\r");
     LineBuffer[i]='\0';
     if(LineBuffer[0]=='['){
       size_t stTokenLen;
-      //
-      // Check Last Block Required
-      //
+      /*
+       * Check Last Block Required
+       */
       if(pCurBlockDesc!=NULL){
         for(i=pCurBlockDesc->stElementCount, pCurElement=pCurBlockDesc->pElementsDesc; i; i--, pCurElement++){
           if(pCurElement->cuiRequired>pCurElement->stElementCount){
@@ -246,7 +246,7 @@ ParseCfgFile(
       pszName=LineBuffer;
       skipWhiteSpaces(&pszName);
       if(!strlen(pszName)){
-        //Skip Empty Blank Lines
+        /*Skip Empty Blank Lines */
         continue;
       }
       if(pCurBlockDesc==NULL){

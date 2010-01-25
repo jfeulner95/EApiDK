@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : apps\EeePProg\linux
-#I  Last committed       : $Revision: 29 $
+#I  Last committed       : $Revision: 30 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-25 06:13:52 +0100 (Mo, 25. Jan 2010) $
-#I  ID                   : $Id: makefile 29 2010-01-25 05:13:52Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+#I  ID                   : $Id: makefile 30 2010-01-25 07:44:00Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -80,7 +80,7 @@ ExeName=EeePProg
 #DBGOPT:=-gstabs+
 DBGOPT:=-g -O0
 RELOPT:=-O3
-INCLUDS=-I../../../include/linux -I../ -I../../include -I../../../INCLUDE
+INCLUDS=-I../../../include/linux -I../ -I../../include -I../../../include 
 CFLAGS:= -Wall -W -Werror -pedantic $(INCLUDS)
 
 define FLD_BUILD_RULE

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\linux
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EApiOs.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiOs.h 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -74,7 +74,7 @@
   #define __cdecl
 #endif
 
-void EApiSleepns(unsigned long long ns);
+void EApiSleepns(unsigned long ns);
 #define EAPI_EMUL_DELAY_NS(x) EApiSleepns(x)
 
 #ifndef EApiSleep
@@ -88,6 +88,7 @@ void EApiSleepns(unsigned long long ns);
 #  define EAPI_strncpy        wcsncpy
 #  define EAPI_vsnprintf      vsnwprintf
 #  define EAPI_fprintf        fwprintf
+#  define EAPI_printf         wprintf
 #  define EAPI_fopen          _wfopen
 #else
 #  define TEXT(x) x
@@ -97,6 +98,7 @@ void EApiSleepns(unsigned long long ns);
 #  define EAPI_vsnprintf      vsnprintf
 #  define EAPI_fprintf        fprintf
 #  define EAPI_fopen          fopen
+#  define EAPI_printf         printf
 #endif
 
 #endif /* _EAPIOS_H_ */

@@ -26,10 +26,10 @@
 #I
 #I  File Name            : SOURCES
 #I  File Location        : apps\EApiValidateAPI\WINNT
-#I  Last committed       : $Revision: 29 $
+#I  Last committed       : $Revision: 30 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-25 06:13:52 +0100 (Mo, 25. Jan 2010) $
-#I  ID                   : $Id: buildnix.sh 29 2010-01-25 05:13:52Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+#I  ID                   : $Id: buildnix.sh 30 2010-01-25 07:44:00Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -218,7 +218,7 @@ function PACK {
 function Usage {
 	echo .
 	echo +==============================================================================
-	echo I  $(basename $0) ................................................... \$Rev: 29 $
+	echo I  $(basename $0) ................................................... \$Rev: 30 $
 	echo +==============================================================================
 	echo I  
 	echo I  Description:
@@ -244,9 +244,9 @@ for ARG in "$@"; do
 done
 
 if [ "$1" != "" ]; then 
-  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP" ]; then BUILD_APP $2; NormalExit $?; fi
-  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP1"]; then BUILD_APP1 $2; NormalExit $?; fi
-  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP2"]; then BUILD_APP2 $2; NormalExit $?; fi
+  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP" ]; then BUILD_APPS $2; NormalExit $?; fi
+  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP1" ]; then BUILD_APP1 $2; NormalExit $?; fi
+  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP2" ]; then BUILD_APP2 $2; NormalExit $?; fi
   if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_LIB" ]; then BUILD_LIB $2; NormalExit $?; fi
   if [ `echo $1 | tr [:lower:] [:upper:]` = "PACK"      ]; then PACK $2;      NormalExit $?; fi
   if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_INC" ]; then BUILD_INC $2; NormalExit $?; fi

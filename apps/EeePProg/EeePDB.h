@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePDB.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeePDB.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EeePDB.h 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -85,16 +85,16 @@ SetDynBlockHeader(
 #define EEEP_RBL_REDUCE_TOP_DOWN  (1<<0)
 EApiStatusCode_t
 ReduceBlockLength(
-    __IN     void          *pvCurBlock,
+    __IN     DBlockIdHdr_t**pvCurBlock,
     __IN     size_t         stReduceBy, 
-    __OUTOPT void          *pvNewBlock,
+    __OUTOPT DBlockIdHdr_t**pvNewBlock,
     __IN     unsigned int   uiFlags
     );
 
 EApiStatusCode_t
 EeePGetFirstDB(
     EeePHandel_t     BHandel,
-    void **          pFirstDB
+    DBlockIdHdr_t ** pFirstDB
     );
 
 EApiStatusCode_t

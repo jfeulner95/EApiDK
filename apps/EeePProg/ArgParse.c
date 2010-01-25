@@ -25,10 +25,10 @@
  *I
  *I  File Name            : ArgParse.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: ArgParse.c 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: ArgParse.c 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -38,26 +38,26 @@
 EApiStatusCode_t 
 StringArg(
     struct ArgDesc_s  *pArgs, 
-    char ** cszCurArg          ,  
+    void * cszCurArg          ,  
     const char *cszArg 
     )
 {
   pArgs=pArgs;
-  *cszCurArg=_strdup(cszArg);
-  printf("StringArg: %s\n", *cszCurArg);
+  *(void**)cszCurArg=strdup(cszArg);
+  printf("StringArg: %s\n", *(char**)cszCurArg);
   return EAPI_STATUS_SUCCESS;
 }
 
 EApiStatusCode_t 
 NumberArg(
     struct ArgDesc_s  *pArgs, 
-    unsigned long* pvalue   ,  
+    void* pvalue   ,  
     const char *cszArg 
     )
 {
   pArgs=pArgs;
-  *pvalue=ulConvertStr2Num(cszArg, NULL);
-  printf("StringArg: %s(0x%X)\n", cszArg, *pvalue);
+  *(unsigned long*)pvalue=ulConvertStr2Num(cszArg, NULL);
+  printf("StringArg: %s(0x%lX)\n", cszArg, *(unsigned long*)pvalue);
   return EAPI_STATUS_SUCCESS;
 }
 
@@ -123,22 +123,22 @@ PrintUsage(
 {
   ArgDesc_t *pArgDesc;
   size_t     stArgCount;
-  fprintf(OutStream, cszHeader, APP_VERSION, APP_REVISION, APP_BUILD);
+  fprintf(OutStream, cszHeader);
   while(stArgDescCnt --){
-    //
-    //
-    //
+    /*
+     *
+     */
     if(pCmdDesc->cShort)
       fprintf(OutStream, "| -%c ", pCmdDesc->cShort );
     else
       fprintf(OutStream, "|    " );
-    //
-    //
-    //
+    /*
+     *
+     */
     fprintf(OutStream, " --%-25s ", pCmdDesc->cszLong );
-    //
-    //
-    //
+    /*
+     *
+     */
     PrintStringBlock(
         OutStream         ,
         pCmdDesc->cszHelp , 
@@ -306,9 +306,9 @@ char *DummyArgs1[]={
   if(!EAPI_STATUS_TEST_OK(EApiStatusCode)) \
     return EApiStatusCode
 
-//
-// Create Block Content
-//
+/*
+ * Create Block Content
+ */
 int 
 __cdecl 
 main(void)

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeePApp.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EeePApp.h 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -51,6 +51,53 @@ extern "C" {
   if(!EAPI_STATUS_TEST_OK(EApiStatusCode)){ \
     return EApiStatusCode;\
   }
+
+/*
+ * CPU Independent Multi Byte 
+ * Big Endian Memory Access
+ */
+void
+EeeP_Set16BitValue_BE(
+    uint8_t *pBuffer,
+    uint16_t Value
+     );
+uint16_t
+EeeP_Get16BitValue_BE(
+    const uint8_t *pBuffer
+     );
+void
+EeeP_Set32BitValue_BE(
+    uint8_t *pBuffer,
+    uint32_t Value
+     );
+uint32_t
+EeeP_Get32BitValue_BE(
+    const uint8_t *pBuffer
+     );
+/*
+ * CPU Independent Multi Byte 
+ * Little Endian Memory Access
+ */
+void
+EeeP_Set16BitValue_LE(
+    uint8_t *pBuffer,
+    uint16_t Value
+     );
+uint16_t
+EeeP_Get16BitValue_LE(
+    const uint8_t *pBuffer
+     );
+void
+EeeP_Set32BitValue_LE(
+    uint8_t *pBuffer,
+    uint32_t Value
+     );
+uint32_t
+EeeP_Get32BitValue_LE(
+    const uint8_t *pBuffer
+     );
+
+
 
 #ifdef __cplusplus
 }

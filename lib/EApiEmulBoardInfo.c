@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulBoardInfo.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiEmulBoardInfo.c 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiEmulBoardInfo.c 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -101,15 +101,28 @@ EApiBoardGetStringAEmul(
         {
           BufLenSav=*pBufLen;
         }
-        if(BufLenSav && (pBuffer!=NULL)){
+        if(BufLenSav && (pBuffer!=NULL))
+	{
           memcpy(pBuffer, StringLookup[i].StringPtr, BufLenSav);
           pBuffer[BufLenSav-1]='\0';
         }
-        EAPI_LIB_RETURN_ERROR_IF(EApiBoardGetStringAEmul, (ErrorCode==EAPI_STATUS_MORE_DATA), EAPI_STATUS_MORE_DATA  , "pBuffer Overrun Prevented")
-        EAPI_LIB_RETURN_SUCCESS(EApiBoardGetStringAEmul, "");
+        EAPI_LIB_RETURN_ERROR_IF(
+		EApiBoardGetStringAEmul, 
+		(ErrorCode==EAPI_STATUS_MORE_DATA), 
+		EAPI_STATUS_MORE_DATA  , 
+		"pBuffer Overrun Prevented"
+		);
+        EAPI_LIB_RETURN_SUCCESS(
+		EApiBoardGetStringAEmul, 
+		""
+		);
       }
   }
-  EAPI_LIB_RETURN_ERROR(EApiBoardGetStringAEmul, EAPI_STATUS_UNSUPPORTED  , "Unrecognised String ID");
+  EAPI_LIB_RETURN_ERROR(
+	EApiBoardGetStringAEmul, 
+	EAPI_STATUS_UNSUPPORTED  , 
+	"Unrecognised String ID"
+	);
 }
 
 /*
@@ -175,6 +188,10 @@ EApiBoardGetValueEmul(
         EAPI_LIB_RETURN_SUCCESS(EApiBoardGetValueEmul, "");
       }
   }
-  EAPI_LIB_RETURN_ERROR(EApiBoardGetValueEmul, EAPI_STATUS_UNSUPPORTED  , "Unrecognised Value ID");
+  EAPI_LIB_RETURN_ERROR(
+			EApiBoardGetValueEmul, 
+			EAPI_STATUS_UNSUPPORTED  , 
+			"Unrecognised Value ID"
+		);
 }
 

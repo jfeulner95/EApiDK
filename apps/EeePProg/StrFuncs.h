@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: StrFuncs.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: StrFuncs.h 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -42,17 +42,13 @@ extern "C" {
 
 void 
 skipWhiteSpaces(
-        const char **const pcszStr
+        char **const pcszStr
         );
 
 void 
 stripWhiteSpaces(
         char *const pszStr
         );
-
-// char *_strdup(
-//     __IN const char *pcszStr
-//     );
 
 unsigned long 
 ulConvertStr2Num(

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: StrFuncs.c 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: StrFuncs.c 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -30,11 +30,25 @@
 #include <EeePApp.h>
 
 void 
-skipWhiteSpaces(
+skipWhiteSpacesc(
         const char **const pcszStr
         )
 {
   const char * pcszStart;
+  if(pcszStr==NULL) return ;
+  if(*pcszStr==NULL) return ;
+  pcszStart=*pcszStr;
+  while((!iseol(*pcszStart))&&iswhitespace(*pcszStart))
+    pcszStart++;
+  *pcszStr=pcszStart;
+}
+
+void 
+skipWhiteSpaces(
+        char **const pcszStr
+        )
+{
+  char * pcszStart;
   if(pcszStr==NULL) return ;
   if(*pcszStr==NULL) return ;
   pcszStart=*pcszStr;
@@ -81,9 +95,9 @@ ulConvertStr2Num(
     char *pcszDummy;
     if(pcszStr==NULL) return 0;
     if(pcszEnd==NULL) pcszEnd=&pcszDummy ;
-    skipWhiteSpaces(&pcszStr);
-    strtoul(pcszStr, &pcszEndH, 16);
-    strtoul(pcszStr, &pcszEndB,  2);
+    skipWhiteSpacesc(&pcszStr);
+    ulReturnVal=strtoul(pcszStr, &pcszEndH, 16);
+    ulReturnVal=strtoul(pcszStr, &pcszEndB,  2);
     /* 
      *  0xff
      */

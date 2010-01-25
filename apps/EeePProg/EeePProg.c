@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePProg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 30 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeePProg.c 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EeePProg.c 30 2010-01-25 07:44:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -254,7 +254,7 @@ CreateTxtFilePtr(
     FILE **     FilePtr
     )
 {
-  if(!_stricmp(Source, "stdout")){
+  if(!strcmp(Source, "stdout")){
      *FilePtr=stdout;
      return EAPI_STATUS_SUCCESS;
   }else {
@@ -285,14 +285,14 @@ CreateTxtFilePtr(
     return EApiStatusCode \
   }
 
-//
+/*
 // Create Block Content
-//
+*/
 int 
 __cdecl 
 main(
     signed int argc,
-    char **argv
+    const char **argv
   )
 {
   EeePHandel_t BHandel;
@@ -308,9 +308,9 @@ main(
     PrintUsage(stderr, ArgsDesc, ARRAY_SIZE(ArgsDesc));
     exit(EApiStatusCode);
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateCOM0R20CB_EEP){
     DO(EeeP_CreateCOM0R20_CBImage(
           &BHandel                              ,
@@ -319,9 +319,9 @@ main(
     DO(EeePWriteBufferToEEP(BHandel, EAPI_ID_I2C_EXTERNAL, 0xAE));
     DO(EeePFreeBuffer(&BHandel));
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateCOM0R20M_EEP){
     DO(EeeP_CreateCOM0R20_CBImage(
           &BHandel                              ,
@@ -330,9 +330,9 @@ main(
     DO(EeePWriteBufferToEEP(BHandel, EAPI_ID_I2C_EXTERNAL, 0xA0));
     DO(EeePFreeBuffer(&BHandel));
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateCOM0R20CB_IMG){
     DO(EeeP_CreateCOM0R20_CBImage(
           &BHandel                              ,
@@ -341,9 +341,9 @@ main(
     DO(EeePWriteBufferToFile(BHandel, CurOptions.szCOM0R20CB_Img_File));
     DO(EeePFreeBuffer(&BHandel));
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateCOM0R20M_IMG){
     DO(EeeP_CreateCOM0R20_MEEPImage(
           &BHandel                              ,
@@ -352,9 +352,9 @@ main(
     DO(EeePWriteBufferToFile(BHandel, CurOptions.szCOM0R20M_Img_File));
     DO(EeePFreeBuffer(&BHandel));
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateEeePExpEEP_IMG){
     DO(EeeP_CreateEeePExtEEPImage(
           &BHandel                              ,
@@ -363,9 +363,9 @@ main(
     DO(EeePWriteBufferToFile(BHandel, CurOptions.szEeePExpEEP_Img_File));
     DO(EeePFreeBuffer(&BHandel));
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateEeePExpEEP_EEP){
     DO(EeeP_CreateEeePExtEEPImage(
           &BHandel                              ,
@@ -379,25 +379,25 @@ main(
         ));
     DO(EeePFreeBuffer(&BHandel));
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateCOM0R20CB_CFG){
     DO(CreateTxtFilePtr(CurOptions.szCOM0R20CB_Cfg_File, &lclStream));
     DO(EeeP_CreateCOM0R20_CBCfg(lclStream));
     FREE_STREAM(lclStream);
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateCOM0R20M_CFG){
     DO(CreateTxtFilePtr(CurOptions.szCOM0R20M_Cfg_File, &lclStream));
     DO(EeeP_CreateCOM0R20_MEEPCfg(lclStream));
     FREE_STREAM(lclStream);
   }
-  //
-  //
-  //
+  /*
+   *
+   */
   if(CurOptions.uiCreateEeePExpEEP_CFG){
     DO(CreateTxtFilePtr(CurOptions.szEeePExpEEP_Cfg_File, &lclStream));
     DO(EeeP_CreateEeePExtEEPCfg(lclStream));
