@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\winnt
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 32 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EApiOs.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 09:01:11 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiOs.h 32 2010-01-25 08:01:11Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -82,6 +82,7 @@ void EApiSleepus(unsigned long ms);
 #  define EAPI_printf         printf
 #endif
 
+#define EAPI_strdup         _strdup
 
 #define         MSVC_1_5         800
 #define         MSVC_98         1200

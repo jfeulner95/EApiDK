@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgPHelper.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 32 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: CfgPHelper.c 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 09:01:11 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: CfgPHelper.c 32 2010-01-25 08:01:11Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -271,7 +271,7 @@ String_Element(
   )
 { 
   pElementDesc=pElementDesc;
-  *(char **)pCurElement=strdup(pszValue);
+  *(char **)pCurElement=EAPI_strdup(pszValue);
 #if TEST_EEPCFG
 /*   printf("\tString_Element = %s, %s\n", *(char**)pCurElement, pszValue); */
 #endif

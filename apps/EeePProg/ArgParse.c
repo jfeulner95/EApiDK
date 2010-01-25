@@ -25,10 +25,10 @@
  *I
  *I  File Name            : ArgParse.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 32 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: ArgParse.c 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 09:01:11 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: ArgParse.c 32 2010-01-25 08:01:11Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -43,7 +43,7 @@ StringArg(
     )
 {
   pArgs=pArgs;
-  *(void**)cszCurArg=strdup(cszArg);
+  *(void**)cszCurArg=EAPI_strdup(cszArg);
   printf("StringArg: %s\n", *(char**)cszCurArg);
   return EAPI_STATUS_SUCCESS;
 }
