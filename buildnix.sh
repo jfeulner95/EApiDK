@@ -26,10 +26,10 @@
 #I
 #I  File Name            : SOURCES
 #I  File Location        : apps\EApiValidateAPI\WINNT
-#I  Last committed       : $Revision: 4 $
+#I  Last committed       : $Revision: 29 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2009-08-21 14:43:27 +0200 (Fr, 21. Aug 2009) $
-#I  ID                   : $Id: buildnix.sh 4 2009-08-21 12:43:27Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-25 06:13:52 +0100 (Mo, 25. Jan 2010) $
+#I  ID                   : $Id: buildnix.sh 29 2010-01-25 05:13:52Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -119,7 +119,7 @@ function BUILD_LIB {
   VariableInc "$EAPILIBBASE/LibVer.h" "LIB_BUILD"
   return $ReturnValue
 }
-function BUILD_APP {
+function BUILD_APP1 {
   cd $EAPIAPPSBASE/EApiValidateAPI/linux/
   echo \#
   echo \# Building $EAPIAPPSBASE/EApiValidateAPI/linux/
@@ -128,6 +128,22 @@ function BUILD_APP {
   local ReturnValue=$?
   cd $ScriptDir
   VariableInc "$EAPIAPPSBASE/EApiValidateAPI/AppVer.h" "APP_BUILD"
+  return $ReturnValue
+}
+function BUILD_APP2 {
+  cd $EAPIAPPSBASE/EeePProg/linux/
+  echo \#
+  echo \# Building $EAPIAPPSBASE/EeePProg/linux/
+  echo \#
+  RunProg make $2
+  local ReturnValue=$?
+  cd $ScriptDir
+  VariableInc "$EAPIAPPSBASE/EeePProg/AppVer.h" "APP_BUILD"
+  return $ReturnValue
+}
+function BUILD_APPS {
+  BUILD_APP1
+  BUILD_APP2
   return $ReturnValue
 }
 function INSTALL {
@@ -202,14 +218,14 @@ function PACK {
 function Usage {
 	echo .
 	echo +==============================================================================
-	echo I  $(basename $0) ................................................... \$Rev: 4 $
+	echo I  $(basename $0) ................................................... \$Rev: 29 $
 	echo +==============================================================================
 	echo I  
 	echo I  Description:
 	echo I    Please Enter a program description here
 	echo I  
 	echo I  Usage:
-	echo I    $(basename $0) [BUILD_APP\|BUILD_LIB\|PACK]
+	echo I    $(basename $0) [BUILD_APPS\|BUILD_APP1\|BUILD_APP2\|BUILD_LIB\|PACK]
 	echo I  
 	NormalExit 0
 }
@@ -229,6 +245,8 @@ done
 
 if [ "$1" != "" ]; then 
   if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP" ]; then BUILD_APP $2; NormalExit $?; fi
+  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP1"]; then BUILD_APP1 $2; NormalExit $?; fi
+  if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_APP2"]; then BUILD_APP2 $2; NormalExit $?; fi
   if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_LIB" ]; then BUILD_LIB $2; NormalExit $?; fi
   if [ `echo $1 | tr [:lower:] [:upper:]` = "PACK"      ]; then PACK $2;      NormalExit $?; fi
   if [ `echo $1 | tr [:lower:] [:upper:]` = "BUILD_INC" ]; then BUILD_INC $2; NormalExit $?; fi
