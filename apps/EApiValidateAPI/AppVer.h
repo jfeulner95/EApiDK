@@ -25,10 +25,10 @@
 *I    
 *I File Name : AppVer.h                                   
 *I File Location : apps\EApiValidateAPI                                   
-*I Last committed : $Revision: 32 $                                   
+*I Last committed : $Revision: 33 $                                   
 *I Last changed by      : $Author: dethrophes $                                   
-*I Last changed date    : $Date: 2010-01-25 09:01:11 +0100 (Mo, 25. Jan 2010) $                                   
-*I ID : $Id: AppVer.h 32 2010-01-25 08:01:11Z dethrophes $                                   
+*I Last changed date    : $Date: 2010-01-25 09:33:13 +0100 (Mo, 25. Jan 2010) $                                   
+*I ID : $Id: AppVer.h 33 2010-01-25 08:33:13Z dethrophes $                                   
 *I    
 *+=========================================================================    
 *</KHeader>    
@@ -38,5 +38,5 @@
 /****************************************************************************/    
 #define APP_VERSION 0  
 #define APP_REVISION 5  
-#define APP_BUILD 591  
+#define APP_BUILD 593
 #endif    

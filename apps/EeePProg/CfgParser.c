@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 33 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: CfgParser.c 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 09:33:13 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: CfgParser.c 33 2010-01-25 08:33:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -74,8 +74,8 @@ PrintCfgFile(
           (pCurElement->cuiRequired?"Required Element":"Optional Element")
         );
       fprintf(OutStream, 
-          "#\t\t Allowed Maximum of %u times in block\n", 
-          pCurElement->cstElementMax
+          "#\t\t Allowed Maximum of %lu times in block\n", 
+          (unsigned long)pCurElement->cstElementMax
         );
       DO(pCurElement->pHandlers->Help(
             pCurElement, 

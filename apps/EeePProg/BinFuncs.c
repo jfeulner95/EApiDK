@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 33 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: BinFuncs.c 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 09:33:13 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: BinFuncs.c 33 2010-01-25 08:33:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -164,7 +164,7 @@ PrintHexAsciiTableEx(
     stOffset=((uint8_t*)pcvBuffer)- pcu8Mem;
 
     if(cuiFlags&HEXTBL_OFFSET_TITLE)
-      EAPI_printf(TEXT("\n\tOFFSET = 0x%08X, LENGTH = 0x%08X\n"), stOffset, stBufSize);
+      EAPI_printf(TEXT("\n\tOFFSET = 0x%08lX, LENGTH = 0x%08lX\n"), (unsigned long)stOffset, (unsigned long)stBufSize);
 
     if(stBufSize==0) return ;
 
@@ -183,11 +183,11 @@ PrintHexAsciiTableEx(
           EAPI_printf(TEXT("         "));
         if(cuiFlags&HEXTBL_OFFSET_COUNT){
           for(stOffset=0;stOffset<stElementCount;stOffset++){
-            EAPI_printf(TEXT("%0*X "), 2*stElementSize, stOffset);
+            EAPI_printf(TEXT("%0*lX "), (int)(2*stElementSize), (unsigned long)stOffset);
           }
           if(cuiFlags&HEXTBL_ASCII_MASK){
             for(stOffset=0;stOffset<(stRowSize);stOffset++){
-              EAPI_printf(TEXT("%1X"), stOffset&0xF);
+              EAPI_printf(TEXT("%lX"), (((unsigned long)stOffset)&0xF));
             }
           }
           EAPI_printf(TEXT("\n"));
@@ -195,7 +195,7 @@ PrintHexAsciiTableEx(
         stOffset=pcu8Mem - (uint8_t*)pcvBase;
       }
       if(cuiFlags&HEXTBL_OFFSEt_BAR)
-        EAPI_printf(TEXT("%08X ") , stOffset);
+        EAPI_printf(TEXT("%08lX ") , (unsigned long)stOffset);
 
         /*
          * Print Binary Hex Data
@@ -212,7 +212,7 @@ PrintHexAsciiTableEx(
             );
           EAPI_printf(TEXT("%s "), szAsciiBufer);
         }else{
-          EAPI_printf(TEXT("%*s "), 2*stElementSize, TEXT(""));
+          EAPI_printf(TEXT("%*s "), (int)(2*stElementSize), TEXT(""));
         }
       }
       if(cuiFlags&HEXTBL_ASCII_MASK){
