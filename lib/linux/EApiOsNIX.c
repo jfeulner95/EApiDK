@@ -25,16 +25,18 @@
  *I
  *I  File Name            : EApiOsNIX.c
  *I  File Location        : lib\linux
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 27 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiOsNIX.c 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiOsNIX.c 27 2010-01-25 03:21:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
  */
   #include <EApiLib.h>
   #include <stdio.h>
+  #include <time.h>
+  
 
 
 static void init (void) __attribute__ ((constructor));
@@ -49,6 +51,21 @@ void fini (void)
 { 
   printf("finishing\n");
 	return ;
+}
+
+
+void EApiSleepns(unsigned long long ns)  
+{ 
+#if _POSIX_C_SOURCE >= 199309L
+  struct timespec Request;
+  struct timespec Remain;
+  Request.tv_sec=ns/1000000000;
+  Request.tv_nsec=ns%1000000000;
+  nanosleep(Request, &Remain);
+#else
+  usleep(ns/1000000);
+#endif
+  return ;
 }
 
 

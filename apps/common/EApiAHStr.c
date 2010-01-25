@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStr.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 26 $
+ *I  Last committed       : $Revision: 27 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
- *I  ID                   : $Id: EApiAHStr.c 26 2009-12-13 06:19:46Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiAHStr.c 27 2010-01-25 03:21:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -340,7 +340,7 @@ EApiAHCreatePNPIDString(
     )
 {
   int cnt;
-  unsigned short PNPID=(unsigned short)BYTE_SWAP_W(Value);
+  unsigned short PNPID=(unsigned short)EAPI_BYTE_SWAP_W(Value);
   EAPI_APP_ASSERT_PARAMATER_NULL(EApiAHCreatePNPIDString, -1, pString);
   if(StrBufLen<4){
     EAPI_APP_RETURN_ERROR(EApiAHCreatePNPIDString, -1, "pBuffer Too Short");

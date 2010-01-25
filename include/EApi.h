@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApi.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 14 $
+ *I  Last committed       : $Revision: 27 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-06 23:01:30 +0200 (Di, 06. Okt 2009) $
- *I  ID                   : $Id: EApi.h 14 2009-10-06 21:01:30Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApi.h 27 2010-01-25 03:21:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -316,6 +316,8 @@ extern "C" {
  *   none.
  */
 #define EAPI_STATUS_SUCCESS           EAPI_UINT32_C(0)
+#define EAPI_STATUS_TEST_OK(x)        (!(x))
+#define EAPI_STATUS_TEST_NOK(x)       (!EAPI_STATUS_TEST_OK(x))
 
 /* Library */
 /* 
@@ -363,13 +365,13 @@ EApiLibUnInitialize(void) ; /* Should be called before
  * E.G.
  * EAPI_PMG_ID_BOARD_CUSTOMERID
  */
-#define BYTE_SWAP_W(a) EAPI_UINT16_C(\
+#define EAPI_BYTE_SWAP_W(a) EAPI_UINT16_C(\
       (((a)<<8)&0xFF00)|\
       (((a)>>8)&0x00FF) \
       )
 
 #define EAPI_CREATE_PNPID(a, b, c) \
-  BYTE_SWAP_W(((( a -'A'+1)&0x1F)<<10)|\
+  EAPI_BYTE_SWAP_W(((( a -'A'+1)&0x1F)<<10)|\
               ((( b -'A'+1)&0x1F)<< 5)|\
               ((( c -'A'+1)&0x1F)<< 0) \
              )

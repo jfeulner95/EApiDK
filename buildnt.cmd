@@ -27,10 +27,10 @@ REM +------------------------------------------------------------------------=
 REM I
 REM I  File Name            : buildnt.cmd
 REM I  File Location        : 
-REM I  Last committed       : $Revision: 18 $
+REM I  Last committed       : $Revision: 27 $
 REM I  Last changed by      : $Author: dethrophes $
-REM I  Last changed date    : $Date: 2009-10-16 11:42:34 +0200 (Fr, 16. Okt 2009) $
-REM I  ID                   : $Id: buildnt.cmd 18 2009-10-16 09:42:34Z dethrophes $
+REM I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
+REM I  ID                   : $Id: buildnt.cmd 27 2010-01-25 03:21:51Z dethrophes $
 REM I
 REM +=========================================================================
 REM </KHeader>
@@ -48,9 +48,12 @@ REM SET TARGETARCHS=""
 SET APPSBASE=%~dp0apps
 SET EAPILIBBASE=%~dp0lib
 SET VERBOSE=1
-IF NOT "%~2"=="" SET TARGETARCHS=%~2
+IF NOT 1%2==1 SET TARGETARCHS="%~2"
+ECHO TARGETARCHS=%TARGETARCHS%
 
-IF /I "%~1"=="BUILD_APP" GOTO BUILD_APP
+IF /I "%~1"=="BUILD_APPS" GOTO BUILD_APPS
+IF /I "%~1"=="BUILD_APP1" GOTO BUILD_APP1
+IF /I "%~1"=="BUILD_APP2" GOTO BUILD_APP2
 IF /I "%~1"=="BUILD_LIB" GOTO BUILD_LIB
 IF /I "%~1"=="PACK"      GOTO PACK_BUILD
 IF /I "%~1"=="BUILD_INC" GOTO BUILD_INC
@@ -69,16 +72,18 @@ REM ########################################################################
   call :RunProg "%~dp0BuildTools\WINNT\BuildInc.cmd" "%EAPILIBBASE%\LibVer.h" "LIB_BUILD"
 IF /I "%~1"=="BUILD_LIB" GOTO Exit
 
-:BUILD_APP
-  SET APPHELPFILES="EApiAHI2C.c" "EApiAHStorage.c" "EApiAHStr.c"
-  call :CopyFiles "%APPSBASE%\common" "%APPSBASE%\EApiValidateAPI\WINNT" %APPHELPFILES%
-  for %%a in (%TARGETARCHS%) do @(
-    call :BUILD_APP_GENERIC EApiValidateAPI EApiValidateAPI.c %%a
-  )
-  call :DeleteFiles "%APPSBASE%\EApiValidateAPI\WINNT" %APPHELPFILES% %LCLFILES% "%TARGETLIB%.lib"
-  SET APPHELPFILES=
-  call :RunProg "%~dp0BuildTools\WINNT\BuildInc.cmd" "%APPSBASE%\EApiValidateAPI\AppVer.h" "APP_BUILD"
+:BUILD_APPS
+  CALL :BUILD_APP1
+  CALL :BUILD_APP2
   GOTO exit
+
+:BUILD_APP1
+  CALL :BUILD_APP_S EApiValidateAPI "EApiValidateAPI.c"
+  GOTO :EOF
+
+:BUILD_APP2
+  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c CfgParser.c CfgPHelper.c ArgParse.c "
+  GOTO :EOF
 
 :PACK_BUILD
   call :DeleteFiles "%~dp0" "EApiDK.*.*.*.7z"
@@ -140,6 +145,17 @@ IF /I "%~1"=="BUILD_LIB" GOTO Exit
 REM ########################################################################
 REM PROCEDURES
 REM ########################################################################
+:BUILD_APP_S 
+  SET APPHELPFILES="EApiAHI2C.c" "EApiAHStorage.c" "EApiAHStr.c"
+  call :CopyFiles "%APPSBASE%\common" "%APPSBASE%\%~1\WINNT" %APPHELPFILES%
+  for %%a in (%TARGETARCHS%) do @(
+    call :BUILD_APP_GENERIC "%~1" %2 %%a
+  )
+  call :DeleteFiles "%APPSBASE%\%~1\WINNT" %APPHELPFILES% %LCLFILES% "%TARGETLIB%.lib"
+  SET APPHELPFILES=
+  call :RunProg "%~dp0BuildTools\WINNT\BuildInc.cmd" "%APPSBASE%\%~1\AppVer.h" "APP_BUILD"
+  GOTO :EOF
+
 :GetValueFromCHeaderFile 
   REM Extracts values with the following Format
   REM #define VALUE_NAME VALUE
@@ -272,7 +288,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 18 $
+  ECHO I  %~nx0                                              $$Rev: 27 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

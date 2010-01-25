@@ -24,10 +24,10 @@
 #I
 #I  File Name            : SOURCES
 #I  File Location        : apps\EApiValidateAPI\WINNT
-#I  Last committed       : $Revision: 9 $
+#I  Last committed       : $Revision: 27 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $
-#I  ID                   : $Id: SOURCES 9 2009-09-29 18:58:20Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
+#I  ID                   : $Id: SOURCES 27 2010-01-25 03:21:51Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -39,7 +39,7 @@ UMTYPE=console
 UMBASE=0x400000
 
 #
-USER_C_FLAGS=$(USER_C_FLAGS) /FAs 
+USER_C_FLAGS=$(USER_C_FLAGS) /FAs /Fa"$(O)\\"
 MSC_WARNING_LEVEL=/W4 /WX /Wp64
 #_NT_TARGET_VERSION=0x500
 

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\linux
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 27 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiOs.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
+ *I  ID                   : $Id: EApiOs.h 27 2010-01-25 03:21:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -74,8 +74,8 @@
   #define __cdecl
 #endif
 
-/* int usleep( long   usec); */
-#define EAPI_EMUL_DELAY_NS(x) usleep(x/1000)
+void EApiSleepns(unsigned long long ns);
+#define EAPI_EMUL_DELAY_NS(x) EApiSleepns(x)
 
 #ifndef EApiSleep
 #  define EApiSleep(x) sleep(x)
