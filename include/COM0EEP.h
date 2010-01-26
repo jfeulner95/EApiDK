@@ -25,10 +25,10 @@
  *I
  *I  File Name            : COM0EEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 36 $
  *I  Last changed by      : $Author: dethrophes $
  *I  Last changed date    : 009-11-09 07:57:37 +0100 (Mo, 09 Nov 2009) $
- *I  ID                   : $Id: COM0EEP.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  ID                   : $Id: COM0EEP.h 36 2010-01-26 06:27:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -38,6 +38,8 @@
 #ifndef __COM0EEP_H__    
 #define __COM0EEP_H__
 
+#define COM0R20_M_EEP_DEV_ADDR  0xA0
+#define COM0R20_CB_EEP_DEV_ADDR 0xAE
 /* 
  * Detecting COM0 R1.0 EEPROM
  *

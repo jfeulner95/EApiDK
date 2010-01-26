@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHI2C.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 26 $
+ *I  Last committed       : $Revision: 36 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
- *I  ID                   : $Id: EApiAHI2C.c 26 2009-12-13 06:19:46Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:27:51 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EApiAHI2C.c 36 2010-01-26 06:27:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -130,6 +130,24 @@ EApiAHI2CWriteEeprom(
     {
       ByteCnt=pDDesc->DevSize-ByteOffset;
     }
+#endif
+#if 0
+    printf(
+        "DeviceAddr = %04"PRIX16"\n"
+        "PageSize   = %04"PRIX16"\n"
+        "ExtIndx    = %04"PRIX16"\n"
+        "WRecTimems = %04"PRIX16"\n"
+        "DevSize    = %04"PRIX16"\n"
+        "ByteCnt    = %04lX\n"
+        "ByteOffset = %04lX\n",
+        pDDesc->DeviceAddr,
+        pDDesc->PageSize,
+        pDDesc->ExtIndx,
+        pDDesc->WRecTimems,
+        pDDesc->DevSize ,
+        (unsigned long)ByteCnt ,
+        (unsigned long)ByteOffset
+      );
 #endif
     
     /* Get Storage Capabilities */

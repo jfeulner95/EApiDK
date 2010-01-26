@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiApp.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 36 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EApiApp.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:27:51 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EApiApp.h 36 2010-01-26 06:27:51Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -75,6 +75,12 @@
 #endif
 
 
+#if (STRICT_VALIDATION>0)
+#define EAPI_FORMATED_MES1(type, func, err, desc) \
+    EAPI_ERR_OUT(TEXT(#type) TEXT("%04u %-20s : %-20s : %s\n"), __LINE__, TEXT(#func), err, desc );
+#else
+#define EAPI_FORMATED_MES1(type, func, err, desc)
+#endif
 #if (STRICT_VALIDATION>0)
 #define EAPI_FORMATED_MES(type, func, err, desc) \
     EAPI_ERR_OUT(TEXT(#type) TEXT("%04u %-20s : %-20s : %s\n"), __LINE__, TEXT(#func), TEXT(#err), desc );
