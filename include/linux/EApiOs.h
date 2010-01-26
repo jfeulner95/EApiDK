@@ -1,7 +1,7 @@
 /*
  *<KHeader>
  *+=========================================================================
- *I               EApiDK Embedded Application Development Kit
+ *I  Project Name: EApiDK Embedded Application Development Kit
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/linux/EApiOs.h $
  *+=========================================================================
@@ -21,14 +21,14 @@
  *I
  *I Description: Auto Created for EApiOs.h
  *I
- *+------------------------------------------------------------------------=
+ *+-------------------------------------------------------------------------
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\linux
- *I  Last committed       : $Revision: 32 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 09:01:11 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EApiOs.h 32 2010-01-25 08:01:11Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EApiOs.h 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>

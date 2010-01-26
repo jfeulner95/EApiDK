@@ -1,6 +1,6 @@
 #<KHeader>
 #+=========================================================================
-#I               EApiDK Embedded Application Development Kit
+#I  Project Name: EApiDK Embedded Application Development Kit
 #+=========================================================================
 #I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/lib/linux/makefile $
 #+=========================================================================
@@ -20,14 +20,14 @@
 #I
 #I Description: Auto Created for makefile
 #I
-#+------------------------------------------------------------------------=
+#+-------------------------------------------------------------------------
 #I
 #I  File Name            : makefile
 #I  File Location        : lib\linux
-#I  Last committed       : $Revision: 26 $
+#I  Last committed       : $Revision: 38 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2009-12-13 07:19:46 +0100 (So, 13. Dez 2009) $
-#I  ID                   : $Id: makefile 26 2009-12-13 06:19:46Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+#I  ID                   : $Id: makefile 38 2010-01-26 06:48:22Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>

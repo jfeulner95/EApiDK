@@ -1,7 +1,7 @@
 /*
  *<KHeader>
  *+=========================================================================
- *I               EApiDK Embedded Application Development Kit
+ *I  Project Name: EApiDK Embedded Application Development Kit
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/lib/include/EApiEmulI2C.h $
  *+=========================================================================
@@ -21,14 +21,14 @@
  *I
  *I Description: Auto Created for EApiEmulI2C.h
  *I
- *+------------------------------------------------------------------------=
+ *+-------------------------------------------------------------------------
  *I
  *I  File Name            : EApiEmulI2C.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 1 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
- *I  ID                   : $Id: EApiEmulI2C.h 1 2009-08-21 11:26:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EApiEmulI2C.h 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>

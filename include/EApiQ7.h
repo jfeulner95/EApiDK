@@ -1,7 +1,7 @@
 /*
  *<KHeader>
  *+=========================================================================
- *I               EApiDK Embedded Application Development Kit
+ *I  Project Name: EApiDK Embedded Application Development Kit
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/EApiQ7.h $
  *+=========================================================================
@@ -21,14 +21,14 @@
  *I
  *I Description: Auto Created for EApiQ7.h
  *I
- *+------------------------------------------------------------------------=
+ *+-------------------------------------------------------------------------
  *I
  *I  File Name            : EApiQ7.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 11 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-09-29 22:16:12 +0200 (Di, 29. Sep 2009) $
- *I  ID                   : $Id: EApiQ7.h 11 2009-09-29 20:16:12Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EApiQ7.h 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>

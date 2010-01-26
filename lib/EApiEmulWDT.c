@@ -1,7 +1,7 @@
 /*
  *<KHeader>
  *+=========================================================================
- *I               EApiDK Embedded Application Development Kit
+ *I  Project Name: EApiDK Embedded Application Development Kit
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/lib/EApiEmulWDT.c $
  *+=========================================================================
@@ -21,14 +21,14 @@
  *I
  *I Description: Auto Created for EApiEmulWDT.c
  *I
- *+------------------------------------------------------------------------=
+ *+-------------------------------------------------------------------------
  *I
  *I  File Name            : EApiEmulWDT.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 9 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-09-29 20:58:20 +0200 (Di, 29. Sep 2009) $
- *I  ID                   : $Id: EApiEmulWDT.c 9 2009-09-29 18:58:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EApiEmulWDT.c 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>

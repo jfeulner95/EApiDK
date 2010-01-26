@@ -1,7 +1,7 @@
 /*
  *<KHeader>
  *+=========================================================================
- *I               EApiDK Embedded Application Development Kit
+ *I  Project Name: EApiDK Embedded Application Development Kit
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/masm/EeePConv.h $
  *+=========================================================================
@@ -21,14 +21,14 @@
  *I
  *I Description: Auto Created for EApiConv.h
  *I
- *+------------------------------------------------------------------------=
+ *+-------------------------------------------------------------------------
  *I
- *I  File Name            : EApiConv.h
+ *I  File Name            : EeePConv.h
  *I  File Location        : include\masm
- *I  Last committed       : $Revision: 18 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-16 11:42:34 +0200 (Fr, 16. Okt 2009) $
- *I  ID                   : $Id: EeePConv.h 18 2009-10-16 09:42:34Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: EeePConv.h 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>

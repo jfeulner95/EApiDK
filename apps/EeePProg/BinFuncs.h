@@ -6,7 +6,7 @@
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/apps/EeePProg/BinFuncs.h $
  *+=========================================================================
  *I   Copyright: Copyright (c) 2002-2010, Kontron Embedded Modules GmbH
- *I              
+ *I      Author: John Kearney,                  John.Kearney@kontron.com
  *I
  *I     License: All rights reserved. This program and the accompanying 
  *I              materials are licensed and made available under the 
@@ -25,10 +25,10 @@
  *I
  *I  File Name            : BinFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: BinFuncs.h 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: BinFuncs.h 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>

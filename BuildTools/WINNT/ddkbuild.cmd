@@ -1,27 +1,27 @@
-REM <KHeader>
-REM +=========================================================================
-REM I               EApiDK Embedded Application Development Kit
-REM +=========================================================================
-REM I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/BuildTools/WINNT/ddkbuild.cmd $
-REM +=========================================================================
-REM I   Copyright: N/A
-REM I      Author: N/A
-REM I
-REM I     License: N/A
-REM I
-REM I Description: Auto Created for ddkbuild.cmd
-REM I
-REM +------------------------------------------------------------------------=
-REM I
-REM I  File Name            : ddkbuild.cmd
-REM I  File Location        : BuildTools\WINNT
-REM I  Last committed       : $Revision: 1 $
-REM I  Last changed by      : $Author: dethrophes $
-REM I  Last changed date    : $Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
-REM I  ID                   : $Id: ddkbuild.cmd 1 2009-08-21 11:26:22Z dethrophes $
-REM I
-REM +=========================================================================
-REM </KHeader>
+@REM <KHeader>
+@REM +=========================================================================
+@REM I  Project Name: EApiDK Embedded Application Development Kit
+@REM +=========================================================================
+@REM I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/BuildTools/WINNT/ddkbuild.cmd $
+@REM +=========================================================================
+@REM I   Copyright: N/A
+@REM I      Author: N/A
+@REM I
+@REM I     License: N/A
+@REM I
+@REM I Description: Auto Created for ddkbuild.cmd
+@REM I
+@REM +-------------------------------------------------------------------------
+@REM I
+@REM I  File Name            : ddkbuild.cmd
+@REM I  File Location        : BuildTools\WINNT
+@REM I  Last committed       : $Revision: 38 $
+@REM I  Last changed by      : $Author: dethrophes $
+@REM I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+@REM I  ID                   : $Id: ddkbuild.cmd 38 2010-01-26 06:48:22Z dethrophes $
+@REM I
+@REM +=========================================================================
+@REM </KHeader>
 @echo off
 @set VERSION=V7.3
 @set OSR_DEBUG=off
@@ -33,7 +33,7 @@ goto :EOF
 findstr /? > NUL 2>&1 || echo "FINDSTR is a prerequisite but wasn't found!" && goto :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-::    $Id: ddkbuild.cmd 1 2009-08-21 11:26:22Z dethrophes $
+::    $Id: ddkbuild.cmd 38 2010-01-26 06:48:22Z dethrophes $
 ::
 ::    This software is supplied for instructional purposes only.
 ::
@@ -157,12 +157,12 @@ setlocal ENABLEEXTENSIONS & pushd .
 reg /? > NUL 2>&1 && set OSR_REGAVAILABLE=1
 
 :: This is set by client-side keyword substitution
-set SVN_REVISION=$Revision: 1 $
+set SVN_REVISION=$Revision: 38 $
 :: Extract the revision number from the revision keyword
 set SVN_REVISION=%SVN_REVISION:~0,-2%
 set SVN_REVISION=%SVN_REVISION:~11%
 :: This is set by client-side keyword substitution
-set SVN_REVDATE=$Date: 2009-08-21 13:26:22 +0200 (Fr, 21. Aug 2009) $
+set SVN_REVDATE=$Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
 :: Extract the date from the Date keyword
 set SVN_REVDATE=%SVN_REVDATE:~7,10%
 set VERSION=%VERSION%/r%SVN_REVISION%

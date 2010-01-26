@@ -4,39 +4,39 @@ option casemap:none
 
 ; Begin of file include\masm\EeePConv.h
 ; 
-;  *<KHeader>
-;  *+=========================================================================
-;  *I               EApiDK Embedded Application Development Kit
-;  *+=========================================================================
-;  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/masm/EeePConv.inc $
-;  *+=========================================================================
-;  *I   Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH
-;  *I      Author: John Kearney,                  John.Kearney@kontron.com
-;  *I
-;  *I     License: All rights reserved. This program and the accompanying 
-;  *I              materials are licensed and made available under the 
-;  *I              terms and conditions of the BSD License which 
-;  *I              accompanies this distribution. The full text of the 
-;  *I              license may be found at 
-;  *I              http://opensource.org/licenses/bsd-license.php
-;  *I              
-;  *I              THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "
-;  *I              AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF 
-;  *I              ANY KIND, EITHER EXPRESS OR IMPLIED.
-;  *I
-;  *I Description: Auto Created for EApiConv.h
-;  *I
-;  *+------------------------------------------------------------------------=
-;  *I
-;  *I  File Name            : EApiConv.h
-;  *I  File Location        : includemasm
-;  *I  Last committed       : $Revision: 25 $
-;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
-;  *I  ID                   : $Id: EeePConv.inc 25 2009-12-13 04:13:21Z dethrophes $
-;  *I
-;  *+=========================================================================
-;  *</KHeader>
+;<KHeader>
+;+=========================================================================
+;I  Project Name: EApiDK Embedded Application Development Kit
+;+=========================================================================
+;I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/masm/EeePConv.inc $
+;+=========================================================================
+;I   Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH
+;I      Author: John Kearney,                  John.Kearney@kontron.com
+;I
+;I     License: All rights reserved. This program and the accompanying 
+;I              materials are licensed and made available under the 
+;I              terms and conditions of the BSD License which 
+;I              accompanies this distribution. The full text of the 
+;I              license may be found at 
+;I              http://opensource.org/licenses/bsd-license.php
+;I              
+;I              THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "
+;I              AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF 
+;I              ANY KIND, EITHER EXPRESS OR IMPLIED.
+;I
+;I Description: Auto Created for EApiConv.h
+;I
+;+-------------------------------------------------------------------------
+;I
+;I  File Name            : EeePConv.inc
+;I  File Location        : include\masm
+;I  Last committed       : $Revision: 38 $
+;I  Last changed by      : $Author: dethrophes $
+;I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+;I  ID                   : $Id: EeePConv.inc 38 2010-01-26 06:48:22Z dethrophes $
+;I
+;+=========================================================================
+;</KHeader>
 ;  
 ; Begin of file include\masm\h2inc.h
 ; 
@@ -66,10 +66,10 @@ option casemap:none
 ;  *I
 ;  *I  File Name            : EApiConv.h
 ;  *I  File Location        : includemasm
-;  *I  Last committed       : $Revision: 25 $
+;  *I  Last committed       : $Revision: 38 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
-;  *I  ID                   : $Id: EeePConv.inc 25 2009-12-13 04:13:21Z dethrophes $
+;  *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+;  *I  ID                   : $Id: EeePConv.inc 38 2010-01-26 06:48:22Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -165,10 +165,10 @@ INT64_MAX		EQU		0ffffffffh
 ;  *I
 ;  *I  File Name            : STDEEP.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 25 $
+;  *I  Last committed       : $Revision: 38 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
-;  *I  ID                   : $Id: EeePConv.inc 25 2009-12-13 04:13:21Z dethrophes $
+;  *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+;  *I  ID                   : $Id: EeePConv.inc 38 2010-01-26 06:48:22Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>
@@ -615,10 +615,10 @@ ExtI2CDeviceDesc_t		TYPEDEF		@tag_ExtI2CDeviceDesc_s
 ;  *I
 ;  *I  File Name            : COM0EEP.h
 ;  *I  File Location        : include
-;  *I  Last committed       : $Revision: 25 $
+;  *I  Last committed       : $Revision: 38 $
 ;  *I  Last changed by      : $Author: dethrophes $
-;  *I  Last changed date    : $Date: 2009-12-13 05:13:21 +0100 (So, 13. Dez 2009) $
-;  *I  ID                   : $Id: EeePConv.inc 25 2009-12-13 04:13:21Z dethrophes $
+;  *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+;  *I  ID                   : $Id: EeePConv.inc 38 2010-01-26 06:48:22Z dethrophes $
 ;  *I
 ;  *+=========================================================================
 ;  *</KHeader>

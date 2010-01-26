@@ -1,7 +1,7 @@
 /*
  *<KHeader>
  *+=========================================================================
- *I               EApiDK Embedded Application Development Kit
+ *I  Project Name: EApiDK Embedded Application Development Kit
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/PNPID.h $
  *+=========================================================================
@@ -21,14 +21,14 @@
  *I
  *I Description: Auto Created for PNPID.h
  *I
- *+------------------------------------------------------------------------=
+ *+-------------------------------------------------------------------------
  *I
  *I  File Name            : PNPID.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 16 $
+ *I  Last committed       : $Revision: 38 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2009-10-06 23:59:26 +0200 (Di, 06. Okt 2009) $
- *I  ID                   : $Id: PNPID.h 16 2009-10-06 21:59:26Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+ *I  ID                   : $Id: PNPID.h 38 2010-01-26 06:48:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
