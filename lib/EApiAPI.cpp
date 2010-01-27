@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAPI.cpp
  *I  File Location        : lib
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 40 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiAPI.cpp 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EApiAPI.cpp 40 2010-01-27 03:38:10Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -260,9 +260,10 @@ EApiI2CWriteTransfer(
   }
 
   if(!EAPI_I2C_IS_NO_CMD(Cmd)){
-    if(EAPI_I2C_IS_EXT_CMD(Cmd))
-      pLclBuffer[LclByteCnt++]=(uint8_t)((Cmd>>8)&0xFF);
-    pLclBuffer[LclByteCnt++]=(uint8_t)(Cmd&0xFF);
+    if(EAPI_I2C_IS_EXT_CMD(Cmd)){
+      pLclBuffer[LclByteCnt++]=(uint8_t)((Cmd>>8)&UINT8_MAX);
+    }
+    pLclBuffer[LclByteCnt++]=(uint8_t)((Cmd)&UINT8_MAX);
   }
 
 #if (STRICT_VALIDATION>1)

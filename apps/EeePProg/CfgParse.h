@@ -18,10 +18,10 @@
  *I
  *I  File Name            : CfgParse.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 40 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: CfgParse.h 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: CfgParse.h 40 2010-01-27 03:38:10Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -82,6 +82,12 @@ typedef struct NumberRangeDesc_s{
   NumberRange_t *pNumberRange;
 }NumberRangeDesc_t;
 
+
+typedef struct StringDesc_s{
+  unsigned int uiMinLength;
+  unsigned int uiMaxLength;
+  unsigned int uiPreserveTrailingSpaces;
+}StringDesc_t;
 
 typedef 
 EApiStatusCode_t 
@@ -172,7 +178,11 @@ ElementHelpTxt_t GUID_Help;
 
 ElementDefaultTxt_t No_Default_Txt;
 ElementDefaultTxt_t Token_List_Default;
+ElementDefaultTxt_t Range_Default_Txt;
 ElementDefaultTxt_t GUID_Default;
+
+extern StringDesc_t PreserveTrailingSpaces;
+extern StringDesc_t DeleteTrailingSpaces;
 
 EApiStatusCode_t
 GetTokenValue(

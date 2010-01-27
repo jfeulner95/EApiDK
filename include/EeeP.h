@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeeP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 40 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EeeP.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EeeP.h 40 2010-01-27 03:38:10Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -473,8 +473,8 @@ typedef struct VendBlockHdr_s{
     /* After This Point is only 
      * Suggested
      */
-    /*uint8_t       VendBlockId; * 0x04 Vendor Specific Block Id  */
-    /*uint8_t       VendData[1]; * 0x05 Vendor Data */
+    uint8_t       VendBlockId; /* 0x05 Vendor Specific Block Id  */
+    /*uint8_t       VendData[1]; * 0x06 Vendor Data */
 }VendBlockHdr_t;
 
 

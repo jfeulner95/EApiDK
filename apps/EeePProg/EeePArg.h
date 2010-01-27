@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePArg.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 36 $
+ *I  Last committed       : $Revision: 40 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:27:51 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EeePArg.h 36 2010-01-26 06:27:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EeePArg.h 40 2010-01-27 03:38:10Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -69,6 +69,11 @@ typedef struct Options_s{
   char  *szCOM0R20CB_SBIN_File;
   unsigned int uiProgramCOM0R20M_EEP;
   char  *szCOM0R20M_SBIN_File;
+  unsigned int uiListDBlocks_IMG;
+  char  *szGEN_List_DBlocks_File;
+  unsigned int uiListDBlocks_EEP;
+  unsigned long  ulEEP_Img_EApiBus;
+  unsigned long  ulEEP_Img_DevAddr;
 }Options_t;
 
 extern Options_t CurOptions;

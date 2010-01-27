@@ -25,10 +25,10 @@
  *I
  *I  File Name            : COM0EEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 40 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: COM0EEP.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: COM0EEP.h 40 2010-01-27 03:38:10Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -378,7 +378,7 @@ typedef struct COM0R20_CB_s{
                             */
 #       define COM0R20_PCIe_GEN1            EEEP_UINT8_C(0)
 #       define COM0R20_PCIe_GEN2            EEEP_UINT8_C(1)
-#       define COM0R20_PCIe_GEN4            EEEP_UINT8_C(2)
+#       define COM0R20_PCIe_GEN3            EEEP_UINT8_C(2)
      uint8_t    LaneMap[16];/* 0x20 Lane Information
                             *      +=======+=======+======================+
                             *      | Bits  | Value | Meaning              |
