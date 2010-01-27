@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiInitLib.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 41 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiInitLib.c 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 06:15:47 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EApiInitLib.c 41 2010-01-27 05:15:47Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -51,6 +51,8 @@ void __cdecl DebugMsg(__IN const char *const fmt, ...)
 }
 
 
+uint32_t OpenI2CEepromFiles(void);
+uint32_t CloseI2CEepromFiles(void);
 
 
 uint32_t EApiInitLib(){
@@ -61,6 +63,7 @@ uint32_t EApiInitLib(){
     OutputStream=stdout;
 #endif
   }
+  OpenI2CEepromFiles();
     DebugMsg("#\n"
               "# Embedded API EApi\n"
               "# Version %u.%u\n"
@@ -82,6 +85,8 @@ uint32_t EApiUninitLib(){
             );
   if(OutputStream!=NULL)
     fclose(OutputStream);
+  OutputStream=NULL;
+  CloseI2CEepromFiles();
   return EAPI_STATUS_SUCCESS;
 }
 
