@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : lib\linux
-#I  Last committed       : $Revision: 38 $
+#I  Last committed       : $Revision: 47 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
-#I  ID                   : $Id: makefile 38 2010-01-26 06:48:22Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-28 00:20:43 +0100 (Do, 28. Jan 2010) $
+#I  ID                   : $Id: makefile 47 2010-01-27 23:20:43Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -108,6 +108,9 @@ endef
 
 define SHARED_BUILD_RULE
 $(CC) $(CFLAGS) $(1) -v -shared -L. -o $(@) -Wl,-soname,$(SoName),-Map,$(basename $<).map  $^
+objcopy --only-keep-debug  "$(@)" "$(@).debug" 
+strip --strip-debug --strip-unneeded "$(@)"
+objcopy --add-gnu-debuglink="$(@).debug" "$(@)"
 endef
 
 define C_BUILD_RULE

@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : apps\EeePProg\linux
-#I  Last committed       : $Revision: 46 $
+#I  Last committed       : $Revision: 47 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-27 13:51:29 +0100 (Mi, 27. Jan 2010) $
-#I  ID                   : $Id: makefile 46 2010-01-27 12:51:29Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-28 00:20:43 +0100 (Do, 28. Jan 2010) $
+#I  ID                   : $Id: makefile 47 2010-01-27 23:20:43Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -89,6 +89,9 @@ endef
 
 define PRG_BUILD_RULE
 gcc -v $(CFLAGS) $(1) -L. -ldl -o $(@) -Wl,-Map,$(basename $(@)).map $^
+objcopy --only-keep-debug  "$(@)" "$(@).debug" 
+strip --strip-debug --strip-unneeded "$(@)"
+objcopy --add-gnu-debuglink="$(@).debug" "$(@)"
 endef
 
 define C_BUILD_RULE
