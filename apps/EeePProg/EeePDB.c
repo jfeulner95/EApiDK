@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 43 $
+ *I  Last committed       : $Revision: 44 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 07:51:07 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EeePDB.c 43 2010-01-27 06:51:07Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 07:54:22 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EeePDB.c 44 2010-01-27 06:54:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -531,12 +531,12 @@ EeePListBlocks(
 #else
         TEXT("LOG: BLOCK ID  : %s(0x%02")TEXT(PRIX8)TEXT(")\n")
 #endif
-        TEXT("LOG:   Length  : 0x%04X\n")
-        TEXT("LOG:   Offset  : 0x%08X\n"),
+        TEXT("LOG:   Length  : 0x%04lX\n")
+        TEXT("LOG:   Offset  : 0x%08lX\n"),
         BlockName,
         pCurBlock->DBlockId,
-        GetBlockLength(pCurBlock),
-        EAPI_GET_PTR_OFFSET(pCurBlock, BHandel)
+        (unsigned long)GetBlockLength(pCurBlock),
+        (unsigned long)EAPI_GET_PTR_OFFSET(pCurBlock, BHandel)
       );
     if(GetNextBlock(pCurBlock)!=NULL){
       PrintHexAsciiTable(

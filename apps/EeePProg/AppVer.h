@@ -34,10 +34,10 @@
  *I
  *I  File Name            : AppVer.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 43 $
+ *I  Last committed       : $Revision: 44 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 07:51:07 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: AppVer.h 43 2010-01-27 06:51:07Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 07:54:22 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: AppVer.h 44 2010-01-27 06:54:22Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -47,5 +47,5 @@
 /****************************************************************************/    
 #define APP_VERSION 0  
 #define APP_REVISION 5  
-#define APP_BUILD 311
+#define APP_BUILD 313
 #endif /* _EEEPPROG_H_ */                                                                     
