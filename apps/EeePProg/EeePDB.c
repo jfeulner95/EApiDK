@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 40 $
+ *I  Last committed       : $Revision: 43 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EeePDB.c 40 2010-01-27 03:38:10Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 07:51:07 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EeePDB.c 43 2010-01-27 06:51:07Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -503,7 +503,7 @@ EeePListBlocks(
   DO(EeePGetFirstDB(BHandel, &pCurBlock));
   EAPI_MSG_OUT(
       TEXT("LOG: Header Size: 0x%02lX\n"),
-      EAPI_GET_PTR_OFFSET(pCurBlock, BHandel)
+      (unsigned long)EAPI_GET_PTR_OFFSET(pCurBlock, BHandel)
       );
   PrintHexAsciiTable(
         BHandel, 
@@ -526,7 +526,11 @@ EeePListBlocks(
     GetString(BlockIdLookup, BlockName, ARRAY_SIZE(BlockName), pCurBlock->DBlockId);
     EAPI_MSG_OUT(
         TEXT("\n")
+#ifdef _UNICODE
         TEXT("LOG: BLOCK ID  : %ls(0x%02")TEXT(PRIX8)TEXT(")\n")
+#else
+        TEXT("LOG: BLOCK ID  : %s(0x%02")TEXT(PRIX8)TEXT(")\n")
+#endif
         TEXT("LOG:   Length  : 0x%04X\n")
         TEXT("LOG:   Offset  : 0x%08X\n"),
         BlockName,
