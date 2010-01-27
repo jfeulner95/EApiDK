@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 36 $
+ *I  Last committed       : $Revision: 46 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:27:51 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: CfgParser.c 36 2010-01-26 06:27:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 13:51:29 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: CfgParser.c 46 2010-01-27 12:51:29Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -123,7 +123,7 @@ CleanBlock(
         DO(pCurElement->pHandlers->Clean(
               EAPI_CREATE_PTR(
                   pCurElement->Elements.pv, 
-                  pCurElement->cstElementSize*(pCurElement->stElementCount-1), 
+                  pCurElement->cstElementSize*(pCurElement->stElementCount), 
                   void*
                 ),
               pCurElement->cstElementSize

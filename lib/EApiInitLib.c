@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiInitLib.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 42 $
+ *I  Last committed       : $Revision: 46 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 07:27:50 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EApiInitLib.c 42 2010-01-27 06:27:50Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-27 13:51:29 +0100 (Mi, 27. Jan 2010) $
+ *I  ID                   : $Id: EApiInitLib.c 46 2010-01-27 12:51:29Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -83,11 +83,12 @@ uint32_t EApiUninitLib(){
               "# Exit \n"
               "#\n"
             );
-  if(OutputStream!=NULL){
+  CloseI2CEepromFiles();
+  if(OutputStream!=NULL&&OutputStream!=stdout){
     fclose(OutputStream);
-    OutputStream=NULL;
   }
-  return CloseI2CEepromFiles();
+  OutputStream=stdout;
+  return EAPI_STATUS_SUCCESS; 
 }
 
 

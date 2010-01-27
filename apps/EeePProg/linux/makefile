@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : apps\EeePProg\linux
-#I  Last committed       : $Revision: 30 $
+#I  Last committed       : $Revision: 46 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
-#I  ID                   : $Id: makefile 30 2010-01-25 07:44:00Z dethrophes $
+#I  Last changed date    : $Date: 2010-01-27 13:51:29 +0100 (Mi, 27. Jan 2010) $
+#I  ID                   : $Id: makefile 46 2010-01-27 12:51:29Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -78,7 +78,7 @@ ExeName=EeePProg
 #DBGOPT:=-g3
 #DBGOPT:=-gstabs
 #DBGOPT:=-gstabs+
-DBGOPT:=-g -O0
+DBGOPT:=-g -O0 
 RELOPT:=-O3
 INCLUDS=-I../../../include/linux -I../ -I../../include -I../../../include 
 CFLAGS:= -Wall -W -Werror -pedantic $(INCLUDS)
@@ -88,7 +88,7 @@ define FLD_BUILD_RULE
 endef
 
 define PRG_BUILD_RULE
-gcc -v $(CFLAGS) -L. -ldl -o $(@) -Wl,-Map,$(basename $(@)).map $^ $(2) -s 
+gcc -v $(CFLAGS) $(1) -L. -ldl -o $(@) -Wl,-Map,$(basename $(@)).map $^
 endef
 
 define C_BUILD_RULE
