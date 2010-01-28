@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePCfg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 40 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EeePCfg.c 40 2010-01-27 03:38:10Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: EeePCfg.c 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -827,12 +827,14 @@ PCFG_TOKEN_LIST_DESC(EeePEEPWriteLenTL, EeePEEPWriteLenTokens);
 
 
 CfgElementDesc_t ExtI2CDevice0Desc[]={
+  ELEMENT_DESC("InsideCRC"     , EeePExtI2CDevice0.aulInsideCrc, &Token_Element_funcs , &InsideCrcTL                   , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceBus"     , EeePExtI2CDevice0.aulBus      , &Token_Element_funcs  , &I2CBusTL             , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceAddr"    , EeePExtI2CDevice0.aulAddr     , &I2C_EEPROM_Addr_funcs, NULL                  , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceType"    , EeePExtI2CDevice0.aulType     , &Token_Element_funcs  , &StandardExtendedTL   , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceSize"    , EeePExtI2CDevice0.aulSize     , &Token_Element_funcs  , &EEPDeviceSizeTL      , ELEMENT_REQUIRED)
 };
 CfgElementDesc_t ExtI2CDevice1Desc[]={
+  ELEMENT_DESC("InsideCRC"     , EeePExtI2CDevice1.aulInsideCrc, &Token_Element_funcs , &InsideCrcTL                   , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceBus"     , EeePExtI2CDevice1.aulBus      , &Token_Element_funcs  , &I2CBusTL             , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceAddr"    , EeePExtI2CDevice1.aulAddr     , &I2C_EEPROM_Addr_funcs, NULL                  , ELEMENT_REQUIRED)
   ELEMENT_DESC("DeviceType"    , EeePExtI2CDevice1.aulType     , &Token_Element_funcs  , &StandardExtendedTL   , ELEMENT_REQUIRED)

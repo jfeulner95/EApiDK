@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 46 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 13:51:29 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: CfgParser.c 46 2010-01-27 12:51:29Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: CfgParser.c 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -161,6 +161,7 @@ CleanStruct(
   return EApiStatusCode;
 
 }
+#define MAX_LINE_LEN 2048
 EApiStatusCode_t
 ParseCfgFile(
     __IN    const char *pcszCfgFileName       ,
@@ -227,7 +228,7 @@ ParseCfgFile(
             EApiSprintf(
                 ErrorBuffer, 
                 ARRAY_SIZE(ErrorBuffer), 
-                TEXT("ERROR: Missing Required Element '%hs' in Block '%hs'"), 
+                TEXT("Missing Required Element '%hs' in Block '%hs'"), 
                 pCurElement->pcszElementName, 
                 pCurBlockDesc->pszBlockName
               );
@@ -324,11 +325,10 @@ ParseCfgFile(
   pCurBlockDesc=pCfgBDesc;
   for(i=stCfgBDescElements;i;i--){
     if(pCurBlockDesc->cuiRequired>pCurBlockDesc->uiFound){
-      TCHAR ErrorBuffer[50];
         EApiSprintf(
           ErrorBuffer, 
           ARRAY_SIZE(ErrorBuffer), 
-          TEXT("ERROR: Missing Required Block '%hs'\n"), 
+          TEXT("Missing Required Block '%hs'\n"), 
           pCurBlockDesc->pszBlockName
         );
       EAPI_APP_RETURN_ERROR(

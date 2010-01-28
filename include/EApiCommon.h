@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiCommon.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiCommon.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: EApiCommon.h 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -40,9 +40,19 @@
  * ALL Of these MACROS can be overridden by MACROS
  * in the OS Specific Header File EApiOs.h
  */
-#ifndef ARRAY_SIZE
-#  define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
+#ifndef ELEMENT_SIZE
+#  define ELEMENT_SIZE(x) (sizeof(x[0]))
 #endif
+#ifndef ARRAY_SIZE
+#  define ARRAY_SIZE(x) (sizeof(x)/ELEMENT_SIZE(x))
+#endif
+
+#define EAPI_CREATE_PTR(Base, ByteOffset, PtrType) \
+  ((PtrType)(((uint8_t*)(Base))+(ByteOffset)))
+
+#define EAPI_GET_PTR_OFFSET(Ptr1, Ptr2) \
+  ((unsigned long)(((const uint8_t* const)(Ptr1))-((const uint8_t*const)(Ptr2))))
+
 #ifndef STRICT_VALIDATION
 #  define  STRICT_VALIDATION 2
 #endif

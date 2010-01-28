@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeePApp.h 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: EeePApp.h 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -48,7 +48,7 @@ extern "C" {
 
 #define DO(x) \
   EApiStatusCode=x;\
-  if(!EAPI_STATUS_TEST_OK(EApiStatusCode)){ \
+  if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){ \
     return EApiStatusCode;\
   }
 

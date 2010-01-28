@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePDB.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 42 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 07:27:50 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EeePDB.h 42 2010-01-27 06:27:50Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: EeePDB.h 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -146,6 +146,15 @@ EApiStatusCode_t
 EeePFindBlock(
     __IN  EeePHandel_t   BHandel,
     __IN  uint8_t        BlockId,
+    __IN  signed int     Instance,
+    __OUT void         **pvFBlock
+    );
+
+EApiStatusCode_t
+EeePFindVendorBlock(
+    __IN  EeePHandel_t   BHandel,
+    __IN  uint16_t       VendorId,
+    __IN  uint8_t        VendorBlockId,
     __IN  signed int     Instance,
     __OUT void         **pvFBlock
     );

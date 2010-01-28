@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHI2C.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiAHI2C.c 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: EApiAHI2C.c 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -313,13 +313,12 @@ EApiAHI2CReadEeprom(
 
     BlockEndAddress=ByteOffset+ByteCnt;
 
-    BlockLength=IntMaxBlckLen;
     if(pDDesc->ExtIndx==EApiAPI2CExtIndex)
       /* After this length it is necessary to increment the Device Address */
-      BlockLength=(BlockLength<0x10000?BlockLength:0x10000);
+      BlockLength=(IntMaxBlckLen<0x10000?IntMaxBlckLen:0x10000);
     else
       /* After this length it is necessary to increment the Device Address */
-      BlockLength=(BlockLength<0x100?BlockLength:0x100);
+      BlockLength=(IntMaxBlckLen<0x100?IntMaxBlckLen:0x100);
     CurOffset=ByteOffset;
     while(CurOffset<BlockEndAddress)
     {
@@ -336,7 +335,7 @@ EApiAHI2CReadEeprom(
           Id, 
           (uint32_t)EncAddr, 
           (uint32_t)EncOffset, 
-          &((int8_t *)pBuffer)[CurOffset-ByteOffset], 
+          ((int8_t *)pBuffer)+(CurOffset-ByteOffset), 
           (uint32_t)BlockLength, 
           (uint32_t)BlockLength
           );

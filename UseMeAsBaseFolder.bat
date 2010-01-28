@@ -24,14 +24,14 @@
 @REM I
 @REM I  File Name            : UseMeAsBaseFolder.bat
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 38 $
+@REM I  Last committed       : $Revision: 48 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
-@REM I  ID                   : $Id: UseMeAsBaseFolder.bat 38 2010-01-26 06:48:22Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+@REM I  ID                   : $Id: UseMeAsBaseFolder.bat 48 2010-01-28 00:37:04Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
-SET DirType=EAPI
+SET DirType=EApiDK
 color 
 REM SET _MAKEENVROOT=%WNETBASE%\bin
 REM IF EXIST "%_MAKEENVROOT%\setenv.bat" call "%_MAKEENVROOT%\setenv.bat" %WNETBACD %NUBIOS%

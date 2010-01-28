@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiApp.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 48 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiApp.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
+ *I  ID                   : $Id: EApiApp.h 48 2010-01-28 00:37:04Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -133,11 +133,6 @@
     x=y;\
   }
 
-#define EAPI_CREATE_PTR(Base, ByteOffset, PtrType) \
-  ((PtrType)(((uint8_t*)(Base))+(ByteOffset)))
-
-#define EAPI_GET_PTR_OFFSET(Ptr1, Ptr2) \
-  ((size_t)(((const uint8_t* const)(Ptr1))-((const uint8_t*const)(Ptr2))))
 
 
 #endif /* _EAPIAPP_H_ */
