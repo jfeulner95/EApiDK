@@ -25,10 +25,10 @@
  *I
  *I  File Name            : DbgChk.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 54 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: DbgChk.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: DbgChk.c 54 2010-02-01 21:19:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -166,7 +166,7 @@ siFormattedMessage_SC(
       cszFuncName
     );
   if(szStatusDesc==NULL){
-    fprintf(OutputStream, "               0x08lX | ", StatusCode);
+    fprintf(OutputStream, "               0x%08"PRIX32" | ", StatusCode);
   }else{
     fprintf(OutputStream, "%-25s | ", szStatusDesc);
   }

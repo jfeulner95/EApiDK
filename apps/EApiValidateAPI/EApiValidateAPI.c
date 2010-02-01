@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiValidateAPI.c
  *I  File Location        : apps\EApiValidateAPI
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 54 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiValidateAPI.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiValidateAPI.c 54 2010-02-01 21:19:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -45,11 +45,21 @@ typedef void EApiValidateTestFunction(void);
 /*  */
 FILE *LogStream;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 EApiStatusCode_t
 EApiGetErrorStringA(
     __OUT const char  **const pszString     , 
     __IN EApiStatusCode_t StatusCode
     );
+
+#ifdef __cplusplus
+}
+#endif
+
 
 signed int
 __cdecl
@@ -78,7 +88,7 @@ siFFormattedMessage_SC(
       cszFuncName 
     );
   if(szStatusDesc==NULL){
-    fprintf(OutStream, "               0x08lX | ", StatusCode);
+    fprintf(OutStream, "               0x%08"PRIX32" | ", StatusCode);
   }else{
     fprintf(OutStream, "%-25s | ", szStatusDesc);
   }

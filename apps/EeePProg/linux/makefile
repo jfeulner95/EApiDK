@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : apps\EeePProg\linux
-#I  Last committed       : $Revision: 51 $
+#I  Last committed       : $Revision: 54 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
-#I  ID                   : $Id: makefile 51 2010-02-01 07:48:20Z dethrophes $
+#I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+#I  ID                   : $Id: makefile 54 2010-02-01 21:19:38Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -125,7 +125,7 @@ OBJECTS=$(ExeName).o \
 	CfgPHelper.o \
 	EeePCfg.o \
 	EeePDB.o \
-	StrFuncs.o TokenFunc.o RangeFunc.o DbgChk.c
+	StrFuncs.o TokenFunc.o RangeFunc.o DbgChk.o
       
 
 DefaultTgt: buildall

@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : apps\EApiValidateAPI\linux
-#I  Last committed       : $Revision: 47 $
+#I  Last committed       : $Revision: 54 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-28 00:20:43 +0100 (Do, 28. Jan 2010) $
-#I  ID                   : $Id: makefile 47 2010-01-27 23:20:43Z dethrophes $
+#I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+#I  ID                   : $Id: makefile 54 2010-02-01 21:19:38Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -118,7 +118,7 @@ endef
 OBJECTS=$(ExeName).o \
       EApiAHI2C.o \
       EApiAHStorage.o \
-      EApiAHStr.o
+      EApiAHStr.o DbgChk.o
 
 DefaultTgt: buildall
 

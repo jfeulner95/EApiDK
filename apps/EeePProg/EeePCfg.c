@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePCfg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 54 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePCfg.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EeePCfg.c 54 2010-02-01 21:19:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -462,7 +462,7 @@ typedef struct SmbiosSystem_s{
   char *        aszFamily         [1];
 }SmbiosSystem_t;
 
-SmbiosSystem_t COM0_SMBIOS_System={{0xE002},{NULL},{NULL},{NULL},{NULL},{{0}},{NULL},{0},{NULL}};
+SmbiosSystem_t COM0_SMBIOS_System={{0xE002},{NULL},{NULL},{NULL},{NULL},{{{{0}},{{{0}}},{0}}},{NULL},{0},{NULL}};
 
 typedef struct SmbiosChassis_s{
   unsigned long aulHandle         [1];

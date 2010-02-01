@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulStorage.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 54 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulStorage.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulStorage.c 54 2010-02-01 21:19:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -142,7 +142,8 @@ EApiStorageAreaReadEmul(
         memcpy(pvBuffer, pCurStorageDesc->pu8Buffer+Offset, ByteCnt);
 #else
         fseek(pCurStorageDesc->FStream, Offset, SEEK_SET);
-        fread(pvBuffer, sizeof(uint8_t), ByteCnt, pCurStorageDesc->FStream);
+        if(ByteCnt!=fread(pvBuffer, sizeof(uint8_t), ByteCnt, pCurStorageDesc->FStream)){
+	}
 #endif
 
         EAPI_LIB_RETURN_SUCCESS(EApiStorageAreaRead, "");

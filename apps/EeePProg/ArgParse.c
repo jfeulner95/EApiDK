@@ -25,10 +25,10 @@
  *I
  *I  File Name            : ArgParse.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 54 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: ArgParse.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: ArgParse.c 54 2010-02-01 21:19:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -96,7 +96,7 @@ StringBlock(
     }
   }
 /*   printf("D%04u %s\n", __LINE__, cszLastPos); */
-  if(!*pstLastPos);
+  if(!*pstLastPos)
     *pstLastPos=cszLastPos - cszStr;
   return EAPI_STATUS_MORE_DATA;
 }
@@ -298,10 +298,12 @@ ParseArgsFile(
   EApiStatusCode_t EApiStatusCode;
   signed int siArgc;
   char**pszArgv=NULL;
+  void *pvFileBuffer;
   char *szFileBuffer;
   size_t stFileSize;
   char ErrBuffer[200];
-  EApiStatusCode=ReadTextFile(szFilename, &szFileBuffer, &stFileSize);
+  EApiStatusCode=ReadTextFile(szFilename, &pvFileBuffer, &stFileSize);
+  szFileBuffer=pvFileBuffer;
 
   if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){
     EApiSprintfA(
@@ -318,7 +320,7 @@ ParseArgsFile(
   if(szFileBuffer!=NULL) free(szFileBuffer);
   szFileBuffer=NULL;
 
-  DO(ParseArgs(siArgc - 1, pszArgv, pCmdDesc, stArgDescCnt));
+  DO(ParseArgs(siArgc - 1, (const char **)pszArgv, pCmdDesc, stArgDescCnt));
 
 ErrorExit:
   if(pszArgv  !=NULL) free(pszArgv  );
