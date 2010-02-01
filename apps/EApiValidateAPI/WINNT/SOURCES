@@ -24,10 +24,10 @@
 #I
 #I  File Name            : SOURCES
 #I  File Location        : apps\EApiValidateAPI\WINNT
-#I  Last committed       : $Revision: 38 $
+#I  Last committed       : $Revision: 51 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
-#I  ID                   : $Id: SOURCES 38 2010-01-26 06:48:22Z dethrophes $
+#I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+#I  ID                   : $Id: SOURCES 51 2010-02-01 07:48:20Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -53,4 +53,4 @@ $(SDK_LIB_PATH)\kernel32.lib \
   EApi_1.lib
 
 SOURCES=EApiValidateAPI.rc EApiValidateAPI.c EApiAHI2C.c EApiAHStorage.c \
-	EApiAHStr.c 
+	EApiAHStr.c DbgChk.c

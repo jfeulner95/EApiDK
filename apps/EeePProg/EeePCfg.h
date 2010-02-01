@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePCfg.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: EeePCfg.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EeePCfg.h 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -66,6 +66,19 @@ EeeP_CreateEeePExtEEPCfg(
     __OUT  FILE           * OutStream
     );
 
+extern TokenListDesc_t SmbiosStructureTypesTL;
+extern TokenListDesc_t SmbiosBoardTypesTL;
+extern TokenListDesc_t SmbiSmbiosModuleFeatureFlagsTL;
+extern TokenListDesc_t SmbiosChassisTypesTL;
+extern TokenListDesc_t IRQTL;
+extern TokenListDesc_t I2CBusTL;
+extern TokenListDesc_t DDI1TL;
+extern TokenListDesc_t DisplayInterfaceTL;
+extern TokenListDesc_t ImpNotImpTL;
+extern TokenListDesc_t SasTL;
+
+extern TokenDesc_t PCIeGeneration[];
+extern TokenDesc_t PCIeLaneWidths[];
 #ifdef __cplusplus
 }
 #endif

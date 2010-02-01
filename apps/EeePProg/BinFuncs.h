@@ -25,10 +25,10 @@
  *I
  *I  File Name            : BinFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: BinFuncs.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: BinFuncs.h 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -119,18 +119,32 @@ PrintHexAsciiTable(
 	__IN    const TCHAR *const pcszDescription
 	);
 
+EApiStatusCode_t 
+WriteBinaryFile(
+    __IN const char *cszFilename, 
+    __IN const void *pcvBuffer   , 
+    __IN size_t      stWriteBCnt
+  );
+
 EApiStatusCode_t
 ReadBinaryFile(
-    __IN  const char *pcszFilename, 
+    __IN  const char *cszFilename, 
     __OUT void      **pvBuffer, 
     __OUT size_t     *pstReadBCnt
   );
 
 EApiStatusCode_t 
-WriteBinaryFile(
-    __IN const char *pcszFilename, 
+WriteTextFile(
+    __IN const char *cszFilename, 
     __IN const void *pcvBuffer   , 
     __IN size_t      stWriteBCnt
+  );
+
+EApiStatusCode_t
+ReadTextFile(
+    __IN  const char *cszFilename, 
+    __OUT void      **pvBuffer, 
+    __OUT size_t     *pstReadBCnt
   );
 
 

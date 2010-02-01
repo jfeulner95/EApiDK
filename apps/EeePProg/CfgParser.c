@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 50 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-28 05:28:33 +0100 (Do, 28. Jan 2010) $
- *I  ID                   : $Id: CfgParser.c 50 2010-01-28 04:28:33Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: CfgParser.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -246,7 +246,7 @@ ParseCfgFile(
 
 #if TEST_EEPCFG
 /*       sprintf(ErrorBuffer, "%-15s : %s", "Block", LineBuffer); */
-/*       EAPI_FORMATED_MES( L, ParseCfgFile, 0, ErrorBuffer); */
+/*       EAPI_FORMATED_MES( 'L', ParseCfgFile, 0, ErrorBuffer); */
 #endif
       pCurBlockDesc=NULL;
       ulBlockStartLine=ulLineNum;
@@ -275,7 +275,7 @@ ParseCfgFile(
             TEXT("Invalid Block"), 
             LineBuffer
           );
-        EAPI_FORMATED_MES( W, ParseCfgFile, 0, ErrorBuffer);
+        EAPI_FORMATED_MES( 'W', ParseCfgFile, 0, ErrorBuffer);
         continue;
       }
       szValue=strchr(szName, '=');
@@ -288,7 +288,7 @@ ParseCfgFile(
             TEXT("Invalid line"), 
             LineBuffer
           );
-        EAPI_FORMATED_MES( W, ParseCfgFile, 0, ErrorBuffer);
+        EAPI_FORMATED_MES( 'W', ParseCfgFile, 0, ErrorBuffer);
         continue;
       }
       *szValue++='\0';
@@ -296,7 +296,7 @@ ParseCfgFile(
       skipWhiteSpaces(&szValue);
 #if TEST_EEPCFG
 /*       sprintf(ErrorBuffer, "%-15s : %-20s = %s", pCurBlockDesc->pszBlockName, szName, szValue); */
-/*       EAPI_FORMATED_MES( L, ParseCfgFile, 0, ErrorBuffer); */
+/*       EAPI_FORMATED_MES( 'L', ParseCfgFile, 0, ErrorBuffer); */
 #endif
       for(i=pCurBlockDesc->stElementCount, pCurElement=pCurBlockDesc->pElementsDesc; i; i--, pCurElement++){
         if(!strcmp(szName, pCurElement->pcszElementName)){

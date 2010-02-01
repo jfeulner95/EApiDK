@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiInitLib.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 46 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 13:51:29 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EApiInitLib.c 46 2010-01-27 12:51:29Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiInitLib.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -51,11 +51,14 @@ void __cdecl DebugMsg(__IN const char *const fmt, ...)
 }
 
 
-uint32_t OpenI2CEepromFiles(void);
-uint32_t CloseI2CEepromFiles(void);
+EApiStatusCode_t OpenEepromFiles(void);
+EApiStatusCode_t CloseEepromFiles(void);
+EApiStatusCode_t OpenI2CEepromFiles(void);
+EApiStatusCode_t CloseI2CEepromFiles(void);
 
 
-uint32_t EApiInitLib(){
+EApiStatusCode_t 
+EApiInitLib(){
   if(OutputStream==NULL){
 #if EAPI_DBG_USE_OUTPUT_FILE
     OutputStream=fopen(TEXT("EApi.log"), TEXT("w"));
@@ -63,6 +66,7 @@ uint32_t EApiInitLib(){
     OutputStream=stdout;
 #endif
   }
+  OpenEepromFiles();
   OpenI2CEepromFiles();
     DebugMsg("#\n"
               "# Embedded API EApi\n"
@@ -77,14 +81,16 @@ uint32_t EApiInitLib(){
 
 
 
-uint32_t EApiUninitLib(){
+EApiStatusCode_t 
+EApiUninitLib(){
     DebugMsg("#\n"
               "# Embedded API EApi\n"
               "# Exit \n"
               "#\n"
             );
+  CloseEepromFiles();
   CloseI2CEepromFiles();
-  if(OutputStream!=NULL&&OutputStream!=stdout){
+  if(OutputStream!=NULL&&OutputStream!=stdout&&OutputStream!=stderr){
     fclose(OutputStream);
   }
   OutputStream=stdout;

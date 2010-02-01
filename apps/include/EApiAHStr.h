@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStr.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiAHStr.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiAHStr.h 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -89,6 +89,27 @@ EApiSprintf (
     ...
     );
 
+size_t 
+EApiStrLenA  ( 
+    __IN const char  *pBuffer    ,
+    __IN size_t       BufferLen
+    );
+
+char * 
+EApiStrCpyA(
+    __OUT char *const      StringDest   ,
+    __IN size_t             StrBufLen    , 
+    __IN const char *const StringSource
+    );
+
+int 
+__cdecl 
+EApiSprintfA ( 
+    __IN char *const       pBuffer   ,
+    __IN const size_t       BufferLen ,
+    __IN const char *const fmt       ,
+    ...
+    );
 
 /****************************************************************************/
 /* Common pBuffer usage Model */

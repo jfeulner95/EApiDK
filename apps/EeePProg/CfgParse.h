@@ -18,10 +18,10 @@
  *I
  *I  File Name            : CfgParse.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 40 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 04:38:10 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: CfgParse.h 40 2010-01-27 03:38:10Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: CfgParse.h 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -33,15 +33,8 @@
 extern "C" {
 #endif
 
-typedef struct TokenDesc_s{
-  char          *pszTokenList;
-  unsigned long  ulTokenValue;
-}TokenDesc_t;
-typedef struct TokenListDesc_s{
-  unsigned int uiTokenCount;
-  TokenDesc_t *pTokenList;
-}TokenListDesc_t;
-
+#include <TokenFunc.h>
+#include <RangeFunc.h>
 
 typedef struct CfgElementDesc_s{
   const char * pcszElementName;
@@ -67,21 +60,6 @@ typedef struct CfgElementDesc_s{
 #define ELEMENT_DESC(Name, Array, Type, Tokens, Required) {Name, 0, Required, ARRAY_SIZE(Array), sizeof(Array[0]), Type, {Array} , Tokens},
 
 typedef struct Handlers_s Handlers_t;
-
-typedef struct NumberRange_s{
-  unsigned int uiLowerLimit;
-  unsigned int uiUpperLimit;
-  unsigned int uiType;
-#define  RANGE_EXCLUSIVE  0
-#define  RANGE_INCLUSIVE  1
-#define  RANGE_MASK_SET   2
-#define  RANGE_MASK_UNSET 3
-}NumberRange_t;
-typedef struct NumberRangeDesc_s{
-  size_t         stRangeCount;
-  NumberRange_t *pNumberRange;
-}NumberRangeDesc_t;
-
 
 typedef struct StringDesc_s{
   unsigned int uiMinLength;
@@ -185,14 +163,6 @@ extern StringDesc_t PreserveTrailingSpaces;
 extern StringDesc_t DeleteTrailingSpaces;
 
 EApiStatusCode_t
-GetTokenValue(
-    TokenDesc_t  *pTokens   ,
-    size_t        stTokencnt,
-          char   *pszValue  ,
-    unsigned long*pulValue
-  );
-
-EApiStatusCode_t
 PrintCfgFile(
     __IN    CfgBlockDesc_t *pCfgBDesc         ,
     __IN    size_t         stCfgBDescElements ,
@@ -212,15 +182,6 @@ ParseCfgFile(
     __IN    size_t         stCfgBDescElements
     );
 
-#define PCFG_TOKEN_LIST_DESC(TLName, TokenList) \
-TokenListDesc_t TLName={ \
-  ARRAY_SIZE(TokenList), TokenList \
-}
-
-#define PCFG_RANGE_LIST_DESC(RLName, RangeList) \
-NumberRangeDesc_t RLName={ \
-  ARRAY_SIZE(RangeList), RangeList \
-}
 
 
 #ifdef __cplusplus

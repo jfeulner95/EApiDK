@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulBoardInfo.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiEmulBoardInfo.c 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulBoardInfo.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -47,7 +47,7 @@
  *
  */
 typedef struct StringLookupTbl_s{
-  uint32_t Id          ; /* EAPI String Id */
+  EApiId_t Id          ; /* EAPI String Id */
   char    *StringPtr   ; /* Pointer to Return String */
 }StringLookupTbl_t;
 const StringLookupTbl_t StringLookup[]={
@@ -68,9 +68,9 @@ const StringLookupTbl_t StringLookup[]={
 #endif
 };
 
-uint32_t 
+EApiStatusCode_t 
 EApiBoardGetStringAEmul( 
-    __IN    uint32_t  Id      , 
+    __IN    EApiId_t  Id      , 
     __OUT       char *pBuffer , 
     __INOUT uint32_t *pBufLen
     )
@@ -135,7 +135,7 @@ EApiBoardGetStringAEmul(
  *
  */
 typedef struct ValueLookupTbl_s{
-  uint32_t Id          ; /* EAPI Value Id */
+  EApiId_t Id          ; /* EAPI Value Id */
   uint32_t Value       ; /* Return Value for ID */
 }ValueLookupTbl_t;
 const ValueLookupTbl_t ValueLookup[]={
@@ -172,9 +172,9 @@ const ValueLookupTbl_t ValueLookup[]={
   {EAPI_ID_HWMON_FAN_SYSTEM             ,  2500  },
 };
 
-uint32_t 
+EApiStatusCode_t
 EApiBoardGetValueEmul( 
-    __IN  uint32_t Id     , 
+    __IN  EApiId_t Id     , 
     __OUT uint32_t *pValue
     )
 {

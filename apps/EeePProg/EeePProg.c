@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePProg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 42 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-27 07:27:50 +0100 (Mi, 27. Jan 2010) $
- *I  ID                   : $Id: EeePProg.c 42 2010-01-27 06:27:50Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EeePProg.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -479,8 +479,7 @@ FreeFilePtr(
 #define DO_MAIN(x) \
   EApiStatusCode=x;\
   if(!EAPI_STATUS_TEST_OK(EApiStatusCode)){ \
-    EApiAHCreateErrorString(EApiStatusCode, ErrBuf, ARRAY_SIZE(ErrBuf));\
-    EAPI_FORMATED_MES1(E, main, ErrBuf, TEXT(#x));\
+    EAPI_FORMATED_MES('E', main, EApiStatusCode, #x);\
     exit(EApiStatusCode);\
   }
 
@@ -495,12 +494,11 @@ main(
   )
 {
   EeePHandel_t BHandel;
-  TCHAR ErrBuf[64];
   FILE *lclStream=NULL;
   EApiStatusCode_t EApiStatusCode;
   DO_MAIN(EApiLibInitialize());
 
-  EApiStatusCode=ParseArgs(argc, argv, ArgsDesc, ARRAY_SIZE(ArgsDesc));
+  EApiStatusCode=ParseArgs(argc - 1, argv + 1, ArgsDesc, ARRAY_SIZE(ArgsDesc));
   switch(EApiStatusCode){
     case EAPI_STATUS_INVALID_PARAMETER:
       printf("%s", syntaxErrMes);
@@ -509,8 +507,7 @@ main(
     case EAPI_STATUS_SUCCESS:
       break;
     default:
-      EApiAHCreateErrorString(EApiStatusCode, ErrBuf, ARRAY_SIZE(ErrBuf));
-      EAPI_FORMATED_MES1(E, main, ErrBuf, TEXT("ParseArgs(argc, argv, ArgsDesc, ARRAY_SIZE(ArgsDesc))"));
+      EAPI_FORMATED_MES('E', main, EApiStatusCode, TEXT("ParseArgs(argc, argv, ArgsDesc, ARRAY_SIZE(ArgsDesc))"));
       exit(EApiStatusCode);
       break;
   }

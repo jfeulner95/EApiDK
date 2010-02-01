@@ -25,15 +25,14 @@
  *I
  *I  File Name            : EApiApp.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 48 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
- *I  ID                   : $Id: EApiApp.h 48 2010-01-28 00:37:04Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiApp.h 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
  */
-/* Windows NT Common Header */
 #ifndef _EAPIAPP_H_    
 #define _EAPIAPP_H_
 
@@ -51,6 +50,7 @@
 #include <EApiAHStr.h>
 #include <EApiAHI2C.h>
 #include <EApiAHStorage.h>
+#include <DbgChk.h>
 #include <AppVer.h>
 
 
@@ -77,24 +77,32 @@
 
 #if (STRICT_VALIDATION>0)
 #define EAPI_FORMATED_MES1(type, func, err, desc) \
-    EAPI_ERR_OUT(TEXT(#type) TEXT("%04u %-20s : %-20s : %s\n"), __LINE__, TEXT(#func), err, desc );
+    siFormattedMessage_M2(type, __FILE__, #func, __LINE__, \
+        err, "%s\n", desc );
 #else
 #define EAPI_FORMATED_MES1(type, func, err, desc)
 #endif
+
 #if (STRICT_VALIDATION>0)
 #define EAPI_FORMATED_MES(type, func, err, desc) \
-    EAPI_ERR_OUT(TEXT(#type) TEXT("%04u %-20s : %-20s : %s\n"), __LINE__, TEXT(#func), TEXT(#err), desc );
+    siFormattedMessage_SC(type, __FILE__, #func, __LINE__, \
+        (EApiStatusCode_t)(((uintptr_t)err)&UINT32_MAX), "%s\n", desc );
+
 #else
 #define EAPI_FORMATED_MES(type, func, err, desc)
 #endif
 
 #define EAPI_APP_RETURN_SUCCESS(func, desc)  \
-  EAPI_FORMATED_MES(O, func, EAPI_RETURN_SUCCESS, desc );\
-  return EAPI_RETURN_SUCCESS;
+	do{\
+  EAPI_FORMATED_MES('L', func, EAPI_RETURN_SUCCESS, desc );\
+  		return EAPI_STATUS_SUCCESS; \
+	}while(0)
 
 #define EAPI_APP_RETURN_ERROR(func, err, desc)  \
-  EAPI_FORMATED_MES(E, func, err, desc );\
-  return err;
+	do{ \
+  	  EAPI_FORMATED_MES('E', func, err, desc );\
+  	  return err;\
+	}while(0)
 
 #define EAPI_APP_RETURN_ERROR_IF(func, exp, err, desc)  \
   if(exp)\
@@ -117,7 +125,7 @@
 #endif
 
 #define EAPI_APP_ASSERT_PARAMATER_CHECK_S(func, ret, exp)  \
-  EAPI_APP_ASSERT_PARAMATER_CHECK(func, ret, exp, TEXT(#exp))
+  EAPI_APP_ASSERT_PARAMATER_CHECK(func, ret, exp, #exp)
 
 #define EAPI_APP_ASSERT_PARAMATER_ZERO(func, ret, val)  \
   EAPI_APP_ASSERT_PARAMATER_CHECK_S(func, ret, (val==0))
@@ -129,7 +137,8 @@
 #define EAPI_APP_PREVENT_BUF_OVERFLOW(func, x, y)  \
   if(x>y)\
   {\
-    EAPI_FORMATED_MES(E, func,  EAPI_STATUS_MORE_DATA, TEXT(" pBuffer Overflow Prevented") TEXT(#x) TEXT(">") TEXT(#y));\
+    EAPI_FORMATED_MES('E', func,  EAPI_STATUS_MORE_DATA, \
+                  " pBuffer Overflow Prevented"#x">"#y);\
     x=y;\
   }
 

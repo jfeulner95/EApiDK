@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulWDT.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiEmulWDT.c 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulWDT.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -55,7 +55,7 @@ static unsigned WatchdogState=WATCHDOG_DISABLED;
 #define MaxDelay        MIN_IN_millisec(10)
 #define MaxEventTimeout MIN_IN_millisec(10)
 #define MaxResetTimeout MIN_IN_millisec(10)
-uint32_t 
+EApiStatusCode_t 
 EAPI_CALLTYPE
 EApiWDogGetCapEmul(
     __OUTOPT uint32_t *pMaxDelay       ,/* Maximum Supported 
@@ -77,7 +77,7 @@ EApiWDogGetCapEmul(
   *pMaxResetTimeout =MaxResetTimeout;
   EAPI_LIB_RETURN_SUCCESS(EApiWDogGetCapEmul, "");
 }
-uint32_t 
+EApiStatusCode_t 
 EApiWDogStartEmul(
     __IN  uint32_t Delay       , /* Delay in milliseconds */
     __IN  uint32_t EventTimeout, /* Event Timeout in 
@@ -112,7 +112,7 @@ EApiWDogStartEmul(
   WatchdogState=WATCHDOG_ENABLED;
   EAPI_LIB_RETURN_SUCCESS(EApiWDogStartEmul, "");
 }
-uint32_t 
+EApiStatusCode_t 
 EApiWDogTriggerEmul(void)
 {
   EAPI_LIB_RETURN_ERROR_IF(
@@ -127,7 +127,7 @@ EApiWDogTriggerEmul(void)
       ""
       );
 }
-uint32_t 
+EApiStatusCode_t 
 EApiWDogStopEmul(void)
 {
   WatchdogState=WATCHDOG_DISABLED;

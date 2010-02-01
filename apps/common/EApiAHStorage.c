@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStorage.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiAHStorage.c 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiAHStorage.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -36,9 +36,9 @@
   #include <EApiApp.h>
 
 
-uint32_t 
+EApiStatusCode_t 
 EApiAHWriteStorage(
-    __IN  uint32_t         Id          , 
+    __IN  EApiId_t         Id          , 
     __IN  const uint32_t   ByteOffset  , 
     __IN  void *           pBuffer     , 
     __IN  const uint32_t   ByteCnt 
@@ -48,7 +48,7 @@ EApiAHWriteStorage(
     uint32_t AdjOffset=ByteOffset, AdjLength=ByteCnt;
     int_least8_t * pLclBuffer;
     uint32_t BufferOffset=0;
-    uint32_t ReturnValue;
+    EApiStatusCode_t ReturnValue;
     
     EAPI_APP_ASSERT_PARAMATER_NULL(
         EApiAHWriteStorage, 

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 48 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
- *I  ID                   : $Id: EeePApp.h 48 2010-01-28 00:37:04Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EeePApp.h 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -35,7 +35,6 @@ extern "C" {
 
 
 #include <EApiApp.h>
-  typedef uint32_t EApiStatusCode_t;
 
 #include <BinFuncs.h>
 #include <ArgParse.h>

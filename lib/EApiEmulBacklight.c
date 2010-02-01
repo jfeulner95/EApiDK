@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulBacklight.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 51 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiEmulBacklight.c 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulBacklight.c 51 2010-02-01 07:48:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -47,7 +47,7 @@
  *
  */
 typedef struct BackLightDevice_s{
-  uint32_t Id                ; /* EAPI Temperature Id */
+  EApiId_t Id                ; /* EAPI Temperature Id */
   uint32_t Enabled           ; /* Current Enabled State */
   uint32_t Brightness        ; /* Current Brightness */
 }BackLightDevice_t;
@@ -56,9 +56,9 @@ static BackLightDevice_t BacklightLookup[]={
   {EAPI_ID_BACKLIGHT_2  , EAPI_BACKLIGHT_SET_OFF , EAPI_BACKLIGHT_SET_BRIGHTEST },
 };
 
-uint32_t 
+EApiStatusCode_t 
 EApiVgaGetBacklightEnableEmul( 
-    __IN  uint32_t Id       , 
+    __IN  EApiId_t Id       , 
     __OUT uint32_t *pEnable
     )
 {
@@ -82,9 +82,9 @@ EApiVgaGetBacklightEnableEmul(
     );
 }
 
-uint32_t 
+EApiStatusCode_t 
 EApiVgaSetBacklightEnableEmul( 
-    __IN  uint32_t Id       , 
+    __IN  EApiId_t Id       , 
     __OUT uint32_t Enable
     )
 {
@@ -107,9 +107,9 @@ EApiVgaSetBacklightEnableEmul(
     "Unrecognised Backlight ID"
     );
 }
-uint32_t 
+EApiStatusCode_t 
 EApiVgaGetBacklightBrightnessEmul( 
-    __IN  uint32_t Id           , 
+    __IN  EApiId_t Id           , 
     __OUT uint32_t *pBrightness
     )
 {
@@ -133,9 +133,9 @@ EApiVgaGetBacklightBrightnessEmul(
     );
 }
 
-uint32_t 
+EApiStatusCode_t 
 EApiVgaSetBacklightBrightnessEmul( 
-    __IN  uint32_t Id           , 
+    __IN  EApiId_t Id           , 
     __OUT uint32_t Brightness
     )
 {

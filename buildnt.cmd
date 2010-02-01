@@ -27,10 +27,10 @@ GOTO Skip_Header
 @REM I
 @REM I  File Name            : buildnt.cmd
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 38 $
+@REM I  Last committed       : $Revision: 51 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
-@REM I  ID                   : $Id: buildnt.cmd 38 2010-01-26 06:48:22Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
+@REM I  ID                   : $Id: buildnt.cmd 51 2010-02-01 07:48:20Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -62,7 +62,7 @@ REM MAIN PROGRAM
 REM ########################################################################
 :Main_Program
 :BUILD_LIB
-  SET LIBFILES="EApi.cpp" "EApiEmulGPIO.c" "EApiEmulI2C.c" "EApiInitLib.c" "EApiEmulBacklight.c" "EApiEmulBoardInfo.c" "EApiEmulStorage.c" "EApiEmulWDT.c"
+  SET LIBFILES="EApi.cpp" "EApiEmulGPIO.c" "EApiEmulI2C.c" "EApiInitLib.c" "EApiEmulBacklight.c" "EApiEmulBoardInfo.c" "EApiEmulStorage.c" "EApiEmulWDT.c" "DbgChk.c"
   call :CopyFiles "%EAPILIBBASE%" "%EAPILIBBASE%\WINNT" %LIBFILES%
   for %%a in (%TARGETARCHS%) do @(
     call :BUILD_LIB_GENERIC %%a
@@ -82,7 +82,7 @@ IF /I "%~1"=="BUILD_LIB" GOTO Exit
   GOTO :EOF
 
 :BUILD_APP2
-  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c CfgParser.c CfgPHelper.c ArgParse.c "
+  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c CfgParser.c CfgPHelper.c ArgParse.c TokenFunc.c RangeFunc.c"
   GOTO :EOF
 
 :PACK_BUILD
@@ -146,7 +146,7 @@ REM ########################################################################
 REM PROCEDURES
 REM ########################################################################
 :BUILD_APP_S 
-  SET APPHELPFILES="EApiAHI2C.c" "EApiAHStorage.c" "EApiAHStr.c"
+  SET APPHELPFILES="EApiAHI2C.c" "EApiAHStorage.c" "EApiAHStr.c" "DbgChk.c"
   call :CopyFiles "%APPSBASE%\common" "%APPSBASE%\%~1\WINNT" %APPHELPFILES%
   for %%a in (%TARGETARCHS%) do @(
     call :BUILD_APP_GENERIC "%~1" %2 %%a
@@ -288,7 +288,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 38 $
+  ECHO I  %~nx0                                              $$Rev: 51 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:
