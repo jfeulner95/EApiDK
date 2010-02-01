@@ -25,10 +25,10 @@
  *I
  *I  File Name            : BinFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: BinFuncs.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: BinFuncs.h 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -102,7 +102,7 @@ siBin2Ascii_s(
   );
 
 
-void 
+EApiStatusCode_t
 PrintHexAsciiTableEx(
 	__IN    const void *   pcvBuffer	,
 	__IN    const size_t   stBufSize	,

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePProg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePProg.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EeePProg.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -437,6 +437,7 @@ CreateTxtFilePtr(
     FILE **     FilePtr
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   if(!strcmp(Destination, "stdout")){
      *FilePtr=stdout;
   }else if(!strcmp(Destination, "stderr")){
@@ -449,7 +450,8 @@ CreateTxtFilePtr(
          EAPI_STATUS_WRITE_ERROR
       );
   }
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 EApiStatusCode_t
 FreeFilePtr(
@@ -480,7 +482,7 @@ FreeFilePtr(
   EApiStatusCode=x;\
   if(!EAPI_STATUS_TEST_OK(EApiStatusCode)){ \
     EAPI_FORMATED_MES('E', main, EApiStatusCode, #x);\
-    exit(EApiStatusCode);\
+    goto ErrorExit;\
   }
 
 /*
@@ -738,6 +740,7 @@ main(
   }
   
   DO_MAIN(EApiLibUnInitialize());
+ErrorExit:
   exit(EApiStatusCode);
 
 }

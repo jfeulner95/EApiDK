@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulStorage.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulStorage.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulStorage.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -85,6 +85,7 @@ EApiStorageCapEmul (
     __OUTOPT  uint32_t *pBlockLength
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   StorageAreaMapping_t *pCurStorageDesc;
   unsigned i;
 
@@ -106,6 +107,9 @@ EApiStorageCapEmul (
     EAPI_STATUS_UNSUPPORTED   , 
     "Unrecognised Storage ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 EApiStatusCode_t 
 EApiStorageAreaReadEmul(
@@ -115,6 +119,7 @@ EApiStorageAreaReadEmul(
   __IN  uint32_t ByteCnt
   )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   StorageAreaMapping_t *pCurStorageDesc;
   unsigned i;
 
@@ -148,6 +153,9 @@ EApiStorageAreaReadEmul(
       EAPI_STATUS_UNSUPPORTED  , 
       "Unrecognised Storage ID"
       );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -158,6 +166,7 @@ EApiStorageAreaWriteEmul(
     __IN uint32_t ByteCnt
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   StorageAreaMapping_t *pCurStorageDesc;
   unsigned i;
   for(
@@ -201,6 +210,9 @@ EApiStorageAreaWriteEmul(
       EAPI_STATUS_UNSUPPORTED  , 
       "Unrecognised Storage ID"
       );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulBacklight.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulBacklight.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulBacklight.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -62,7 +62,8 @@ EApiVgaGetBacklightEnableEmul(
     __OUT uint32_t *pEnable
     )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
   {
@@ -80,6 +81,9 @@ EApiVgaGetBacklightEnableEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised Backlight ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -88,7 +92,8 @@ EApiVgaSetBacklightEnableEmul(
     __OUT uint32_t Enable
     )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
   {
@@ -106,6 +111,9 @@ EApiVgaSetBacklightEnableEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised Backlight ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 EApiStatusCode_t 
 EApiVgaGetBacklightBrightnessEmul( 
@@ -113,7 +121,8 @@ EApiVgaGetBacklightBrightnessEmul(
     __OUT uint32_t *pBrightness
     )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
   {
@@ -131,6 +140,9 @@ EApiVgaGetBacklightBrightnessEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised Backlight ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -139,7 +151,8 @@ EApiVgaSetBacklightBrightnessEmul(
     __OUT uint32_t Brightness
     )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
   {
@@ -157,6 +170,9 @@ EApiVgaSetBacklightBrightnessEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised Backlight ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 

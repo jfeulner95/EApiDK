@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgPHelper.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: CfgPHelper.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: CfgPHelper.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -454,6 +454,7 @@ SpecRev_Element(
     char   *szValue
   )
 { 
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   char *szEnd;
   pElementDesc=pElementDesc;
   *(unsigned long*)pCurElement=(ulConvertStr2Num(szValue, &szEnd)&0xF)<<4;
@@ -464,7 +465,8 @@ SpecRev_Element(
       );
   *(unsigned long*)pCurElement|=ulConvertStr2Num(szEnd+1, &szEnd)&0xF;
 /*   printf("\tSpecRev_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 EApiStatusCode_t
 PNPID_Element(
@@ -473,6 +475,7 @@ PNPID_Element(
     char          *szValue
   )
 { 
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   unsigned int i=3;
   unsigned int uiCurChar;
   pElementDesc=pElementDesc;
@@ -494,7 +497,8 @@ PNPID_Element(
     *(unsigned long*)pCurElement|=uiCurChar - 'A'+1;
   }
 /*   printf("\tPNPID_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 
 

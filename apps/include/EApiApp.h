@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiApp.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiApp.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiApp.h 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -95,13 +95,15 @@
 #define EAPI_APP_RETURN_SUCCESS(func, desc)  \
 	do{\
   EAPI_FORMATED_MES('L', func, EAPI_RETURN_SUCCESS, desc );\
-  		return EAPI_STATUS_SUCCESS; \
+      EApiStatusCode=err; \
+      goto ExitSuccess; \
 	}while(0)
 
 #define EAPI_APP_RETURN_ERROR(func, err, desc)  \
 	do{ \
   	  EAPI_FORMATED_MES('E', func, err, desc );\
-  	  return err;\
+      EApiStatusCode=err; \
+      goto ErrorExit; \
 	}while(0)
 
 #define EAPI_APP_RETURN_ERROR_IF(func, exp, err, desc)  \
@@ -112,7 +114,7 @@
 #define EAPI_APP_RETURN_ERROR_IF_S(func, exp, err)  \
   if(exp)\
   {\
-    EAPI_APP_RETURN_ERROR(func, err, TEXT(#exp) );\
+    EAPI_APP_RETURN_ERROR(func, err, #exp );\
   }
 
 

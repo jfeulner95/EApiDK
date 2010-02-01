@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulI2C.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulI2C.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulI2C.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -114,6 +114,7 @@ EmulateEepromFS(
     __IN unsigned long ReadBCnt
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   
 #if (STRICT_VALIDATION>1)
         siFormattedMessage_M2(
@@ -227,6 +228,9 @@ EmulateEepromFS(
     CfgData->CurIndx+=ReadBCnt;
   }
   EAPI_LIB_RETURN_SUCCESS(EmulateEepromFS, "");
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 
@@ -240,6 +244,7 @@ EmulateCmdDevice(
     __IN unsigned long ReadBCnt
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
     unsigned long ReadBCnt2;
     CmdDesc_t *pCurCmd;
   
@@ -321,6 +326,9 @@ EmulateCmdDevice(
     }
   }
   EAPI_LIB_RETURN_SUCCESS(EmulateEepromFS, "");
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 #define bin_data DIDEEPROM
 #include "DIDData.h"
@@ -635,7 +643,8 @@ EApiI2CGetBusCapEmul(
     __OUT uint32_t *pMaxBlkLen
     )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(EmulatedInterfaces);i++)
   {
@@ -654,6 +663,9 @@ EApiI2CGetBusCapEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised I2C ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 /*
@@ -676,7 +688,8 @@ EApiI2CWriteReadEmul(
     __IN      uint32_t ReadBCnt
     )
 {
-  uint32_t i,i2;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i,i2;
   uint32_t LclAddr;
 
   for(i=0;i<ARRAY_SIZE(EmulatedInterfaces);i++)
@@ -744,5 +757,8 @@ EApiI2CWriteReadEmul(
       EAPI_STATUS_UNSUPPORTED  , 
       "Unrecognised I2C ID"
       );
+ErrorExit:
+/* ExitSuccess: */
+  return EApiStatusCode;
 }
 

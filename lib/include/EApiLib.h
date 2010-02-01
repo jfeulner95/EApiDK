@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiLib.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiLib.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiLib.h 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -110,13 +110,15 @@
 #define EAPI_LIB_RETURN_SUCCESS(func, desc)  \
 	do{\
   		EAPI_FORMATED_MES('L', func, EAPI_STATUS_SUCCESS, desc );\
-  		return EAPI_STATUS_SUCCESS; \
+  		EApiStatusCode=EAPI_STATUS_SUCCESS; \
+      goto ExitSuccess; \
 		}while(0)
 
 #define EAPI_LIB_RETURN_ERROR(func, err, desc) \
 	do{ \
   	  EAPI_FORMATED_MES('E', func, err, desc );\
-  	  return err;\
+  		EApiStatusCode=err; \
+      goto ErrorExit; \
 	}while(0)
 
 #define EAPI_LIB_RETURN_ERROR_IF(func, exp, err, desc)  \
@@ -154,7 +156,7 @@
     EAPI_FORMATED_MES('E', func, EAPI_STATUS_MORE_DATA, \
 					" pBuffer Overflow Prevented" #x ">" #y );\
     x=y;\
-    ErrorCode=EAPI_STATUS_MORE_DATA;\
+    EApiStatusCode=EAPI_STATUS_MORE_DATA;\
   }
 
 #endif /* _EAPILIB_H_ */

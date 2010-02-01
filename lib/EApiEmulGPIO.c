@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulGPIO.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulGPIO.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulGPIO.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -309,7 +309,8 @@ EApiGPIOGetLevelEmul(
     __OUT uint32_t *pLevel
     )
 {
-  uint32_t i,i2;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i,i2;
   uint32_t APIBitMask=1;
 
   for(i=0;i<ARRAY_SIZE(GPIOIDMapping);i++)
@@ -349,6 +350,9 @@ EApiGPIOGetLevelEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised GPIO ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -358,7 +362,8 @@ EApiGPIOSetLevelEmul(
   __IN uint32_t Level
   )
 {
-  uint32_t i,i2;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i,i2;
   uint32_t APIBitMask=1;
   for(i=0;i<ARRAY_SIZE(GPIOIDMapping);i++)
   {
@@ -420,6 +425,9 @@ EApiGPIOSetLevelEmul(
     EAPI_STATUS_UNSUPPORTED, 
     "Unrecognised GPIO ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -429,7 +437,8 @@ EApiGPIOGetDirectionEmul(
   __OUT uint32_t *pDirection
   )
 {
-  uint32_t i,i2;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i,i2;
   uint32_t APIBitMask=1;
 
   for(i=0;i<ARRAY_SIZE(GPIOIDMapping);i++)
@@ -468,6 +477,9 @@ EApiGPIOGetDirectionEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised GPIO ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -477,7 +489,8 @@ EApiGPIOSetDirectionEmul(
     __IN uint32_t Direction
     )
 {
-  uint32_t i,i2;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i,i2;
   uint32_t APIBitMask=1;
   for(i=0;i<ARRAY_SIZE(GPIOIDMapping);i++)
   {
@@ -542,6 +555,9 @@ EApiGPIOSetDirectionEmul(
     EAPI_STATUS_UNSUPPORTED, 
     "Unrecognised GPIO ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 
@@ -551,7 +567,8 @@ EApiGPIOGetDirectionCapsEmul(
   __OUTOPT  uint32_t *pOutputs
   )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(GPIOIDMapping);i++)
   {
@@ -567,6 +584,9 @@ EApiGPIOGetDirectionCapsEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised GPIO ID"
     );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 

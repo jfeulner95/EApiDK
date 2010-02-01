@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePApp.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EeePApp.h 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -46,10 +46,12 @@ extern "C" {
 #include <EeePArg.h>
 
 #define DO(x) \
+  do{ \
   EApiStatusCode=x;\
-  if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){ \
-    return EApiStatusCode;\
-  }
+    if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){ \
+      goto ErrorExit;\
+    }\
+  }while(0)
 
 /*
  * CPU Independent Multi Byte 

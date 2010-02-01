@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: BinFuncs.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: BinFuncs.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -125,7 +125,7 @@ siBin2Ascii(
     return StringPos;
 }
 
-void 
+EApiStatusCode_t
 PrintHexAsciiTableEx(
 	const void *   pcvBuffer	,
 	const size_t   stBufSize	,
@@ -134,7 +134,7 @@ PrintHexAsciiTableEx(
 	const unsigned cuiFlags
 	)
 {
-    
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
     size_t        stOffset;
     size_t        stOffsetBase;
     const uint8_t *pcu8Mem;
@@ -145,10 +145,11 @@ PrintHexAsciiTableEx(
     TCHAR  szAsciiBufer[100];
 
 
-    if(pcvBuffer==NULL){
-      EAPI_FORMATED_MES('E', PrintHexAsciiTableEx, EAPI_STATUS_INVALID_PARAMETER, TEXT("(pcvBuffer==NULL)"));
-      return ;
-    }
+    EAPI_APP_ASSERT_PARAMATER_NULL(
+        PrintHexAsciiTableEx,
+        EAPI_STATUS_INVALID_PARAMETER,
+         pcvBuffer
+        );
     if(pcvBase==NULL)
       pcvBase=pcvBuffer;
 
@@ -166,7 +167,7 @@ PrintHexAsciiTableEx(
     if(cuiFlags&HEXTBL_OFFSET_TITLE)
       EAPI_printf(TEXT("\n\tOFFSET = 0x%08lX, LENGTH = 0x%08lX\n"), (unsigned long)stOffset, (unsigned long)stBufSize);
 
-    if(stBufSize==0) return ;
+    if(stBufSize==0) goto ExitSucces;
 
     pcu8Mem=((uint8_t*)pcvBuffer) - (stOffset%stRowSize);
 
@@ -231,6 +232,9 @@ PrintHexAsciiTableEx(
       pcu8Mem+=stRowSize;
       EAPI_printf(TEXT("\n"));
     }
+ErrorExit:
+ExitSucces:
+  return EApiStatusCode;
 }
 
 void 
@@ -262,6 +266,7 @@ LclWriteFile(
     __IN const char *cszWriteType
   )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   FILE *LclFilePtr;
   EAPI_APP_ASSERT_PARAMATER_NULL(
       LclWriteFile,
@@ -291,7 +296,8 @@ LclWriteFile(
       EAPI_STATUS_WRITE_ERROR
     );
   fclose(LclFilePtr);
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t
@@ -302,6 +308,7 @@ LclReadFile(
     __IN  const char *cszReadType 
   )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   FILE *LclFilePtr;
   size_t stFileLen;
   EAPI_APP_ASSERT_PARAMATER_NULL(
@@ -353,7 +360,8 @@ LclReadFile(
   *pstReadBCnt=stFileLen;
   fclose(LclFilePtr);
 
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t 

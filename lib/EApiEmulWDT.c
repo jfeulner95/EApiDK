@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulWDT.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulWDT.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulWDT.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -72,10 +72,14 @@ EApiWDogGetCapEmul(
                                          */
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   *pMaxDelay        =MaxDelay;
   *pMaxEventTimeout =MaxEventTimeout;
   *pMaxResetTimeout =MaxResetTimeout;
   EAPI_LIB_RETURN_SUCCESS(EApiWDogGetCapEmul, "");
+/* ErrorExit: */
+ExitSuccess:
+  return EApiStatusCode;
 }
 EApiStatusCode_t 
 EApiWDogStartEmul(
@@ -88,6 +92,7 @@ EApiWDogStartEmul(
                                   */
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   EAPI_LIB_RETURN_ERROR_IF(
       EApiWDogStartEmul, 
       (WatchdogState==WATCHDOG_ENABLED), 
@@ -111,10 +116,14 @@ EApiWDogStartEmul(
   );
   WatchdogState=WATCHDOG_ENABLED;
   EAPI_LIB_RETURN_SUCCESS(EApiWDogStartEmul, "");
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 EApiStatusCode_t 
 EApiWDogTriggerEmul(void)
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   EAPI_LIB_RETURN_ERROR_IF(
       EApiWDogTriggerEmul, 
       (WatchdogState==WATCHDOG_DISABLED), 
@@ -126,15 +135,22 @@ EApiWDogTriggerEmul(void)
       EApiWDogTriggerEmul, 
       ""
       );
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 EApiStatusCode_t 
 EApiWDogStopEmul(void)
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   WatchdogState=WATCHDOG_DISABLED;
   EAPI_LIB_RETURN_SUCCESS(
       EApiWDogStopEmul, 
       ""
       );
+/* ErrorExit: */
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 

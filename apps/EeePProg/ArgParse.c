@@ -25,10 +25,10 @@
  *I
  *I  File Name            : ArgParse.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: ArgParse.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: ArgParse.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -284,6 +284,8 @@ CreateArgvArgcBuffer(
           psiArgc, 
           &siCharCnt
         );
+ErrorExit:
+  return EApiStatusCode;
 }
 
 EApiStatusCode_t
@@ -295,7 +297,7 @@ ParseArgsFile(
 {
   EApiStatusCode_t EApiStatusCode;
   signed int siArgc;
-  char**pszArgv;
+  char**pszArgv=NULL;
   char *szFileBuffer;
   size_t stFileSize;
   char ErrBuffer[200];
@@ -318,9 +320,10 @@ ParseArgsFile(
 
   DO(ParseArgs(siArgc - 1, pszArgv, pCmdDesc, stArgDescCnt));
 
+ErrorExit:
   if(pszArgv  !=NULL) free(pszArgv  );
   pszArgv=NULL;
-  return EAPI_STATUS_SUCCESS;
+  return EApiStatusCode;
 }
 
 
@@ -332,7 +335,7 @@ ParseSubArgs(
       ArgDesc_t *pArgDesc  
     )
 {
-  EApiStatusCode_t EApiStatusCode;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   while(stArgCount -- ){
     if(!(*psiArgc)--){
       printf("ERROR: Missing Required Argument (%s)\n", pArgDesc->cszHelp);
@@ -342,7 +345,8 @@ ParseSubArgs(
     DO(pArgDesc->Handle(pArgDesc, pArgDesc->pValue, **ppszArgv));
     ++pArgDesc;
   }
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 
 
@@ -354,7 +358,7 @@ ParseArgs(
     size_t    stArgDescCnt
     )
 {
-  EApiStatusCode_t EApiStatusCode;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   const char **pszCurArg=pszArgv;
   CmdDesc_t *pCurArgDesc;
   size_t stI;
@@ -426,7 +430,10 @@ ParseArgs(
     ++pszCurArg;
   }
 
-  return (uiSyntaxError?EAPI_STATUS_INVALID_PARAMETER:EAPI_STATUS_SUCCESS);
+  if(uiSyntaxError)
+  EApiStatusCode=EAPI_STATUS_INVALID_PARAMETER;
+ErrorExit:
+  return EApiStatusCode;
 }
 #if TEST_EEPARG
 

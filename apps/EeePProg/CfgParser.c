@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: CfgParser.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: CfgParser.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -97,8 +97,8 @@ PrintCfgFile(
     }
     pCfgBDesc++;
   }
+ErrorExit:
   return EApiStatusCode;
-
 }
 
 EApiStatusCode_t
@@ -132,8 +132,8 @@ CleanBlock(
       pCurElement->stElementCount=0;
       pCurElement++;
     }
+ErrorExit:
   return EApiStatusCode;
-
 }
 
 EApiStatusCode_t
@@ -158,8 +158,8 @@ CleanStruct(
     DO(CleanBlock(pCfgBDesc->pElementsDesc, pCfgBDesc->stElementCount));
     pCfgBDesc++;
   }
+ErrorExit:
   return EApiStatusCode;
-
 }
 #define MAX_LINE_LEN 2048
 EApiStatusCode_t
@@ -172,7 +172,7 @@ ParseCfgFile(
   FILE *pCfgFile;
   char LineBuffer[1024];
   TCHAR ErrorBuffer[1324];
-  EApiStatusCode_t EApiStatusCode;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   char *szName;
   char *szValue;
   size_t i;
@@ -347,6 +347,7 @@ ParseCfgFile(
   fclose(pCfgFile);
   
 
-  return EAPI_STATUS_SUCCESS;
+ErrorExit:
+  return EApiStatusCode;
 }
 

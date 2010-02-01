@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulBoardInfo.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 53 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulBoardInfo.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
+ *I  ID                   : $Id: EApiEmulBoardInfo.c 53 2010-02-01 16:15:48Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -75,8 +75,8 @@ EApiBoardGetStringAEmul(
     __INOUT uint32_t *pBufLen
     )
 {
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   uint32_t i;
-  uint32_t ErrorCode=EAPI_STATUS_SUCCESS;
   uint32_t BufLenSav;
 
   BufLenSav=*pBufLen;
@@ -95,7 +95,7 @@ EApiBoardGetStringAEmul(
         *pBufLen=(uint32_t)strlen(StringLookup[i].StringPtr)+1;
         if(BufLenSav<*pBufLen)
         {
-          ErrorCode=EAPI_STATUS_MORE_DATA;
+          EApiStatusCode=EAPI_STATUS_MORE_DATA;
         }
         else
         {
@@ -108,7 +108,7 @@ EApiBoardGetStringAEmul(
         }
         EAPI_LIB_RETURN_ERROR_IF(
 		EApiBoardGetStringAEmul, 
-		(ErrorCode==EAPI_STATUS_MORE_DATA), 
+		(EApiStatusCode==EAPI_STATUS_MORE_DATA), 
 		EAPI_STATUS_MORE_DATA  , 
 		"pBuffer Overrun Prevented"
 		);
@@ -123,6 +123,9 @@ EApiBoardGetStringAEmul(
 	EAPI_STATUS_UNSUPPORTED  , 
 	"Unrecognised String ID"
 	);
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
 /*
@@ -178,7 +181,8 @@ EApiBoardGetValueEmul(
     __OUT uint32_t *pValue
     )
 {
-  uint32_t i;
+  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  unsigned i;
 
   for(i=0;i<ARRAY_SIZE(ValueLookup);i++)
   {
@@ -193,5 +197,8 @@ EApiBoardGetValueEmul(
 			EAPI_STATUS_UNSUPPORTED  , 
 			"Unrecognised Value ID"
 		);
+ErrorExit:
+ExitSuccess:
+  return EApiStatusCode;
 }
 
