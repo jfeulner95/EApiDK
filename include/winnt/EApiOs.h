@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\winnt
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 57 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiOs.h 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 09:19:26 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EApiOs.h 57 2010-02-02 08:19:26Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -53,9 +53,9 @@ extern "C" {
 void EApiSleepus(unsigned long ms);
 #ifdef __cplusplus
 }
-#define EAPI_PRINTF_ARG(Format, Arg) 
 #endif
 
+#define EAPI_PRINTF_ARG(Format, Arg) 
 #define EAPI_EMUL_DELAY_NS(x) EApiSleepus(x/1000)
 
 #ifndef EApiSleep

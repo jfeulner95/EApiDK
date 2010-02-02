@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStr.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 57 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiAHStr.c 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 09:19:26 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EApiAHStr.c 57 2010-02-02 08:19:26Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -159,7 +159,7 @@ EApiAHGetString(
 
   EApiStatusCode=EApiBoardGetString(StringID, pString, &StringLenLcl);
   if(EAPI_STATUS_TEST_NOK(EApiStatusCode))
-      StringLenLcl=(uint32_t)EApiAHCreateErrorString(EApiStatusCode, pString, StringBufferLenBck);
+      StringLenLcl=(uint32_t)EApiAHCreateErrorString((uint32_t)EApiStatusCode, pString, StringBufferLenBck);
 #if (STRICT_VALIDATION>0)
   EAPI_APP_RETURN_ERROR_IF(
       EApiAHGetStringAlloc, 

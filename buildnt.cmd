@@ -27,10 +27,10 @@ GOTO Skip_Header
 @REM I
 @REM I  File Name            : buildnt.cmd
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 51 $
+@REM I  Last committed       : $Revision: 57 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
-@REM I  ID                   : $Id: buildnt.cmd 51 2010-02-01 07:48:20Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-02-02 09:19:26 +0100 (Di, 02. Feb 2010) $
+@REM I  ID                   : $Id: buildnt.cmd 57 2010-02-02 08:19:26Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -49,6 +49,10 @@ SET APPSBASE=%~dp0apps
 SET EAPILIBBASE=%~dp0lib
 SET VERBOSE=1
 IF NOT 1%2==1 SET TARGETARCHS="%~2"
+IF /I "%~2"=="x86" SET TARGETARCHS=""
+IF /I "%~2"=="i386" SET TARGETARCHS=""
+IF /I "%~2"=="x64" SET TARGETARCHS="AMD64"
+IF /I "%~2"=="IA64" SET TARGETARCHS="I64"
 ECHO TARGETARCHS=%TARGETARCHS%
 
 IF /I "%~1"=="BUILD_APPS" GOTO BUILD_APPS
@@ -148,10 +152,11 @@ REM ########################################################################
 :BUILD_APP_S 
   SET APPHELPFILES="EApiAHI2C.c" "EApiAHStorage.c" "EApiAHStr.c" "DbgChk.c"
   call :CopyFiles "%APPSBASE%\common" "%APPSBASE%\%~1\WINNT" %APPHELPFILES%
+  call :CopyFiles "%APPSBASE%\%~1"    "%APPSBASE%\%~1\WINNT" %~2
   for %%a in (%TARGETARCHS%) do @(
     call :BUILD_APP_GENERIC "%~1" %2 %%a
   )
-  call :DeleteFiles "%APPSBASE%\%~1\WINNT" %APPHELPFILES% %LCLFILES% "%TARGETLIB%.lib"
+  call :DeleteFiles "%APPSBASE%\%~1\WINNT" %APPHELPFILES% %~2 "%TARGETLIB%.lib"
   SET APPHELPFILES=
   call :RunProg "%~dp0BuildTools\WINNT\BuildInc.cmd" "%APPSBASE%\%~1\AppVer.h" "APP_BUILD"
   GOTO :EOF
@@ -191,11 +196,15 @@ REM ########################################################################
 
 :BUILD_LIB_GENERIC
   call :SETUP_VARS %1
+  call :CleanBuildFolder "%EAPILIBBASE%\WINNT\objchk_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%" 
+  call :CleanBuildFolder "%EAPILIBBASE%\WINNT\objfre_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%"
   
   call :BuildProject checked  "%EAPILIBBASE%\WINNT"   
   IF ERRORLEVEL 1 GOTO Error_Exit
+  IF EXIST "%EAPILIBBASE%\WINNT\buildchk_%TARGETOSB%_%TARGETARCHENV%.err" GOTO Error_Exit
   call :BuildProject free     "%EAPILIBBASE%\WINNT"   
   IF ERRORLEVEL 1 GOTO Error_Exit
+  IF EXIST "%EAPILIBBASE%\WINNT\buildfre_%TARGETOSB%_%TARGETARCHENV%.err" GOTO Error_Exit
 
   call :CopyFiles  "%EAPILIBBASE%\WINNT\objchk_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%" "%APPSBASE%\bin\winnt\%TARGETARCHENV%\chk" %TARGETLIB%.dll %TARGETLIB%.pdb
   call :CopyFiles  "%EAPILIBBASE%\WINNT\objfre_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%" "%APPSBASE%\bin\winnt\%TARGETARCHENV%\fre" %TARGETLIB%.dll %TARGETLIB%.pdb
@@ -207,24 +216,22 @@ REM ########################################################################
 
 :BUILD_APP_GENERIC
   call :SETUP_VARS %3
-  SET LCLFILES=
-  :LoopFiles
-  IF "%~2"=="" GOTO Continue
-  SET LCLFILES=%LCLFILES% %2 
-  shift /2
-  goto LoopFiles
-  :Continue
-  call :CopyFiles "%APPSBASE%\%~1"    "%APPSBASE%\%~1\WINNT" %LCLFILES%
+
+  call :CopyFiles "%APPSBASE%\%~1"    "%APPSBASE%\%~1\WINNT" %~2
   SET ERRORM= ERROR: Build Lib First missing "lib\winnt\%TARGETARCHENV%\%TARGETLIB%.lib"
   IF NOT EXIST "%EAPILIBBASE%\lib\winnt\%TARGETARCHENV%\%TARGETLIB%.lib" GOTO ERRORM
+  call :CleanBuildFolder "%APPSBASE%\%~1\WINNT\objchk_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%"
+  call :CleanBuildFolder "%APPSBASE%\%~1\WINNT\objfre_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%"
   call :CopyFiles "%EAPILIBBASE%\lib\winnt\%TARGETARCHENV%"  "%APPSBASE%\%~1\WINNT" "%TARGETLIB%.lib"
 
   call :BuildProject checked  "%APPSBASE%\%~1\WINNT"
   IF ERRORLEVEL 1 GOTO Error_Exit
+  IF EXIST "%APPSBASE%\%~1\WINNT\buildchk_%TARGETOSB%_%TARGETARCHENV%.err" GOTO Error_Exit
 
 
   call :BuildProject free     "%APPSBASE%\%~1\WINNT"
   IF ERRORLEVEL 1 GOTO Error_Exit
+  IF EXIST "%APPSBASE%\%~1\WINNT\buildfre_%TARGETOSB%_%TARGETARCHENV%.err" GOTO Error_Exit
 
   call :CopyFiles  "%APPSBASE%\%~1\WINNT\objfre_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%" "%APPSBASE%\bin\winnt\%TARGETARCHENV%\fre" %~1.exe %~1.pdb
   call :CopyFiles  "%APPSBASE%\%~1\WINNT\objchk_%TARGETOSB%_%TARGETARCHENV%\%TARGETARCH%" "%APPSBASE%\bin\winnt\%TARGETARCHENV%\chk" %~1.exe %~1.pdb
@@ -261,6 +268,17 @@ REM ########################################################################
     if "%~3"=="" GOTO :EOF
     GOTO CopyLoop
 
+:CleanBuildFolder 
+  ECHO #
+  ECHO #
+  ECHO #
+  ECHO # Cleaning %1
+  ECHO #
+  ECHO #
+  ECHO #
+  CALL :DeleteFiles %1 *.obj *.exe *.lib *.res *.asm
+  GOTO :EOF
+
 :DeleteFiles
   :DeleteLoop
     IF NOT EXIST "%~1\%~2" GOTO TryNext
@@ -288,7 +306,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 51 $
+  ECHO I  %~nx0                                              $$Rev: 57 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

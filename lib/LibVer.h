@@ -1,37 +1,37 @@
 /*    
 *<KHeader>    
 *+=========================================================================    
-*I Project Name: EApiDK Embedded Application Development Kit                  
+*I Project Name: EApiDK Embedded Application Development Kit                      
 *+=========================================================================    
-*I $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/lib/LibVer.h $                  
+*I $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/lib/LibVer.h $                      
 *+=========================================================================    
-*I Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH                  
-*I Author: John Kearney,                  John.Kearney@kontron.com                  
+*I Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH                      
+*I Author: John Kearney,                  John.Kearney@kontron.com                      
 *I    
-*I License: All rights reserved. This program and the accompanying                  
-*I materials are licensed and made available under the                  
-*I terms and conditions of the BSD License which                  
-*I accompanies this distribution. The full text of the                  
-*I license may be found at                                                   
+*I License: All rights reserved. This program and the accompanying                      
+*I materials are licensed and made available under the                      
+*I terms and conditions of the BSD License which                      
+*I accompanies this distribution. The full text of the                      
+*I license may be found at                                                       
 *I    
 *I    
 *I    
 *I http://opensource.org/licenses/bsd-license.php   
 *I    
-*I THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN                  
-*I 'AS IS' BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF                  
-*I ANY KIND, EITHER EXPRESS OR IMPLIED.                                      
+*I THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN                      
+*I 'AS IS' BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS OF                      
+*I ANY KIND, EITHER EXPRESS OR IMPLIED.                                          
 *I    
-*I Description: Auto Created for LibVer.h                                                 
+*I Description: Auto Created for LibVer.h                                                     
 *I    
 *+-------------------------------------------------------------------------    
 *I    
-*I File Name : LibVer.h                  
-*I File Location : lib                  
-*I Last committed : $Revision: 55 $                  
-*I Last changed by      : $Author: dethrophes $                  
-*I Last changed date    : $Date: 2010-02-02 04:21:00 +0100 (Di, 02. Feb 2010) $                  
-*I ID : $Id: LibVer.h 55 2010-02-02 03:21:00Z dethrophes $                  
+*I File Name : LibVer.h                      
+*I File Location : lib                      
+*I Last committed : $Revision: 57 $                      
+*I Last changed by      : $Author: dethrophes $                      
+*I Last changed date    : $Date: 2010-02-02 09:19:26 +0100 (Di, 02. Feb 2010) $                      
+*I ID : $Id: LibVer.h 57 2010-02-02 08:19:26Z dethrophes $                      
 *I    
 *+=========================================================================    
 *</KHeader>    
@@ -41,5 +41,5 @@
 /****************************************************************************/    
 #define LIB_VERSION 0  
 #define LIB_REVISION 5  
-#define LIB_BUILD 921
+#define LIB_BUILD 925  
 #endif    
