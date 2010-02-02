@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiApp.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 54 $
+ *I  Last committed       : $Revision: 55 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiApp.h 54 2010-02-01 21:19:38Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 04:21:00 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EApiApp.h 55 2010-02-02 03:21:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -86,7 +86,7 @@
 #if (STRICT_VALIDATION>0)
 #define EAPI_FORMATED_MES(type, func, err, desc) \
     siFormattedMessage_SC(type, __FILE__, #func, __LINE__, \
-        (EApiStatusCode_t)(((uintptr_t)(err))&UINT32_MAX), "%s\n", desc );
+        (EApiStatusCode_t)((((uintptr_t)(err))&UINT32_MAX)), "%s\n", desc );
 
 #else
 #define EAPI_FORMATED_MES(type, func, err, desc)
@@ -94,8 +94,8 @@
 
 #define EAPI_APP_RETURN_SUCCESS(func, desc)  \
 	do{\
-		EAPI_FORMATED_MES('L', func, EAPI_RETURN_SUCCESS, desc );\
 		EApiStatusCode=err; \
+		EAPI_FORMATED_MES('L', func, EAPI_RETURN_SUCCESS, desc );\
 		goto ExitSuccess; \
 	}while(0)
 

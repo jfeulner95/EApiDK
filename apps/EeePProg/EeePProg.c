@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePProg.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 55 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePProg.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 04:21:00 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EeePProg.c 55 2010-02-02 03:21:00Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -489,7 +489,6 @@ FreeFilePtr(
 // Create Block Content
 */
 int 
-__cdecl 
 main(
     signed int argc,
     const char **argv
