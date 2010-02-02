@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiInitLib.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 55 $
+ *I  Last committed       : $Revision: 56 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 04:21:00 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiInitLib.c 55 2010-02-02 03:21:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EApiInitLib.c 56 2010-02-02 04:11:41Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -37,7 +37,7 @@
   #include <stdio.h>
 FILE *OutputStream=NULL;
 
-void DebugMsg(__IN const char *const fmt, ...)
+void __cdecl DebugMsg(__IN const char *const fmt, ...)
 {
   va_list arg;
   va_start(arg, fmt);

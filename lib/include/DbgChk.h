@@ -25,17 +25,16 @@
  *I
  *I  File Name            : DbgChk.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 55 $
+ *I  Last committed       : $Revision: 56 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 04:21:00 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: DbgChk.h 55 2010-02-02 03:21:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: DbgChk.h 56 2010-02-02 04:11:41Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
  */
 #ifndef _DBGCHK_H_    
 #define _DBGCHK_H_
-
 
 
 #ifdef __cplusplus
@@ -45,6 +44,7 @@ extern "C" {
 
 
 signed int
+__cdecl
 siFormattedMessage_M2(
     char          cType       ,
     const char *  cszFileName ,   
@@ -53,10 +53,12 @@ siFormattedMessage_M2(
     const char *  csz2ndValue ,   
     const char *  cszFormat   ,   
     ...
-    );
+    ) 
+EAPI_PRINTF_ARG(6, 7);
 
 
 signed int
+__cdecl
 siFormattedMessage_SC(
     char          cType       ,
     const char *  cszFileName ,   
@@ -65,7 +67,8 @@ siFormattedMessage_SC(
     EApiStatusCode_t  StatusCode  ,   
     const char *  cszFormat   ,   
     ...
-    );
+    )
+EAPI_PRINTF_ARG (6, 7);
 
 
 #ifdef __cplusplus

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 54 $
+ *I  Last committed       : $Revision: 56 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: BinFuncs.c 54 2010-02-01 21:19:38Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: BinFuncs.c 56 2010-02-02 04:11:41Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -358,6 +358,7 @@ LclReadFile(
 #else
   stFileLen=fread(*pvBuffer, sizeof(uint8_t), stFileLen, LclFilePtr);
 #endif
+  *pstReadBCnt=stFileLen;
   fclose(LclFilePtr);
 
 ErrorExit:

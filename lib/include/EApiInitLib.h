@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiInitLib.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 55 $
+ *I  Last committed       : $Revision: 56 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 04:21:00 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiInitLib.h 55 2010-02-02 03:21:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EApiInitLib.h 56 2010-02-02 04:11:41Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -46,6 +46,7 @@ extern "C" {
 #  define EAPI_DBG_USE_OUTPUT_FILE 1
 #endif
 void 
+__cdecl 
 DebugMsg( 
     __IN const char *const fmt, 
     ...
