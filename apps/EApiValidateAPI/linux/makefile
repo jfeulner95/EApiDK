@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : apps\EApiValidateAPI\linux
-#I  Last committed       : $Revision: 54 $
+#I  Last committed       : $Revision: 58 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
-#I  ID                   : $Id: makefile 54 2010-02-01 21:19:38Z dethrophes $
+#I  Last changed date    : $Date: 2010-02-02 09:54:31 +0100 (Di, 02. Feb 2010) $
+#I  ID                   : $Id: makefile 58 2010-02-02 08:54:31Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -56,9 +56,9 @@ BinFolder=../../bin/$(ARCH)/$(MACH)/rel
 DBinFolder=../../bin/$(ARCH)/$(MACH)/dbg
 BuildDir=./build/$(MACH)/rel
 DBuildDir=./build/$(MACH)/dbg
-PrgFldr=..
-CmnFldr=../../common
-EAPI_INC=../../../include/EApi.h
+PrgFldr=$(join $(shell pwd)/,..)
+CmnFldr=$(join $(shell pwd)/,../../common)
+EAPI_INC=$(join $(shell pwd)/,../../../include/EApi.h)
 GET_VAR_FROM_CFILE=$(shell grep "$(2)" $(1) |sed -rn "s/^\#\s*define\s+$2\s+([0-9]+).*/\1/p")
 EAPI_VERSION=$(call GET_VAR_FROM_CFILE,$(EAPI_INC),EAPI_VER)
 EAPI_REVISION=$(call GET_VAR_FROM_CFILE,$(EAPI_INC),EAPI_REVISION)
