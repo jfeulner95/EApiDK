@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAPI.cpp
  *I  File Location        : lib
- *I  Last committed       : $Revision: 54 $
+ *I  Last committed       : $Revision: 59 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiAPI.cpp 54 2010-02-01 21:19:38Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-02 09:56:54 +0100 (Di, 02. Feb 2010) $
+ *I  ID                   : $Id: EApiAPI.cpp 59 2010-02-02 08:56:54Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -114,7 +114,7 @@ EApiI2CWriteReadRaw(
           "EApiI2CWriteTransfer",
           __LINE__              ,
           "Info"                ,
-          "ADDR=%02hhX WriteBCnt=%04"PRIX32
+          "ADDR=%02"PRIX8" WriteBCnt=%04"PRIX32
           " RBufLen=%04"PRIX32" WriteBCnt=%04"PRIX32
           " ReadBCnt=%04"PRIX32" %08"PRIX32"\n", 
           Addr, WriteBCnt, RBufLen, WriteBCnt, ReadBCnt, 

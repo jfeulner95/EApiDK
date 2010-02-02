@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : lib\linux
-#I  Last committed       : $Revision: 51 $
+#I  Last committed       : $Revision: 59 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
-#I  ID                   : $Id: makefile 51 2010-02-01 07:48:20Z dethrophes $
+#I  Last changed date    : $Date: 2010-02-02 09:56:54 +0100 (Di, 02. Feb 2010) $
+#I  ID                   : $Id: makefile 59 2010-02-02 08:56:54Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -53,12 +53,13 @@ AR = ar
 RANLIB = ranlib
 ARFLAGS = -ruv
 InstallDir=/usr/lib
+InstallDir=/usr/lib
 
 BinFolder=../../apps/bin/$(ARCH)/$(MACH)/rel
 DBinFolder=../../apps/bin/$(ARCH)/$(MACH)/dbg
 BuildDir=./build/$(MACH)/rel
 DBuildDir=./build/$(MACH)/dbg
-PrgFldr=..
+PrgFldr=$(join $(shell pwd)/, ..)
 OalFldr=.
 EAPI_INC=../../include/EApi.h
 GET_VAR_FROM_CFILE=$(shell grep "$(2)" $(1) |sed -rn "s/^\#\s*define\s+$2\s+([0-9]+).*/\1/p")
