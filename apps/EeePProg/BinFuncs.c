@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 61 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: BinFuncs.c 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-03-01 00:31:47 +0100 (Mo, 01. Mrz 2010) $
+ *I  ID                   : $Id: BinFuncs.c 61 2010-02-28 23:31:47Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -285,11 +285,12 @@ LclWriteFile(
     );
 
   LclFilePtr=fopen(cszFilename, cszWriteType);
-  EAPI_APP_ASSERT_PARAMATER_NULL(
-      LclWriteFile,
-      EAPI_STATUS_WRITE_ERROR,
-      LclFilePtr
-    );
+  if(LclFilePtr==NULL){
+    EApiStatusCode=EAPI_STATUS_WRITE_ERROR;
+    siFormattedMessage_SC('L', __FILE__, "LclWriteFile", __LINE__, EApiStatusCode,
+        "Opening File %s(%s)\n", cszFilename, cszWriteType);
+    return EApiStatusCode;
+  }
   EAPI_APP_RETURN_ERROR_IF_S(
       LclWriteFile,
       (stWriteBCnt!=fwrite(pcvBuffer, sizeof(uint8_t), stWriteBCnt, LclFilePtr)),
@@ -328,11 +329,12 @@ LclReadFile(
     );
   *pstReadBCnt=0;
   LclFilePtr=fopen(cszFilename, cszReadType);
-  EAPI_APP_ASSERT_PARAMATER_NULL(
-      LclReadFile,
-      EAPI_STATUS_READ_ERROR,
-      LclFilePtr
-    );
+  if(LclFilePtr==NULL){
+    EApiStatusCode=EAPI_STATUS_READ_ERROR;
+    siFormattedMessage_SC('L', __FILE__, "LclReadFile", __LINE__, EApiStatusCode,
+        "Opening File %s(%s)\n", cszFilename, cszReadType);
+    return EApiStatusCode;
+  }
 
   fseek(LclFilePtr, 0, SEEK_END);
   stFileLen=ftell(LclFilePtr);

@@ -28,10 +28,10 @@
 *I    
 *I File Name : LibVer.h                         
 *I File Location : lib                         
-*I Last committed : $Revision: 60 $                         
+*I Last committed : $Revision: 61 $                         
 *I Last changed by      : $Author: dethrophes $                         
-*I Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $                         
-*I ID : $Id: LibVer.h 60 2010-02-28 20:53:20Z dethrophes $                         
+*I Last changed date    : $Date: 2010-03-01 00:31:47 +0100 (Mo, 01. Mrz 2010) $                         
+*I ID : $Id: LibVer.h 61 2010-02-28 23:31:47Z dethrophes $                         
 *I    
 *+=========================================================================    
 *</KHeader>    
@@ -41,5 +41,5 @@
 /****************************************************************************/    
 #define LIB_VERSION 0  
 #define LIB_REVISION 5  
-#define LIB_BUILD 936  
+#define LIB_BUILD 944
 #endif    
