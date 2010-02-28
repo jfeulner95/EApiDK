@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 30 $
+ *I  Last committed       : $Revision: 60 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 08:44:00 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: StrFuncs.h 30 2010-01-25 07:44:00Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+ *I  ID                   : $Id: StrFuncs.h 60 2010-02-28 20:53:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -34,27 +34,48 @@ extern "C" {
 #endif
 
 #define iswhitespace(x) ((x==' ')||(x=='\t'))
-#define iseol(x) (x=='\0')
-#define isdecimal(x) ((x>='0')&&(x<='9'))
-#define ishex(x) (isdecimal(x)||(x>='A')&&(x<='F')||(x>='a')&&(x<='f'))
-#define isoctal(x)   ((x>='0')&&(x<='7'))
-#define isbinary(x)  ((x>='0')&&(x<='1'))
+#define iseos(x)        ((x=='\0'))
+#define iseol(x)        ((x=='\n')||(x=='\r'))
+#define isdecimal(x)    ((x>='0')&&(x<='9'))
+#define ishex(x)        (isdecimal(x)||(x>='A')&&(x<='F')||(x>='a')&&(x<='f'))
+#define isoctal(x)      ((x>='0')&&(x<='7'))
+#define isbinary(x)     ((x=='0')||(x=='1'))
 
-void 
+char *
 skipWhiteSpaces(
-        char **const pcszStr
-        );
+    const char *pcszStr
+  );
 
 void 
 stripWhiteSpaces(
-        char *const pszStr
-        );
+    char *const pszStr
+  );
 
-unsigned long 
-ulConvertStr2Num(
-    const char *  pcszStr, 
-    char **       pcszEnd
+typedef struct StrDescElement_s{
+  const char *pcszSymbol;
+  const unsigned int cuiValue;
+}StrDescElement_t;
+
+typedef struct StrDesc_s{
+  const unsigned int cuiCount;
+  const StrDescElement_t *pcDesc;
+}StrDesc_t;
+#define STR_DESC(name, Elements) \
+StrDesc_t name[]={ ARRAY_SIZE(Elements), Elements}
+ 
+char * 
+szFindStr(
+    __IN     const char             *szStr,
+    __IN     const StrDesc_t        *pDesc,
+    __OUTOPT const StrDescElement_t**pElement
     );
+
+char *
+strrstr(
+    __IN const char *cszString,
+    __IN const char *cszSearchString
+    );
+
 
 
 #ifdef __cplusplus

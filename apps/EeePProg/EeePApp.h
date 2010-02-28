@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 60 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePApp.h 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+ *I  ID                   : $Id: EeePApp.h 60 2010-02-28 20:53:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -42,6 +42,7 @@ extern "C" {
 #include <EeeP.h>
 #include <EeePDB.h>
 #include <StrFuncs.h>
+#include <Str2Value.h>
 #include <EeePCfg.h>
 #include <EeePArg.h>
 

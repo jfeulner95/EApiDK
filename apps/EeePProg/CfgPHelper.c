@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgPHelper.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 60 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: CfgPHelper.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+ *I  ID                   : $Id: CfgPHelper.c 60 2010-02-28 20:53:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -338,7 +338,7 @@ GUID_Element(
   uint16_t Part2[2];
   char     Short[3];
   pElementDesc=pElementDesc;
-  skipWhiteSpaces(&szValue);
+  szValue=skipWhiteSpaces(szValue);
   stripWhiteSpaces(szValue);
   /*0000000000111111111122222222223333333333
    *0123456789012345678901234567890123456789
@@ -391,7 +391,9 @@ Number_Element(
   )
 { 
   EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
-  *(unsigned long*)pCurElement=ulConvertStr2Num(szValue, NULL);
+  
+  DO(ParseAsciiEqu_VA(szValue, pCurElement, (signed int)pElementDesc->cstElementSize));
+
   
   if(pElementDesc->pExtraInfo!=NULL){
     EApiStatusCode=RangeCheckAny(
@@ -404,6 +406,7 @@ Number_Element(
 /*   }else{ */
 /*     printf("\tNumber_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
   }
+ErrorExit:
   return EApiStatusCode;
 }
 
@@ -415,7 +418,7 @@ I2C_EEPROM_Addr(
   )
 { 
   pElementDesc=pElementDesc;
-  *(unsigned long*)pCurElement=ulConvertStr2Num(szValue, NULL);
+  *(unsigned long*)pCurElement=ulConvertStr2NumEx(szValue, NULL);
   if((*(unsigned long*)pCurElement<=0xAE)&&(*(unsigned long*)pCurElement>=0xA0)&&!(*(unsigned long*)pCurElement&1)){
 /*     printf("\tI2C_EEPROM_Addr = 0x%02lX, %s\n", *pCurElement, szValue); */
     return EAPI_STATUS_SUCCESS;
@@ -432,7 +435,7 @@ Token_Element(
   )
 { 
   EApiStatusCode_t EApiStatusCode;
-  skipWhiteSpaces(&szValue);
+  szValue=skipWhiteSpaces(szValue);
   stripWhiteSpaces(szValue);
   EApiStatusCode=GetTokenValue(
       ((TokenListDesc_t*)pElementDesc->pExtraInfo), 
@@ -457,13 +460,13 @@ SpecRev_Element(
   EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   char *szEnd;
   pElementDesc=pElementDesc;
-  *(unsigned long*)pCurElement=(ulConvertStr2Num(szValue, &szEnd)&0xF)<<4;
+  *(unsigned long*)pCurElement=(ulConvertStr2NumEx(szValue, &szEnd)&0xF)<<4;
   EAPI_APP_RETURN_ERROR_IF_S(
       SpecRev_Element,
       (*szEnd!='.'),
       EAPI_STATUS_ERROR
       );
-  *(unsigned long*)pCurElement|=ulConvertStr2Num(szEnd+1, &szEnd)&0xF;
+  *(unsigned long*)pCurElement|=ulConvertStr2NumEx(szEnd+1, &szEnd)&0xF;
 /*   printf("\tSpecRev_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
 ErrorExit:
   return EApiStatusCode;

@@ -24,10 +24,10 @@
 #I
 #I  File Name            : makefile
 #I  File Location        : lib\linux
-#I  Last committed       : $Revision: 59 $
+#I  Last committed       : $Revision: 60 $
 #I  Last changed by      : $Author: dethrophes $
-#I  Last changed date    : $Date: 2010-02-02 09:56:54 +0100 (Di, 02. Feb 2010) $
-#I  ID                   : $Id: makefile 59 2010-02-02 08:56:54Z dethrophes $
+#I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+#I  ID                   : $Id: makefile 60 2010-02-28 20:53:20Z dethrophes $
 #I
 #+=========================================================================
 #</KHeader>
@@ -52,7 +52,6 @@ endif
 AR = ar
 RANLIB = ranlib
 ARFLAGS = -ruv
-InstallDir=/usr/lib
 InstallDir=/usr/lib
 
 BinFolder=../../apps/bin/$(ARCH)/$(MACH)/rel

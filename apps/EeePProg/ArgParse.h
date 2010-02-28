@@ -18,10 +18,10 @@
  *I
  *I  File Name            : ArgParse.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 27 $
+ *I  Last committed       : $Revision: 60 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-25 04:21:51 +0100 (Mo, 25. Jan 2010) $
- *I  ID                   : $Id: ArgParse.h 27 2010-01-25 03:21:51Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+ *I  ID                   : $Id: ArgParse.h 60 2010-02-28 20:53:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -47,6 +47,8 @@ typedef struct CmdDesc_s{
   const char *cszHelp;
   ArgDesc_t  *pArgs;
   size_t     stArgs;
+  void *     pArgData;
+  EApiStatusCode_t (*handler)(void *pArgsData);
 }CmdDesc_t;
 
 typedef EApiStatusCode_t CmdArgHandler_t(

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : Smbios.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 60 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: Smbios.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+ *I  ID                   : $Id: Smbios.h 60 2010-02-28 20:53:20Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -174,6 +174,9 @@ typedef struct ChassisInfo_s{
     uint8_t CElementSize   ; /* 0x16 Contained Element Size  */   
     CCElement_t CElement[1]; /* 0x17 Contained Element(s) */   
 }ChassisInfo_t;
+
+
+#define SMBIOS_MIN_BLOCK_LENGTH (sizeof(SmbiosHdr_t)+2)
 
 #pragma pack(pop)   /* restore original alignment from stack */
 

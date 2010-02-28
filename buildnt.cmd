@@ -27,10 +27,10 @@ GOTO Skip_Header
 @REM I
 @REM I  File Name            : buildnt.cmd
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 57 $
+@REM I  Last committed       : $Revision: 60 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-02-02 09:19:26 +0100 (Di, 02. Feb 2010) $
-@REM I  ID                   : $Id: buildnt.cmd 57 2010-02-02 08:19:26Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
+@REM I  ID                   : $Id: buildnt.cmd 60 2010-02-28 20:53:20Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -86,7 +86,7 @@ IF /I "%~1"=="BUILD_LIB" GOTO Exit
   GOTO :EOF
 
 :BUILD_APP2
-  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c CfgParser.c CfgPHelper.c ArgParse.c TokenFunc.c RangeFunc.c"
+  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c Str2Value.c CfgParser.c CfgPHelper.c ArgParse.c TokenFunc.c RangeFunc.c"
   GOTO :EOF
 
 :PACK_BUILD
@@ -306,7 +306,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 57 $
+  ECHO I  %~nx0                                              $$Rev: 60 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:
@@ -339,7 +339,6 @@ REM ########################################################################
   SET EAPILIBBASE=
   SET APPHELPFILES=
   SET LIBFILES=
-  SET LCLFILES=
 
 :Return
 
