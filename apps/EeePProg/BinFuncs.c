@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 61 $
+ *I  Last committed       : $Revision: 62 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-03-01 00:31:47 +0100 (Mo, 01. Mrz 2010) $
- *I  ID                   : $Id: BinFuncs.c 61 2010-02-28 23:31:47Z dethrophes $
+ *I  Last changed date    : $Date: 2010-03-01 00:56:30 +0100 (Mo, 01. Mrz 2010) $
+ *I  ID                   : $Id: BinFuncs.c 62 2010-02-28 23:56:30Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -289,7 +289,7 @@ LclWriteFile(
     EApiStatusCode=EAPI_STATUS_WRITE_ERROR;
     siFormattedMessage_SC('L', __FILE__, "LclWriteFile", __LINE__, EApiStatusCode,
         "Opening File %s(%s)\n", cszFilename, cszWriteType);
-    return EApiStatusCode;
+    goto ErrorExit;
   }
   EAPI_APP_RETURN_ERROR_IF_S(
       LclWriteFile,
@@ -333,7 +333,7 @@ LclReadFile(
     EApiStatusCode=EAPI_STATUS_READ_ERROR;
     siFormattedMessage_SC('L', __FILE__, "LclReadFile", __LINE__, EApiStatusCode,
         "Opening File %s(%s)\n", cszFilename, cszReadType);
-    return EApiStatusCode;
+    goto ErrorExit;
   }
 
   fseek(LclFilePtr, 0, SEEK_END);
