@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 61 $
+ *I  Last committed       : $Revision: 65 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-03-01 00:31:47 +0100 (Mo, 01. Mrz 2010) $
- *I  ID                   : $Id: Str2Value.c 61 2010-02-28 23:31:47Z dethrophes $
+ *I  Last changed date    : $Date: 2010-03-01 03:11:52 +0100 (Mo, 01. Mrz 2010) $
+ *I  ID                   : $Id: Str2Value.c 65 2010-03-01 02:11:52Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -631,7 +631,7 @@ ParseAsciiEqu_1(
       *szEndBracket='\0';
       DO(ParseAsciiEqu_cmn(cAS, szStartBracket+1, &CurValue));
       stSubLen=szEndBracket - szStartBracket;
-      EApiSprintfA( szStartBracket, stSubLen+1, "%*lld", stSubLen, CurValue);
+      EApiSprintfA( szStartBracket, stSubLen+1, "%*lld", ((signed int)stSubLen), CurValue);
       *szEndBracket=' ';
     }
     else

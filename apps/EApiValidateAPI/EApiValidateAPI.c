@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiValidateAPI.c
  *I  File Location        : apps\EApiValidateAPI
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 65 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiValidateAPI.c 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-03-01 03:11:52 +0100 (Mo, 01. Mrz 2010) $
+ *I  ID                   : $Id: EApiValidateAPI.c 65 2010-03-01 02:11:52Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -50,6 +50,20 @@ EApiGetErrorStringA(
     __OUT const char  **const pszString     , 
     __IN EApiStatusCode_t StatusCode
     );
+
+signed int
+__cdecl
+siFFormattedMessage_SC(
+    FILE       *  OutStream   ,
+    char          cType       ,
+    const char *  cszFileName ,   
+    const char *  cszFuncName ,   
+    unsigned int  uiLineNum   ,
+    EApiStatusCode_t  StatusCode  ,   
+    const char *  cszFormat   ,   
+    ...
+    )
+EAPI_PRINTF_ARG(7, 8);
 
 signed int
 __cdecl
