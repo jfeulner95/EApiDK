@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 69 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EeePDB.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-19 01:06:31 +0200 (Sa, 19. Jun 2010) $
+ *I  ID                   : $Id: EeePDB.c 69 2010-06-18 23:06:31Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -643,7 +643,7 @@ EeePSetCRC(
     DO(CRC_CCITT.bytes(
                 pContext, 
         BufferMap.pCmnHdr, 
-        EAPI_GET_PTR_OFFSET(BufferMap.pEeePCRCBlock, BufferMap.pCmnHdr)
+        EAPI_GET_PTR_OFFSET(BufferMap.pEeePCRCBlock->CrC16, BufferMap.pCmnHdr)
         ));
     DO(CRC_CCITT.fini(&pContext, BufferMap.pEeePCRCBlock->CrC16));
 
@@ -678,7 +678,7 @@ EeePCheckCRC(
   DO(CRC_CCITT.bytes(
                 pContext, 
                 BufferMap.pCmnHdr, 
-                EAPI_GET_PTR_OFFSET(BufferMap.pEeePCRCBlock, BufferMap.pCmnHdr)
+                EAPI_GET_PTR_OFFSET(BufferMap.pEeePCRCBlock->CrC16, BufferMap.pCmnHdr)
         ));
   DO(CRC_CCITT.verify(&pContext, BufferMap.pEeePCRCBlock->CrC16));
 
