@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulGPIO.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulGPIO.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiEmulGPIO.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -350,8 +350,8 @@ EApiGPIOGetLevelEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised GPIO ID"
     );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 
@@ -425,8 +425,8 @@ EApiGPIOSetLevelEmul(
     EAPI_STATUS_UNSUPPORTED, 
     "Unrecognised GPIO ID"
     );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 
@@ -477,8 +477,8 @@ EApiGPIOGetDirectionEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised GPIO ID"
     );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 
@@ -555,8 +555,8 @@ EApiGPIOSetDirectionEmul(
     EAPI_STATUS_UNSUPPORTED, 
     "Unrecognised GPIO ID"
     );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 
@@ -584,8 +584,8 @@ EApiGPIOGetDirectionCapsEmul(
     EAPI_STATUS_UNSUPPORTED  , 
     "Unrecognised GPIO ID"
     );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : DbgChk.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: DbgChk.c 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: DbgChk.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -93,7 +93,7 @@ const char *GetLastOccurance(
     )
 {
   const char*cszLPos=czFilename;
-  while(*czFilename!='\0'){
+  while(*czFilename){
     switch(*czFilename++){
       case '\\':
       case '/':
@@ -104,7 +104,7 @@ const char *GetLastOccurance(
   }
   return cszLPos;
 }
-const char cszLogFormat[]={"%c%04i %-12.12s %-30s | "};
+const char cszLogFormat[]={"%c%04i %-15.15s %-30s | "};
 
 signed int
 __cdecl

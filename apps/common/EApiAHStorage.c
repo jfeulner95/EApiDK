@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStorage.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiAHStorage.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiAHStorage.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -106,7 +106,7 @@ EApiAHWriteStorage(
       EApiStatusCode=EApiStorageAreaWrite(Id, ByteOffset, pBuffer, ByteCnt);
     }
 ErrorExit:
-/* ExitSuccess: */
+EAPI_APP_ASSERT_EXIT
     if(pLclBuffer!=NULL)free(pLclBuffer);
 
     return EApiStatusCode;

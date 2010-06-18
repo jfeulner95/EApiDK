@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePDB.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePDB.h 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EeePDB.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -186,13 +186,25 @@ EeePReadBufferFromEEP(
     __IN  uint16_t       u16DeviceAddr 
     );
 
+EApiStatusCode_t
+EeePSetI2CDeviceDesc(
+    __OUT I2CDeviceDesc_t *pDDesc,
+    __IN  EeePHandel_t     BHandel,
+    __IN  uint16_t         WRecTimems ,
+    __IN  uint16_t         u16DeviceAddr
+    );
 
 EApiStatusCode_t
 EeePListBlocks(
     EeePHandel_t BHandel,
     unsigned int uiFlags
   );
-
+EApiStatusCode_t 
+GetDBlckIdString(
+    __OUT TCHAR *        pszString,
+    __IN  size_t         stArrayLen,
+    __IN  unsigned int   uiValue
+    );
 #ifdef __cplusplus
 }
 #endif

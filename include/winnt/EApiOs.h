@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\winnt
- *I  Last committed       : $Revision: 57 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 09:19:26 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiOs.h 57 2010-02-02 08:19:26Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiOs.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -99,7 +99,7 @@ void EApiSleepus(unsigned long ms);
 /* unreferenced formal parameter */
 #  if ( _MSC_VER >= MSVC_1_5 )
 #    pragma warning(disable:4127) /* conditional expression is constant */
-#endif /* if ( _MSC_VER >= MSVC_1_5 ) */
+#  endif /* if ( _MSC_VER >= MSVC_1_5 ) */
 #endif /* _MSC_VER */
 
 #endif /* _EAPIOS_H_ */

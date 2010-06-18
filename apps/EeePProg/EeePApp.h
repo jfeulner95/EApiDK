@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 60 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
- *I  ID                   : $Id: EeePApp.h 60 2010-02-28 20:53:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EeePApp.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -45,14 +45,28 @@ extern "C" {
 #include <Str2Value.h>
 #include <EeePCfg.h>
 #include <EeePArg.h>
+#define TRACE_BACK 1
 
-#define DO(x) \
+#if TRACE_BACK
+#  define DO(x) \
   do{ \
-  EApiStatusCode=x;\
+    EApiStatusCode=x;\
     if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){ \
-      goto ErrorExit;\
+        siFormattedMessage_SC('E', __FILE__, "TB " ## __FUNCTION__, __LINE__, \
+        EApiStatusCode, "%s\n", #x );\
+      EAPI_APP_EXIT;\
     }\
   }while(0)
+#else
+#  define DO(x) \
+  do{ \
+    EApiStatusCode=x;\
+    if(EAPI_STATUS_TEST_NOK(EApiStatusCode)) \
+      EAPI_APP_EXIT;\
+  }while(0)
+#endif
+
+
 
 /*
  * CPU Independent Multi Byte 
@@ -76,6 +90,15 @@ uint32_t
 EeeP_Get32BitValue_BE(
     const uint8_t *pBuffer
      );
+void
+EeeP_Set64BitValue_BE(
+    uint8_t        *pBuffer,
+    uint64_t        Value
+     );
+uint64_t
+EeeP_Get64BitValue_BE(
+    const uint8_t  *pBuffer
+     );
 /*
  * CPU Independent Multi Byte 
  * Little Endian Memory Access
@@ -97,6 +120,15 @@ EeeP_Set32BitValue_LE(
 uint32_t
 EeeP_Get32BitValue_LE(
     const uint8_t *pBuffer
+     );
+void
+EeeP_Set64BitValue_LE(
+    uint8_t        *pBuffer,
+    uint64_t        Value
+     );
+uint64_t
+EeeP_Get64BitValue_LE(
+    const uint8_t  *pBuffer
      );
 
 

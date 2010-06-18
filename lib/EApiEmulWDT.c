@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulWDT.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulWDT.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiEmulWDT.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -77,8 +77,9 @@ EApiWDogGetCapEmul(
   *pMaxEventTimeout =MaxEventTimeout;
   *pMaxResetTimeout =MaxResetTimeout;
   EAPI_LIB_RETURN_SUCCESS(EApiWDogGetCapEmul, "");
-/* ErrorExit: */
-ExitSuccess:
+
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 EApiStatusCode_t 
@@ -116,8 +117,8 @@ EApiWDogStartEmul(
   );
   WatchdogState=WATCHDOG_ENABLED;
   EAPI_LIB_RETURN_SUCCESS(EApiWDogStartEmul, "");
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 EApiStatusCode_t 
@@ -135,8 +136,8 @@ EApiWDogTriggerEmul(void)
       EApiWDogTriggerEmul, 
       ""
       );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 EApiStatusCode_t 
@@ -148,8 +149,8 @@ EApiWDogStopEmul(void)
       EApiWDogStopEmul, 
       ""
       );
-/* ErrorExit: */
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 

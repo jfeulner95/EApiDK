@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHI2C.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiAHI2C.c 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiAHI2C.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -84,8 +84,36 @@ EApiAHI2CCCreateAddrOffset(
             EAPI_I2C_DEC_7BIT_ADDR(pDDesc->DeviceAddr)+Offset);
 
     }
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
+}
+EApiStatusCode_t
+ValidEEPDevDesc(
+    __IN const I2CDeviceDesc_t *const pDDesc
+    )
+{
+    EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+    int AddrCnt;
+    if(pDDesc->ExtIndx==EApiAPI2CExtIndex)
+    {
+      AddrCnt=pDDesc->DevSize>>16<<1;
+      if(AddrCnt)
+      {
+        /* Not Sure */
+      }
+    }
+    else
+    {
+      AddrCnt=pDDesc->DevSize>>8<<1;
+      if(AddrCnt)
+      {
+        if((pDDesc->DeviceAddr+AddrCnt)>0xAF)
+        {
+          return EAPI_STATUS_INVALID_PARAMETER;
+        }
+      }
+    }
+    return EApiStatusCode;
 }
 EApiStatusCode_t
 EApiAHI2CWriteEeprom(
@@ -123,8 +151,14 @@ EApiAHI2CWriteEeprom(
     EAPI_APP_ASSERT_PARAMATER_CHECK(
         EApiAHI2CWriteEeprom, 
         EAPI_STATUS_INVALID_PARAMETER, 
+        ValidEEPDevDesc(pDDesc) , 
+        "Invalid EEPROM Device Descriptor"
+        );
+    EAPI_APP_ASSERT_PARAMATER_CHECK(
+        EApiAHI2CWriteEeprom, 
+        EAPI_STATUS_INVALID_PARAMETER, 
         ByteOffset+ByteCnt>pDDesc->DevSize, 
-        TEXT("Prevented Write beyond Device Boundary")
+        "Prevented Write beyond Device Boundary"
         );
 #if STRICT_VALIDATION
     if(ByteOffset+ByteCnt>pDDesc->DevSize)
@@ -255,6 +289,7 @@ EApiAHI2CWriteEeprom(
         EApiSleep((uint32_t)pDDesc->WRecTimems); /* Allow Device Time to Recover */
     }
 ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 EApiStatusCode_t
@@ -299,6 +334,18 @@ EApiAHI2CReadEeprom(
         EApiAHI2CReadEeprom, 
         ByteCnt, 
         BufLength
+        );
+    EAPI_APP_ASSERT_PARAMATER_CHECK(
+        EApiAHI2CReadEeprom, 
+        EAPI_STATUS_INVALID_PARAMETER, 
+        ValidEEPDevDesc(pDDesc) , 
+        "Invalid EEPROM Device Descriptor"
+        );
+    EAPI_APP_ASSERT_PARAMATER_CHECK(
+        EApiAHI2CReadEeprom, 
+        EAPI_STATUS_INVALID_PARAMETER, 
+        ByteOffset+ByteCnt>pDDesc->DevSize, 
+        "Prevented Write beyond Device Boundary"
         );
 #if STRICT_VALIDATION
     if(ByteOffset+ByteCnt>pDDesc->DevSize)
@@ -347,6 +394,7 @@ EApiAHI2CReadEeprom(
 
 
 ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 

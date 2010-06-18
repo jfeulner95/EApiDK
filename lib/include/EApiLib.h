@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiLib.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiLib.h 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiLib.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -111,14 +111,14 @@
 	do{\
   		EAPI_FORMATED_MES('L', func, EAPI_STATUS_SUCCESS, desc );\
   		EApiStatusCode=EAPI_STATUS_SUCCESS; \
-      goto ExitSuccess; \
+      goto ExitPoint; \
 		}while(0)
 
 #define EAPI_LIB_RETURN_ERROR(func, err, desc) \
 	do{ \
   	  EAPI_FORMATED_MES('E', func, err, desc );\
   		EApiStatusCode=err; \
-      goto ErrorExit; \
+      goto ExitPoint; \
 	}while(0)
 
 #define EAPI_LIB_RETURN_ERROR_IF(func, exp, err, desc)  \
@@ -158,6 +158,9 @@
     x=y;\
     EApiStatusCode=EAPI_STATUS_MORE_DATA;\
   }
+
+#define EAPI_LIB_ASSERT_EXIT \
+ExitPoint:
 
 #endif /* _EAPILIB_H_ */
 

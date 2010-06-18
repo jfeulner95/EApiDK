@@ -25,10 +25,10 @@
  *I
  *I  File Name            : BinFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 53 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 17:15:48 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: BinFuncs.h 53 2010-02-01 16:15:48Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: BinFuncs.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -57,10 +57,51 @@ u8ChecksumBlock (
     size_t      stLength
   );
 
-uint16_t
-u16CRC_CCITT (
+typedef 
+  EApiStatusCode_t 
+  HashFuncinit_t(void**pContext);
+typedef 
+  EApiStatusCode_t 
+  HashFuncbytes_t(
+    __INOUT    void *pContext , /* CRC Context       */
     __IN const void *pcvBuffer, /* Pointer to Buffer */
     __IN size_t      stCount    /* Num bytes to CRC */
+  );
+
+typedef 
+  EApiStatusCode_t 
+  HashFuncfini_t(
+    __IN      void **pContext,  /* CRC Context       */
+    __OUT     void  *pvDigest   /* Pointer to Buffer */
+  );
+
+typedef 
+  EApiStatusCode_t 
+  HashFuncverify_t(
+    __IN      void **pContext,  /* CRC Context       */
+    __OUT     void  *pvDigest   /* Pointer to Buffer */
+  );
+
+typedef struct HashFunc_s{
+  HashFuncinit_t  * init        ;
+  HashFuncbytes_t * bytes       ;
+  HashFuncfini_t  * fini        ;
+  HashFuncverify_t* verify      ;
+  size_t            stDigestLen ;
+}HashFunc_t;
+
+extern HashFunc_t CRC_CCITT;
+
+HashFuncinit_t    u16CRC_CCITT_init   ;
+HashFuncbytes_t   u16CRC_CCITT_bytes  ;
+HashFuncfini_t    u16CRC_CCITT_fini   ;
+HashFuncverify_t  u16CRC_CCITT_verify ;
+
+EApiStatusCode_t
+u16CRC_CCITT (
+    __IN const void *pcvBuffer, /* Pointer to Buffer */
+    __IN size_t      stCount  , /* Num bytes to CRC */
+    __OUT      void *pvDigest   /* Pointer to Buffer */
   );
 
 

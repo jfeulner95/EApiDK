@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 61 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-03-01 00:31:47 +0100 (Mo, 01. Mrz 2010) $
- *I  ID                   : $Id: CfgParser.c 61 2010-02-28 23:31:47Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: CfgParser.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -97,7 +97,7 @@ PrintCfgFile(
     }
     pCfgBDesc++;
   }
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 
@@ -132,7 +132,7 @@ CleanBlock(
       pCurElement->stElementCount=0;
       pCurElement++;
     }
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 
@@ -158,7 +158,7 @@ CleanStruct(
     DO(CleanBlock(pCfgBDesc->pElementsDesc, pCfgBDesc->stElementCount));
     pCfgBDesc++;
   }
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 #define MAX_LINE_LEN 2048
@@ -347,6 +347,10 @@ ParseCfgFile(
   
 
 ErrorExit:
+EAPI_APP_ASSERT_EXIT 
+
   return EApiStatusCode;
 }
+
+
 

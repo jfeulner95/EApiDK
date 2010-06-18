@@ -18,10 +18,10 @@
  *I
  *I  File Name            : TokenFunc.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: TokenFunc.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: TokenFunc.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -32,6 +32,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include "RangeFunc.h"
 
 
 typedef struct TokenDesc_s{

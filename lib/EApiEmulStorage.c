@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulStorage.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 54 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 22:19:38 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApiEmulStorage.c 54 2010-02-01 21:19:38Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiEmulStorage.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -107,8 +107,8 @@ EApiStorageCapEmul (
     EAPI_STATUS_UNSUPPORTED   , 
     "Unrecognised Storage ID"
     );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 EApiStatusCode_t 
@@ -154,8 +154,8 @@ EApiStorageAreaReadEmul(
       EAPI_STATUS_UNSUPPORTED  , 
       "Unrecognised Storage ID"
       );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 
@@ -211,8 +211,8 @@ EApiStorageAreaWriteEmul(
       EAPI_STATUS_UNSUPPORTED  , 
       "Unrecognised Storage ID"
       );
-ErrorExit:
-ExitSuccess:
+EAPI_LIB_ASSERT_EXIT
+
   return EApiStatusCode;
 }
 

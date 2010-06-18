@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgPHelper.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 60 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
- *I  ID                   : $Id: CfgPHelper.c 60 2010-02-28 20:53:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: CfgPHelper.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -406,7 +406,7 @@ Number_Element(
 /*   }else{ */
 /*     printf("\tNumber_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
   }
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 
@@ -468,7 +468,7 @@ SpecRev_Element(
       );
   *(unsigned long*)pCurElement|=ulConvertStr2NumEx(szEnd+1, &szEnd)&0xF;
 /*   printf("\tSpecRev_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 EApiStatusCode_t
@@ -500,7 +500,7 @@ PNPID_Element(
     *(unsigned long*)pCurElement|=uiCurChar - 'A'+1;
   }
 /*   printf("\tPNPID_Element = 0x%04lX, %s\n", *(unsigned long*)pCurElement, szValue); */
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
 }
 

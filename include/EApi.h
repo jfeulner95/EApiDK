@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApi.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EApi.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApi.h 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -794,7 +794,7 @@ EApiI2CWriteReadRaw(
 #define EAPI_I2C_ENC_10BIT_ADDR(x) EAPI_UINT32_C(((x)&0xFF)|(((x)&0x0300)<<1)|0xF000)
 #define EAPI_I2C_DEC_10BIT_ADDR(x) EAPI_UINT32_C(((x)&0xFF)|(((x)>>1)&0x300))
 #define EAPI_I2C_IS_10BIT_ADDR(x)  (((x)&0xF800)==0xF000)
-#define EAPI_I2C_IS_7BIT_ADDR(x)   (!Is10BitAddress(x))
+#define EAPI_I2C_IS_7BIT_ADDR(x)   (!EAPI_I2C_IS_10BIT_ADDR(x))
 
 /*
  * I2C Transfer Types

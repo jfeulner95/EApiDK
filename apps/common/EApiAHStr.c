@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStr.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 65 $
+ *I  Last committed       : $Revision: 67 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-03-01 03:11:52 +0100 (Mo, 01. Mrz 2010) $
- *I  ID                   : $Id: EApiAHStr.c 65 2010-03-01 02:11:52Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
+ *I  ID                   : $Id: EApiAHStr.c 67 2010-06-18 21:39:13Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -105,7 +105,7 @@ size_t EApiAHCreateErrorString(
     goto ExitSuccess;
   }
   EApiStatusCode=EAPI_INVALID_STRLEN;
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 ExitSuccess:
   return EApiStatusCode;
 }
@@ -139,7 +139,7 @@ EApiAHCreateErrorStringAlloc(
       TEXT("UNKNOWN ERROR(0x%08")TEXT(PRIX32)TEXT(")"), 
       StatusCode
       );
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 SuccessExit:
   return EApiStatusCode;
 }
@@ -178,7 +178,7 @@ EApiAHGetString(
   }
 #endif
   EApiStatusCode=StringLenLcl;
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
   return EApiStatusCode;
 }
@@ -232,7 +232,7 @@ EApiAHGetStringAlloc(
       EApiAHCreateErrorStringAlloc(EApiStatusCode, pString);
       break;
   }
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
   return EApiStatusCode;
 }
@@ -247,7 +247,7 @@ EApiAHCreateDecimalString(
     EAPI_APP_ASSERT_PARAMATER_NULL(EApiAHCreateDecimalString, -1, pString);
     EAPI_APP_ASSERT_PARAMATER_ZERO(EApiAHCreateDecimalString, -1, StrBufLen);
     EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("%")TEXT(PRIu32), Value);
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -262,7 +262,7 @@ EApiAHCreateHexString(
     EAPI_APP_ASSERT_PARAMATER_NULL(EApiAHCreateDecimalString, -1, pString);
     EAPI_APP_ASSERT_PARAMATER_ZERO(EApiAHCreateDecimalString, -1, StrBufLen);
     EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("0x%08")TEXT(PRIX32), Value);
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -279,7 +279,7 @@ EApiAHCreateVoltageString(
     Value/=10;
     EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("%")TEXT(PRIu32)TEXT(".%02")TEXT(PRIu32)TEXT(" Volts"), Value/100, Value%100);
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -295,7 +295,7 @@ EApiAHCreateRotationsString(
     EAPI_APP_ASSERT_PARAMATER_ZERO(EApiAHCreateDecimalString, -1, StrBufLen);
     EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("%")TEXT(PRIu32)TEXT(" RPM"), Value);
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -312,7 +312,7 @@ EApiAHCreateTempString(
     Value-=EAPI_KELVINS_OFFSET;
     EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("% ")TEXT(PRIi32)TEXT(".%")TEXT(PRIi32)TEXT(" Celcius"), ((int32_t)Value)/10, Value%10);
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -336,7 +336,7 @@ EApiAHCreateTimeString(
       StrLength+=EApiSprintf(&pString[StrLength], StrBufLen-StrLength, TEXT("%")TEXT(PRIu32)TEXT(" Mins"  ), (Value)%60        );
     EApiStatusCode=StrLength;
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -355,7 +355,7 @@ EApiAHCreateSVersionString(
     EAPI_APP_ASSERT_PARAMATER_ZERO(EApiAHCreateSVersionString, -1, StrBufLen);
     EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("%u.%u"), EAPI_VER_GET_VER(Value), EAPI_VER_GET_REV(Value) );
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -372,7 +372,7 @@ EApiAHCreateVersionString(
   EAPI_APP_ASSERT_PARAMATER_ZERO(EApiAHCreateVersionString, -1, StrBufLen);
   EApiStatusCode=EApiSprintf(pString, StrBufLen, TEXT("%u.%u.%u"), EAPI_VER_GET_VER(Value), EAPI_VER_GET_REV(Value), EAPI_VER_GET_BUILD(Value) );
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -419,6 +419,7 @@ EApiAHCreatePNPIDString(
   EApiStatusCode=3;
 
 ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
@@ -453,7 +454,7 @@ EApiAHBoardGetStringW(
   }
 
 
-ErrorExit:
+EAPI_APP_ASSERT_EXIT
 /* SuccessExit: */
     return EApiStatusCode;
 }
