@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiCommon.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 48 $
+ *I  Last committed       : $Revision: 70 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-28 01:37:04 +0100 (Do, 28. Jan 2010) $
- *I  ID                   : $Id: EApiCommon.h 48 2010-01-28 00:37:04Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: EApiCommon.h 70 2010-06-20 01:27:02Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -41,10 +41,13 @@
  * in the OS Specific Header File EApiOs.h
  */
 #ifndef ELEMENT_SIZE
-#  define ELEMENT_SIZE(x) (sizeof(x[0]))
+#  define ELEMENT_SIZE(x) (sizeof((x)[0]))
 #endif
 #ifndef ARRAY_SIZE
 #  define ARRAY_SIZE(x) (sizeof(x)/ELEMENT_SIZE(x))
+#endif
+#ifndef STRLEN
+#  define STRLEN(x) (ARRAY_SIZE(x)- ARRAY_SIZE(""))
 #endif
 
 #define EAPI_CREATE_PTR(Base, ByteOffset, PtrType) \

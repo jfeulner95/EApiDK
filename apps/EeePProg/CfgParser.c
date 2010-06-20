@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 70 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: CfgParser.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: CfgParser.c 70 2010-06-20 01:27:02Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -121,12 +121,12 @@ CleanBlock(
     while(stElementCount--){
       while(pCurElement->stElementCount--){
         DO(pCurElement->pHandlers->Clean(
+              pCurElement,
               EAPI_CREATE_PTR(
                   pCurElement->Elements.pv, 
                   pCurElement->cstElementSize*(pCurElement->stElementCount), 
                   void*
-                ),
-              pCurElement->cstElementSize
+                )
             ));
       }
       pCurElement->stElementCount=0;
@@ -212,7 +212,7 @@ ParseCfgFile(
     /*
      * Remove Comments And New Lines etc..
      */
-    szName=strpbrk(LineBuffer, "#\n\r");
+    szName=strpbrk(LineBuffer, ";#\n\r");
     if(szName!=NULL)
       *szName='\0';
 #if TEST_EEPCFG

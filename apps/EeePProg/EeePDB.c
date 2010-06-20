@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 69 $
+ *I  Last committed       : $Revision: 70 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-19 01:06:31 +0200 (Sa, 19. Jun 2010) $
- *I  ID                   : $Id: EeePDB.c 69 2010-06-18 23:06:31Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: EeePDB.c 70 2010-06-20 01:27:02Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -48,8 +48,6 @@ StringLookup_t BlockIdLookup[]={
   { "EEEP_BLOCK_ID_LFP"             , EEEP_BLOCK_ID_LFP             },
   { "EEEP_BLOCK_ID_CRC_CHK"         , EEEP_BLOCK_ID_CRC_CHK         },
   { "EEEP_BLOCK_ID_IGNORE"          , EEEP_BLOCK_ID_IGNORE          },
-  { "EEEP_OFFSET_VALUE_EOL"         , EEEP_OFFSET_VALUE_EOL         },
-  { "EEEP_OFFSET_VALUE_EOL_ALT"     , EEEP_OFFSET_VALUE_EOL_ALT     },
 
   { "COM0R20_BLOCK_ID_EXP_CARD_DESC", COM0R20_BLOCK_ID_EXP_CARD_DESC},
   { "COM0R20_BLOCK_ID_SERIO_DESC"   , COM0R20_BLOCK_ID_SERIO_DESC   },
@@ -143,18 +141,11 @@ GetBlockLength(
     const void * pcvBHandel
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
-  EAPI_APP_ASSERT_PARAMATER_NULL(
-      GetBlockLength,
-      0,
-      pcvBHandel
-    );
-  EApiStatusCode=
-    EeeP_Get16BitValue_BE(((DBlockIdHdr_t*)pcvBHandel)->DBlockLength )*EEEP_SIZE_UNITS;
-EAPI_APP_ASSERT_EXIT
-  if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){
-  }
-  return EApiStatusCode;
+  size_t stBlockSize=EEEP_OFFSET_VALUE_EOL;
+  if(!pcvBHandel) return stBlockSize;
+
+  stBlockSize=EeeP_Get16BitValue_BE(((DBlockIdHdr_t*)pcvBHandel)->DBlockLength )*EEEP_SIZE_UNITS;
+  return stBlockSize;
 }
 DBlockIdHdr_t * 
 GetNextBlock(
@@ -171,7 +162,7 @@ GetNextBlock(
   stBlockLength=GetBlockLength(pCurBlock);
   switch(stBlockLength){
     case EEEP_OFFSET_VALUE_EOL:
-    case EEEP_OFFSET_VALUE_EOL_ALT:
+    case EEEP_OFFSET_VALUE_EOL_ALT*EEEP_SIZE_UNITS:
       goto ErrorExit;
       break;
     default:
@@ -642,7 +633,7 @@ EeePSetCRC(
     DO(CRC_CCITT.init(&pContext));
     DO(CRC_CCITT.bytes(
                 pContext, 
-        BufferMap.pCmnHdr, 
+                BufferMap.pCmnHdr, 
         EAPI_GET_PTR_OFFSET(BufferMap.pEeePCRCBlock->CrC16, BufferMap.pCmnHdr)
         ));
     DO(CRC_CCITT.fini(&pContext, BufferMap.pEeePCRCBlock->CrC16));

@@ -25,10 +25,10 @@
  *I
  *I  File Name            : COM0EEP.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 66 $
+ *I  Last committed       : $Revision: 70 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:36:25 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: COM0EEP.h 66 2010-06-18 21:36:25Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: COM0EEP.h 70 2010-06-20 01:27:02Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -143,8 +143,8 @@ typedef struct COM0R20_CB_s{
                             *      | 7     | Reserved                      |
                             *      +=======+===============================+
                             */
-#       define COM0R20_USB3_PCNT_MASK        EEEP_UINT8_C(0x07)
-#       define COM0R20_USB3_PCNT_OFFSET      EEEP_UINT8_C(0x04)
+#       define COM0R20_USBSS_PCNT_MASK       EEEP_UINT8_C(0x07)
+#       define COM0R20_USBSS_PCNT_OFFSET     EEEP_UINT8_C(0x04)
 #       define COM0R20_USB_PCNT_MASK         EEEP_UINT8_C(0x0F)
 #       define COM0R20_USB_PCNT_OFFSET       EEEP_UINT8_C(0x00)
 

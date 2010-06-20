@@ -18,10 +18,10 @@
  *I
  *I  File Name            : TokenFunc.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 70 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: TokenFunc.h 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: TokenFunc.h 70 2010-06-20 01:27:02Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -50,6 +50,11 @@ typedef struct TokenListDesc_s{
 TokenListDesc_t TLName={ \
   ARRAY_SIZE(TokenList), TokenList \
 }
+
+typedef struct TokenNumDesc_s{
+  TokenListDesc_t   *pTokens;
+  NumberRangeDesc_t *pRange ;
+}TokenNumDesc_t;
 
 
 
