@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 70 $
+ *I  Last committed       : $Revision: 72 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
- *I  ID                   : $Id: EeePDB.c 70 2010-06-20 01:27:02Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: EeePDB.c 72 2010-06-20 02:28:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -66,7 +66,11 @@ GetString(
   EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   for(;pStrTbl->szString!=NULL;pStrTbl++){
     if(pStrTbl->cuiValue==uiValue){
+#if UNICODE
       EApiSprintf(pszString, stArrayLen, TEXT("%hs"), pStrTbl->szString);
+#else
+      EApiSprintf(pszString, stArrayLen, TEXT("%s"), pStrTbl->szString);
+#endif
       goto ExitSuccess;
     }
   }
@@ -371,8 +375,8 @@ EeePFreeBuffer(
     );
 
   if(*pBHandel!=NULL){
-    free(*pBHandel);
-    *pBHandel=NULL;
+		free(*pBHandel);
+		*pBHandel=NULL;
   }
 EAPI_APP_ASSERT_EXIT
   return EApiStatusCode;
@@ -521,7 +525,7 @@ EeePListBlocks(
 {
   TCHAR BlockName[80];
   EeePCmn_t     *pEeePCmnHdr; 
-  size_t         CurOffset, BlockLen, MaxDeviceLen;
+  size_t         CurOffset, BlockLen, MaxDeviceLen=0;
   DBlockIdHdr_t    *pCurBlock       ;
   EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
   uiFlags=uiFlags;

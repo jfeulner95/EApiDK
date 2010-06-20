@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiOs.h
  *I  File Location        : include\linux
- *I  Last committed       : $Revision: 59 $
+ *I  Last committed       : $Revision: 72 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 09:56:54 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiOs.h 59 2010-02-02 08:56:54Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: EApiOs.h 72 2010-06-20 02:28:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -139,6 +139,8 @@ void EApiSleepns(unsigned long ns);
 #define EAPI_vsnprintfA     vsnprintf
 #define EAPI_strdup         strdup
 #define EAPI_strncpyA       strncpy
+
+#define _strdup strdup
 
 #endif /* _EAPIOS_H_ */
 

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 72 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EeePApp.h 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: EeePApp.h 72 2010-06-20 02:28:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -52,7 +52,7 @@ extern "C" {
   do{ \
     EApiStatusCode=x;\
     if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){ \
-        siFormattedMessage_SC('E', __FILE__, "TB " ## __FUNCTION__, __LINE__, \
+        siFormattedMessage_SC('E', __FILE__, "TB " "__FUNCTION__", __LINE__, \
         EApiStatusCode, "%s\n", #x );\
       EAPI_APP_EXIT;\
     }\

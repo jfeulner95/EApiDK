@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 70 $
+ *I  Last committed       : $Revision: 72 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
- *I  ID                   : $Id: Str2Value.c 70 2010-06-20 01:27:02Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: Str2Value.c 72 2010-06-20 02:28:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -897,7 +897,7 @@ AssignValue_VAB(
     unsigned long ulMask=(((unsigned long )1<<siBitLen)-1);
     EAPI_APP_RETURN_ERROR_IF_S(
         AssignValue_VAB, 
-        sizeof(unsigned long)*8<siBitOffset+siBitLen,
+        sizeof(unsigned long)*8<(unsigned)(siBitOffset+siBitLen),
         EAPI_STATUS_INVALID_PARAMETER
       );
     EAPI_APP_RETURN_ERROR_IF_S(
@@ -993,7 +993,7 @@ RecoverValue_VAB(
     unsigned long ulMask=(((unsigned long)1<<siBitLen)-1);
     EAPI_APP_RETURN_ERROR_IF_S(
         RecoverValue_VAB, 
-        sizeof(unsigned long)*8<siBitOffset+siBitLen,
+        sizeof(unsigned long)*8<(unsigned)(siBitOffset+siBitLen),
         EAPI_STATUS_INVALID_PARAMETER
       );
     *(unsigned long long*)psllValue=(*pulValue>>siBitOffset)&ulMask;

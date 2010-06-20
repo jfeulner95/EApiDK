@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAPI.cpp
  *I  File Location        : lib
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 72 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EApiAPI.cpp 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
+ *I  ID                   : $Id: EApiAPI.cpp 72 2010-06-20 02:28:21Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -154,7 +154,6 @@ EApiI2CWriteReadRaw(
   if(ErrorCode2!=EAPI_STATUS_SUCCESS)
     EApiStatusCode=ErrorCode2;
 EAPI_LIB_ASSERT_EXIT
-// 
   return EApiStatusCode;
 
 }
