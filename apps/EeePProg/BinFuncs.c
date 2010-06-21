@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 73 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: BinFuncs.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
+ *I  ID                   : $Id: BinFuncs.c 73 2010-06-21 00:23:28Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -309,7 +309,7 @@ PrintHexAsciiTableEx(
          * Print Block Header
          */
         EAPI_printf(TEXT("\n"));
-        if(cuiFlags&HEXTBL_OFFSEt_BAR)
+        if(cuiFlags&HEXTBL_OFFSET_BAR)
           EAPI_printf(TEXT("         "));
         if(cuiFlags&HEXTBL_OFFSET_COUNT){
           for(stOffset=0;stOffset<stElementCount;stOffset++){
@@ -324,7 +324,7 @@ PrintHexAsciiTableEx(
         }
         stOffset=pcu8Mem - (uint8_t*)pcvBase;
       }
-      if(cuiFlags&HEXTBL_OFFSEt_BAR)
+      if(cuiFlags&HEXTBL_OFFSET_BAR)
         EAPI_printf(TEXT("%08lX ") , (unsigned long)stOffset);
 
         /*
@@ -367,10 +367,10 @@ EAPI_APP_ASSERT_EXIT
 
 void 
 PrintHexAsciiTable(
-	const void *const pcvBuffer	,
-	const size_t cstBufSize		,
-	const void *const pcvBase		,
-	const TCHAR *const pcszDescription
+	__IN    const void *const pcvBuffer             ,
+	__IN    const size_t      cstBufSize	        ,
+	__IN    const void *const pcvBase		,
+	__IN    const TCHAR *const pcszDescription
 	)
 {
   PrintHexAsciiTableEx(

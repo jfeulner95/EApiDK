@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 72 $
+ *I  Last committed       : $Revision: 73 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
- *I  ID                   : $Id: EeePDB.c 72 2010-06-20 02:28:21Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
+ *I  ID                   : $Id: EeePDB.c 73 2010-06-21 00:23:28Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -458,7 +458,7 @@ EeePMapBuffer(
       memcmp(
           pBufMap->pCmnHdr->EepId, 
           EEEP_EEPROM_MARKER, 
-          sizeof(EEEP_EEPROM_MARKER)-1
+          STRLEN(EEEP_EEPROM_MARKER)
         ),
       EAPI_STATUS_ERROR,
       "Invalid EeeP Buffer"

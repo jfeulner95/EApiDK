@@ -27,10 +27,10 @@ GOTO Skip_Header
 @REM I
 @REM I  File Name            : buildnt.cmd
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 60 $
+@REM I  Last committed       : $Revision: 73 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-02-28 21:53:20 +0100 (So, 28. Feb 2010) $
-@REM I  ID                   : $Id: buildnt.cmd 60 2010-02-28 20:53:20Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
+@REM I  ID                   : $Id: buildnt.cmd 73 2010-06-21 00:23:28Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -100,6 +100,7 @@ IF /I "%~1"=="BUILD_LIB" GOTO Exit
   ECHO *.tar.gz  >> "%IGNOREFILE%"
   ECHO *.tar     >> "%IGNOREFILE%"
   ECHO bin   >> "%IGNOREFILE%"
+  ECHO CVS   >> "%IGNOREFILE%"
   ECHO .cvs  >> "%IGNOREFILE%"
   ECHO .svn  >> "%IGNOREFILE%"
   ECHO *.doc  >> "%IGNOREFILE%"
@@ -306,7 +307,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 60 $
+  ECHO I  %~nx0                                              $$Rev: 73 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:
@@ -339,6 +340,7 @@ REM ########################################################################
   SET EAPILIBBASE=
   SET APPHELPFILES=
   SET LIBFILES=
+  SET LCLFILES=
 
 :Return
 

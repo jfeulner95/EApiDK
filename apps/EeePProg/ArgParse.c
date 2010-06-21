@@ -25,10 +25,10 @@
  *I
  *I  File Name            : ArgParse.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 72 $
+ *I  Last committed       : $Revision: 73 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-20 04:28:21 +0200 (So, 20. Jun 2010) $
- *I  ID                   : $Id: ArgParse.c 72 2010-06-20 02:28:21Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
+ *I  ID                   : $Id: ArgParse.c 73 2010-06-21 00:23:28Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -74,8 +74,8 @@ StringBlock(
   *pstLastPos=0;
 /*   printf("D%04u %s\n", __LINE__, cszLastPos); */
 
-	if(*cszLastPos=='\n')
-		cszLastPos++;
+  if(*cszLastPos=='\n')
+    cszLastPos++;
   while(stMaxBlockLen --){
 /*   printf("%c", *cszLastPos); */
     switch(*cszLastPos++){
@@ -126,6 +126,29 @@ PrintStringBlock(
     StringBlock(cszStr, stMaxBlockLen, &stCurStrPos);
     if(stCurStrPos)
       fprintf( OutStream, cszOLines, stMaxBlockLen, stCurStrPos, cszStr );
+  };
+  return EAPI_STATUS_SUCCESS;
+}
+EApiStatusCode_t
+PrintStringBlock2(
+    FILE       *OutStream     ,
+    const char *cszStr        ,
+    size_t      stMaxBlockLen ,
+    const char *cszPreamble
+    )
+{
+  size_t stCurStrPos;
+  StringBlock(cszStr, stMaxBlockLen, &stCurStrPos);
+  fprintf(OutStream, "%s%-*.*s\n", cszPreamble, (int)stMaxBlockLen, (int)stCurStrPos, cszStr );
+  while(stCurStrPos){
+    cszStr+=stCurStrPos;
+    if(*cszStr!='\0')
+      cszStr++;
+    if(*cszStr=='\n')
+      cszStr++;
+    StringBlock(cszStr, stMaxBlockLen, &stCurStrPos);
+    if(stCurStrPos)
+      fprintf( OutStream, "%s%-*.*s\n", cszPreamble, (int)stMaxBlockLen, (int)stCurStrPos, cszStr );
   };
   return EAPI_STATUS_SUCCESS;
 }
@@ -399,7 +422,7 @@ ParseArgs(
                 )
             {
               if(pCurArgDesc->puiResult!=NULL){
-                ++*pCurArgDesc->puiResult;
+                ++(*pCurArgDesc->puiResult);
               }
               DO(ParseSubArgs(&siArgc, &pszCurArg, pCurArgDesc->stArgs, pCurArgDesc->pArgs));
               ++uiValid;
@@ -421,7 +444,7 @@ ParseArgs(
             while(stI --){
               if(*szCurOption==pCurArgDesc->cShort){
                 if(pCurArgDesc->puiResult!=NULL){
-                  ++*pCurArgDesc->puiResult;
+                  ++(*pCurArgDesc->puiResult);
                 }
                 DO(ParseSubArgs(&siArgc, &pszCurArg, pCurArgDesc->stArgs, pCurArgDesc->pArgs));
                 ++uiValid;

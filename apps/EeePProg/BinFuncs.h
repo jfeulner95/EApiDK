@@ -25,10 +25,10 @@
  *I
  *I  File Name            : BinFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 73 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: BinFuncs.h 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
+ *I  ID                   : $Id: BinFuncs.h 73 2010-06-21 00:23:28Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -120,11 +120,11 @@ u16CRC_CCITT (
 #define HEXTBL_8Bit_ASCII     0x0400
 #define HEXTBL_ASCII_MASK     0x0600
 
-#define HEXTBL_OFFSEt_BAR     0x0800
+#define HEXTBL_OFFSET_BAR     0x0800
 #define HEXTBL_OFFSET_COUNT   0x0080
 #define HEXTBL_OFFSET_TITLE   0x0040
 
-#define HEXTBL_NORMAL_ATTRIB  (HEXTBL_OFFSEt_BAR|HEXTBL_BIG_ENDIAN|HEXTBL_7Bit_ASCII|HEXTBL_OFFSET_COUNT|HEXTBL_OFFSET_TITLE)
+#define HEXTBL_NORMAL_ATTRIB  (HEXTBL_OFFSET_BAR|HEXTBL_BIG_ENDIAN|HEXTBL_7Bit_ASCII|HEXTBL_OFFSET_COUNT|HEXTBL_OFFSET_TITLE)
 #define HEXTBL_NORM8_ATTRIB   (HEXTBL_NORMAL_ATTRIB|HEXTBL_8BIT_ELEMENT|16)
 #define HEXTBL_NORM16_ATTRIB  (HEXTBL_NORMAL_ATTRIB|HEXTBL_16BIT_ELEMENT|8)
 #define HEXTBL_NORM32_ATTRIB  (HEXTBL_NORMAL_ATTRIB|HEXTBL_32BIT_ELEMENT|4)
