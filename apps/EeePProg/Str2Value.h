@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 70 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
- *I  ID                   : $Id: Str2Value.h 70 2010-06-20 01:27:02Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: Str2Value.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -45,33 +45,33 @@ ulConvertStr2NumEx(
     __OUT char **       pszEnd
     );
 
-EApiStatusCode_t
+EApiStatus_t
 ExpandEnviromentVariables(
     __IN  const char   *cszString,
     __OUT char        **pszExpStr
   );
 
-EApiStatusCode_t
+EApiStatus_t
 ParseAsciiEqu(
     __IN  const char       *cszString,
     __OUT signed long long *psllValue
   );
 
-EApiStatusCode_t
+EApiStatus_t
 ParseAsciiEqu_VA(
     __IN  const char       *cszString,
     __OUT void             *pvalue,
     __IN  signed int        siElementSize
   );
 
-EApiStatusCode_t
+EApiStatus_t
 AssignValue_VA(
     __IN  const signed long long csllValue,
     __OUT void             *pvalue,
     __IN  signed int        siElementSize
   );
 
-EApiStatusCode_t
+EApiStatus_t
 AssignValue_VAB(
     __IN  const signed long long csllValue,
     __OUT void             *pvalue,
@@ -80,13 +80,13 @@ AssignValue_VAB(
     __IN  signed int        siElementSize
   );
 
-EApiStatusCode_t
+EApiStatus_t
 RecoverValue_VA(
     __OUT signed long long *psllValue,
     __IN  void             *pvalue,
     __IN  signed int        siElementSize
   );
-EApiStatusCode_t
+EApiStatus_t
 RecoverValue_VAB(
     __OUT signed long long *psllValue,
     __IN  void             *pValue,

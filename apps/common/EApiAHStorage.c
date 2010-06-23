@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiAHStorage.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EApiAHStorage.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiAHStorage.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -36,7 +36,7 @@
   #include <EApiApp.h>
 
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiAHWriteStorage(
     __IN  EApiId_t         Id          , 
     __IN  const uint32_t   ByteOffset  , 
@@ -44,7 +44,7 @@ EApiAHWriteStorage(
     __IN  const uint32_t   ByteCnt 
     )
 {
-    EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+    EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
     uint32_t MaxLen, alignment;
     uint32_t AdjOffset=ByteOffset, AdjLength=ByteCnt;
     int_least8_t * pLclBuffer=NULL;
@@ -61,8 +61,8 @@ EApiAHWriteStorage(
         ByteCnt
         );
     /* Get Storage Capabilities */
-    EApiStatusCode=EApiStorageCap(Id, &MaxLen, &alignment);
-    if(EAPI_STATUS_TEST_NOK(EApiStatusCode))
+    StatusCode=EApiStorageCap(Id, &MaxLen, &alignment);
+    if(!EAPI_TEST_SUCCESS(StatusCode))
       goto ErrorExit;
 
     /* Is the write possible? */
@@ -97,18 +97,18 @@ EApiAHWriteStorage(
         EAPI_STATUS_ALLOC_ERROR, 
         "Allocating Page Buffer"
         );
-      EApiStatusCode=EApiStorageAreaRead(Id, AdjOffset, pLclBuffer, AdjLength, AdjLength);
-      if(EAPI_STATUS_TEST_NOK(EApiStatusCode))
+      StatusCode=EApiStorageAreaRead(Id, AdjOffset, pLclBuffer, AdjLength, AdjLength);
+      if(!EAPI_TEST_SUCCESS(StatusCode))
         goto ErrorExit;
       memcpy(&pLclBuffer[BufferOffset], pBuffer, ByteCnt);
-      EApiStatusCode=EApiStorageAreaWrite(Id, AdjOffset, pLclBuffer, AdjLength);
+      StatusCode=EApiStorageAreaWrite(Id, AdjOffset, pLclBuffer, AdjLength);
     }else{
-      EApiStatusCode=EApiStorageAreaWrite(Id, ByteOffset, pBuffer, ByteCnt);
+      StatusCode=EApiStorageAreaWrite(Id, ByteOffset, pBuffer, ByteCnt);
     }
 ErrorExit:
 EAPI_APP_ASSERT_EXIT
     if(pLclBuffer!=NULL)free(pLclBuffer);
 
-    return EApiStatusCode;
+    return StatusCode;
 }
 

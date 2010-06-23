@@ -18,10 +18,10 @@
  *I
  *I  File Name            : RangeFunc.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: RangeFunc.c 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: RangeFunc.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -29,7 +29,7 @@
 
 #include <EeePApp.h>
 
-EApiStatusCode_t
+EApiStatus_t
 RangeCheckAll(
     NumberRangeDesc_t *pRangeDesc,
     unsigned long ulValue
@@ -69,7 +69,7 @@ RangeCheckAll(
 
 }
 
-EApiStatusCode_t
+EApiStatus_t
 RangeCheckAny(
     __IN  NumberRangeDesc_t *pRangeDesc,
     __IN unsigned long ulValue
@@ -111,10 +111,10 @@ RangeCheckAny(
 
 #if TEST_RANGE_FUNC
 
-EApiStatusCode_t
+EApiStatus_t
 main(void)
 {
-/*   EApiStatusCode_t EApiStatusCode; */
+/*   EApiStatus_t StatusCode; */
 
   exit(EAPI_STATUS_SUCCESS);
 }

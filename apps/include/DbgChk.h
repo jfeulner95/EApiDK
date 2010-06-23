@@ -25,10 +25,10 @@
  *I
  *I  File Name            : DbgChk.h
  *I  File Location        : apps\include
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: DbgChk.h 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: DbgChk.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -64,7 +64,7 @@ siFormattedMessage_SC(
     const char *  cszFileName ,   
     const char *  cszFuncName ,   
     unsigned int  uiLineNum   ,
-    EApiStatusCode_t  StatusCode  ,   
+    EApiStatus_t  StatusCode  ,   
     const char *  cszFormat   ,   
     ...
     )

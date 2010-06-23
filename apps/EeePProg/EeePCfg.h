@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePCfg.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: EeePCfg.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EeePCfg.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -33,35 +33,35 @@
 extern "C" {
 #endif
 
-EApiStatusCode_t
+EApiStatus_t
 EeeP_CreateCOM0R20_CBImage(
     __OUT  EeePHandel_t   * pBHandel      ,
     __IN   const char     * cszCfgFileName
     );
 
-EApiStatusCode_t
+EApiStatus_t
 EeeP_CreateCOM0R20_MEEPImage(
     __OUT  EeePHandel_t   * pBHandel      ,
     __IN   const char     * cszCfgFileName
     );
 
-EApiStatusCode_t
+EApiStatus_t
 EeeP_CreateEeePExtEEPImage(
     __OUT  EeePHandel_t   * pBHandel      ,
     __IN   const char     * cszCfgFileName
     );
 
-EApiStatusCode_t
+EApiStatus_t
 EeeP_CreateCOM0R20_CBCfg(
     __OUT  FILE           * OutStream
     );
 
-EApiStatusCode_t
+EApiStatus_t
 EeeP_CreateCOM0R20_MEEPCfg(
     __OUT  FILE           * OutStream
     );
 
-EApiStatusCode_t
+EApiStatus_t
 EeeP_CreateEeePExtEEPCfg(
     __OUT  FILE           * OutStream
     );

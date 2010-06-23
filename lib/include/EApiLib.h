@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiLib.h
  *I  File Location        : lib\include
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EApiLib.h 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiLib.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -101,7 +101,7 @@
 #if (STRICT_VALIDATION>1)
 #define EAPI_FORMATED_MES(type, func, err, desc) \
     siFormattedMessage_SC(type, __FILE__, #func, __LINE__, \
-        (EApiStatusCode_t)(((uintptr_t)err)&UINT32_MAX), "%s\n", desc );
+        (EApiStatus_t)(((uintptr_t)err)&UINT32_MAX), "%s\n", desc );
 
 #else
 #define EAPI_FORMATED_MES(type, func, err, desc)
@@ -110,14 +110,14 @@
 #define EAPI_LIB_RETURN_SUCCESS(func, desc)  \
 	do{\
   		EAPI_FORMATED_MES('L', func, EAPI_STATUS_SUCCESS, desc );\
-  		EApiStatusCode=EAPI_STATUS_SUCCESS; \
+  		StatusCode=EAPI_STATUS_SUCCESS; \
       goto ExitPoint; \
 		}while(0)
 
 #define EAPI_LIB_RETURN_ERROR(func, err, desc) \
 	do{ \
   	  EAPI_FORMATED_MES('E', func, err, desc );\
-  		EApiStatusCode=err; \
+  		StatusCode=err; \
       goto ExitPoint; \
 	}while(0)
 
@@ -156,7 +156,7 @@
     EAPI_FORMATED_MES('E', func, EAPI_STATUS_MORE_DATA, \
 					" pBuffer Overflow Prevented" #x ">" #y );\
     x=y;\
-    EApiStatusCode=EAPI_STATUS_MORE_DATA;\
+    StatusCode=EAPI_STATUS_MORE_DATA;\
   }
 
 #define EAPI_LIB_ASSERT_EXIT \

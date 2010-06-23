@@ -27,10 +27,10 @@ GOTO Skip_Header
 @REM I
 @REM I  File Name            : buildnt.cmd
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 73 $
+@REM I  Last committed       : $Revision: 74 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
-@REM I  ID                   : $Id: buildnt.cmd 73 2010-06-21 00:23:28Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+@REM I  ID                   : $Id: buildnt.cmd 74 2010-06-23 19:26:50Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -277,7 +277,7 @@ REM ########################################################################
   ECHO #
   ECHO #
   ECHO #
-  CALL :DeleteFiles %1 *.obj *.exe *.lib *.res *.asm
+  CALL :DeleteFiles %1 *.obj *.exe *.lib *.res *.asm *.inc
   GOTO :EOF
 
 :DeleteFiles
@@ -307,7 +307,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 73 $
+  ECHO I  %~nx0                                              $$Rev: 74 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

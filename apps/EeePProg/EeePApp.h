@@ -18,10 +18,10 @@
  *I
  *I  File Name            : EeePApp.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 73 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-21 02:23:28 +0200 (Mo, 21. Jun 2010) $
- *I  ID                   : $Id: EeePApp.h 73 2010-06-21 00:23:28Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EeePApp.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -45,23 +45,29 @@ extern "C" {
 #include <Str2Value.h>
 #include <EeePCfg.h>
 #include <EeePArg.h>
-#define TRACE_BACK 1
+  
+#ifndef TRACE_BACK
+#	define TRACE_BACK 1
+#endif
+#ifndef __FUNCTION__
+#	define __FUNCTION__ ""
+#endif
 
 #if TRACE_BACK
 #  define DO(x) \
   do{ \
-    EApiStatusCode=x;\
-    if(EAPI_STATUS_TEST_NOK(EApiStatusCode)){ \
-        siFormattedMessage_SC('E', __FILE__, "TB " ## __FUNCTION__, __LINE__, \
-        EApiStatusCode, "%s\n", #x );\
+    StatusCode=x;\
+    if(!EAPI_TEST_SUCCESS(StatusCode)){ \
+        siFormattedMessage_SC('E', __FILE__, "TB "  __FUNCTION__, __LINE__, \
+        StatusCode, "%s\n", #x );\
       EAPI_APP_EXIT;\
     }\
   }while(0)
 #else
 #  define DO(x) \
   do{ \
-    EApiStatusCode=x;\
-    if(EAPI_STATUS_TEST_NOK(EApiStatusCode)) \
+    StatusCode=x;\
+    if(!EAPI_TEST_SUCCESS(StatusCode)) \
       EAPI_APP_EXIT;\
   }while(0)
 #endif

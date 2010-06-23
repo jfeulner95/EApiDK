@@ -18,10 +18,10 @@
  *I
  *I  File Name            : RangeFunc.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 51 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-01 08:48:20 +0100 (Mo, 01. Feb 2010) $
- *I  ID                   : $Id: RangeFunc.h 51 2010-02-01 07:48:20Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: RangeFunc.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -54,13 +54,13 @@ NumberRangeDesc_t RLName={ \
   ARRAY_SIZE(RangeList), RangeList \
 }
 
-EApiStatusCode_t
+EApiStatus_t
 RangeCheckAll(
     NumberRangeDesc_t *pRangeDesc,
     unsigned long      ulValue
   );
 
-EApiStatusCode_t
+EApiStatus_t
 RangeCheckAny(
     NumberRangeDesc_t *pRangeDesc,
     unsigned long      ulValue

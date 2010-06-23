@@ -5,7 +5,7 @@
  *+=========================================================================
  *I  $HeadURL: https://svn.code.sf.net/p/eapidk/code/trunk/include/EApiEPIC.h $
  *+=========================================================================
- *I   Copyright: Copyright (c) 2002-2009, Kontron Embedded Modules GmbH
+ *I   Copyright: Copyright (c) 2009-2010, PICMG
  *I      Author: John Kearney,                  John.Kearney@kontron.com
  *I
  *I     License: All rights reserved. This program and the accompanying 
@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEPIC.h
  *I  File Location        : include
- *I  Last committed       : $Revision: 38 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
- *I  ID                   : $Id: EApiEPIC.h 38 2010-01-26 06:48:22Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiEPIC.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -137,7 +137,7 @@
  *
  */
 /* IDs */
-#define EAPI_EPIC_ID_GPIO_BITMASK  EAPI_ID_GPIO_BITMASK00
+#define EAPI_EPIC_ID_GPIO_BANK     EAPI_ID_GPIO_BANK00
 #define EAPI_EPIC_ID_GPIO_GPIO0    EAPI_GPIO_GPIO_ID(0)
 #define EAPI_EPIC_ID_GPIO_GPIO1    EAPI_GPIO_GPIO_ID(1)
 #define EAPI_EPIC_ID_GPIO_GPIO2    EAPI_GPIO_GPIO_ID(2)

@@ -18,10 +18,10 @@
  *I
  *I  File Name            : TokenFunc.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 70 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-20 03:27:02 +0200 (So, 20. Jun 2010) $
- *I  ID                   : $Id: TokenFunc.h 70 2010-06-20 01:27:02Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: TokenFunc.h 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -58,7 +58,7 @@ typedef struct TokenNumDesc_s{
 
 
 
-EApiStatusCode_t
+EApiStatus_t
 GetTokenFlags(
     __OUT   char               *szStrBuf   ,
     __INOUT signed int         *psiStrBufLen,
@@ -69,21 +69,21 @@ GetTokenFlags(
     __IN  size_t                stValue
     ) ;
 
-EApiStatusCode_t
+EApiStatus_t
 GetTokenValue(
     __IN  const TokenListDesc_t*pcTokenDesc,
     __IN  const char   *szValue  ,
     __OUT unsigned long*pulValue
   );
 
-EApiStatusCode_t
+EApiStatus_t
 GetValueToken(
     __OUT char                 *pszBuffer,
     __IN  size_t                stBufLen  ,
     __IN  const TokenListDesc_t*pcTokenDesc,
     __IN  size_t                stValue
     );
-EApiStatusCode_t
+EApiStatus_t
 GetTokenValueStrip(
     __IN  const TokenListDesc_t*pcTokenDesc,
     __IN  char   *szValue  ,

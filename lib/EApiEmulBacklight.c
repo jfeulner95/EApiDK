@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulBacklight.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EApiEmulBacklight.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiEmulBacklight.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -56,13 +56,13 @@ static BackLightDevice_t BacklightLookup[]={
   {EAPI_ID_BACKLIGHT_2  , EAPI_BACKLIGHT_SET_OFF , EAPI_BACKLIGHT_SET_BRIGHTEST },
 };
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiVgaGetBacklightEnableEmul( 
     __IN  EApiId_t Id       , 
     __OUT uint32_t *pEnable
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
@@ -83,16 +83,16 @@ EApiVgaGetBacklightEnableEmul(
     );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiVgaSetBacklightEnableEmul( 
     __IN  EApiId_t Id       , 
     __OUT uint32_t Enable
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
@@ -113,15 +113,15 @@ EApiVgaSetBacklightEnableEmul(
     );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
-EApiStatusCode_t 
+EApiStatus_t 
 EApiVgaGetBacklightBrightnessEmul( 
     __IN  EApiId_t Id           , 
     __OUT uint32_t *pBrightness
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
@@ -142,16 +142,16 @@ EApiVgaGetBacklightBrightnessEmul(
     );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiVgaSetBacklightBrightnessEmul( 
     __IN  EApiId_t Id           , 
     __OUT uint32_t Brightness
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   unsigned i;
 
   for(i=0;i<ARRAY_SIZE(BacklightLookup);i++)
@@ -172,7 +172,7 @@ EApiVgaSetBacklightBrightnessEmul(
     );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
 
 

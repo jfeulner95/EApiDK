@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiInitLib.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 56 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-02-02 05:11:41 +0100 (Di, 02. Feb 2010) $
- *I  ID                   : $Id: EApiInitLib.c 56 2010-02-02 04:11:41Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiInitLib.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -51,13 +51,13 @@ void __cdecl DebugMsg(__IN const char *const fmt, ...)
 }
 
 
-EApiStatusCode_t OpenEepromFiles(void);
-EApiStatusCode_t CloseEepromFiles(void);
-EApiStatusCode_t OpenI2CEepromFiles(void);
-EApiStatusCode_t CloseI2CEepromFiles(void);
+EApiStatus_t OpenEepromFiles(void);
+EApiStatus_t CloseEepromFiles(void);
+EApiStatus_t OpenI2CEepromFiles(void);
+EApiStatus_t CloseI2CEepromFiles(void);
 
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiInitLib(){
   if(OutputStream==NULL){
 #if EAPI_DBG_USE_OUTPUT_FILE
@@ -81,7 +81,7 @@ EApiInitLib(){
 
 
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiUninitLib(){
     DebugMsg("#\n"
               "# Embedded API EApi\n"

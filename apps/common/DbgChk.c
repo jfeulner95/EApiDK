@@ -25,10 +25,10 @@
  *I
  *I  File Name            : DbgChk.c
  *I  File Location        : apps\common
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: DbgChk.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: DbgChk.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -36,7 +36,7 @@
 
 #include <EApiApp.h>
 typedef struct ErrorLookupTbl_S{
-  const EApiStatusCode_t StatusCode;
+  const EApiStatus_t StatusCode;
   const char  *const  ErrorString;
 }ErrorLookupTbl_t;
 #define EAPI_INVALID_STRLEN ((size_t )-1)
@@ -62,10 +62,10 @@ const ErrorLookupTbl_t ErrorLookupA[]={
   {EAPI_STATUS_ERROR                  , "ERROR"                    },
   {EAPI_STATUS_SUCCESS                , "SUCCESS"                  },
 };
-EApiStatusCode_t
+EApiStatus_t
 EApiGetErrorStringA(
     __OUT const char  **const pszString     , 
-    __IN EApiStatusCode_t StatusCode
+    __IN EApiStatus_t StatusCode
     )
 {
   unsigned i;
@@ -143,7 +143,7 @@ siFormattedMessage_SC(
     const char *  cszFileName ,   
     const char *  cszFuncName ,   
     unsigned int  uiLineNum   ,
-    EApiStatusCode_t  StatusCode  ,   
+    EApiStatus_t  StatusCode  ,   
     const char *  cszFormat   ,   
     ...
     )

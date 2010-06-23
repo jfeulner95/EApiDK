@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulWDT.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EApiEmulWDT.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiEmulWDT.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -55,7 +55,7 @@ static unsigned WatchdogState=WATCHDOG_DISABLED;
 #define MaxDelay        MIN_IN_millisec(10)
 #define MaxEventTimeout MIN_IN_millisec(10)
 #define MaxResetTimeout MIN_IN_millisec(10)
-EApiStatusCode_t 
+EApiStatus_t 
 EAPI_CALLTYPE
 EApiWDogGetCapEmul(
     __OUTOPT uint32_t *pMaxDelay       ,/* Maximum Supported 
@@ -72,7 +72,7 @@ EApiWDogGetCapEmul(
                                          */
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   *pMaxDelay        =MaxDelay;
   *pMaxEventTimeout =MaxEventTimeout;
   *pMaxResetTimeout =MaxResetTimeout;
@@ -80,9 +80,9 @@ EApiWDogGetCapEmul(
 
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
-EApiStatusCode_t 
+EApiStatus_t 
 EApiWDogStartEmul(
     __IN  uint32_t Delay       , /* Delay in milliseconds */
     __IN  uint32_t EventTimeout, /* Event Timeout in 
@@ -93,7 +93,7 @@ EApiWDogStartEmul(
                                   */
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   EAPI_LIB_RETURN_ERROR_IF(
       EApiWDogStartEmul, 
       (WatchdogState==WATCHDOG_ENABLED), 
@@ -119,12 +119,12 @@ EApiWDogStartEmul(
   EAPI_LIB_RETURN_SUCCESS(EApiWDogStartEmul, "");
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
-EApiStatusCode_t 
+EApiStatus_t 
 EApiWDogTriggerEmul(void)
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   EAPI_LIB_RETURN_ERROR_IF(
       EApiWDogTriggerEmul, 
       (WatchdogState==WATCHDOG_DISABLED), 
@@ -138,12 +138,12 @@ EApiWDogTriggerEmul(void)
       );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
-EApiStatusCode_t 
+EApiStatus_t 
 EApiWDogStopEmul(void)
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   WatchdogState=WATCHDOG_DISABLED;
   EAPI_LIB_RETURN_SUCCESS(
       EApiWDogStopEmul, 
@@ -151,7 +151,7 @@ EApiWDogStopEmul(void)
       );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
 
 

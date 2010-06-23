@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EApiEmulStorage.c
  *I  File Location        : lib
- *I  Last committed       : $Revision: 67 $
+ *I  Last committed       : $Revision: 74 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-18 23:39:13 +0200 (Fr, 18. Jun 2010) $
- *I  ID                   : $Id: EApiEmulStorage.c 67 2010-06-18 21:39:13Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
+ *I  ID                   : $Id: EApiEmulStorage.c 74 2010-06-23 19:26:50Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -78,14 +78,14 @@ StorageAreaMapping_t StorageAreaTbl[]={
   },
 };
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiStorageCapEmul (
     __IN      EApiId_t  Id          , 
     __OUTOPT  uint32_t *pStorageSize, 
     __OUTOPT  uint32_t *pBlockLength
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   StorageAreaMapping_t *pCurStorageDesc;
   unsigned i;
 
@@ -109,9 +109,9 @@ EApiStorageCapEmul (
     );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
-EApiStatusCode_t 
+EApiStatus_t 
 EApiStorageAreaReadEmul(
   __IN  EApiId_t Id     , 
   __IN  uint32_t Offset , 
@@ -119,7 +119,7 @@ EApiStorageAreaReadEmul(
   __IN  uint32_t ByteCnt
   )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   StorageAreaMapping_t *pCurStorageDesc;
   unsigned i;
 
@@ -156,10 +156,10 @@ EApiStorageAreaReadEmul(
       );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
 
-EApiStatusCode_t 
+EApiStatus_t 
 EApiStorageAreaWriteEmul(
     __IN EApiId_t Id, 
     __IN uint32_t Offset, 
@@ -167,7 +167,7 @@ EApiStorageAreaWriteEmul(
     __IN uint32_t ByteCnt
     )
 {
-  EApiStatusCode_t EApiStatusCode=EAPI_STATUS_SUCCESS;
+  EApiStatus_t StatusCode=EAPI_STATUS_SUCCESS;
   StorageAreaMapping_t *pCurStorageDesc;
   unsigned i;
   for(
@@ -213,7 +213,7 @@ EApiStorageAreaWriteEmul(
       );
 EAPI_LIB_ASSERT_EXIT
 
-  return EApiStatusCode;
+  return StatusCode;
 }
 
 
@@ -222,7 +222,7 @@ EAPI_LIB_ASSERT_EXIT
 
 
 
-EApiStatusCode_t 
+EApiStatus_t 
 OpenEepromFiles(void)
 {
   StorageAreaMapping_t *pCurStorageDesc;
@@ -247,7 +247,7 @@ OpenEepromFiles(void)
   }
   return EAPI_STATUS_SUCCESS;
 }
-EApiStatusCode_t 
+EApiStatus_t 
 CloseEepromFiles(void)
 {
   StorageAreaMapping_t *pCurStorageDesc;
