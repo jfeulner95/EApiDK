@@ -25,10 +25,10 @@
  *I
  *I  File Name            : EeePDB.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 74 $
+ *I  Last committed       : $Revision: 75 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
- *I  ID                   : $Id: EeePDB.c 74 2010-06-23 19:26:50Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-29 01:50:38 +0200 (Di, 29. Jun 2010) $
+ *I  ID                   : $Id: EeePDB.c 75 2010-06-28 23:50:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -481,7 +481,7 @@ EeePMapBuffer(
     PrintHexAsciiTable(pCurBlock, GetBlockLength(pCurBlock), BHandel, NULL);
 #endif
     EAPI_APP_RETURN_ERROR_IF_S(
-      EeePListBlocks    ,
+      EeePMapBuffer    ,
       (CurOffset>MaxDeviceLen),
       EAPI_STATUS_ERROR
       );
@@ -796,7 +796,7 @@ EeePFindBlock(
   for(;pCurBlock!=NULL;pCurBlock=GetNextBlock(pCurBlock)){
     CurOffset=EAPI_GET_PTR_OFFSET(pCurBlock, BHandel);
     EAPI_APP_RETURN_ERROR_IF_S(
-      EeePListBlocks    ,
+      EeePFindBlock    ,
       (CurOffset>MaxDeviceLen),
       EAPI_STATUS_ERROR
       );
@@ -848,7 +848,7 @@ EeePFindVendorBlock(
   for(;pCurBlock!=NULL;pCurBlock=GetNextBlock(pCurBlock)){
     CurOffset=EAPI_GET_PTR_OFFSET(pCurBlock, BHandel);
     EAPI_APP_RETURN_ERROR_IF_S(
-      EeePListBlocks    ,
+      EeePFindVendorBlock    ,
       (CurOffset>MaxDeviceLen),
       EAPI_STATUS_ERROR
       );
@@ -898,7 +898,7 @@ EeePFindSmbiosBlock(
   for(;pCurBlock!=NULL;pCurBlock=GetNextBlock(pCurBlock)){
     CurOffset=EAPI_GET_PTR_OFFSET(pCurBlock, BHandel);
     EAPI_APP_RETURN_ERROR_IF_S(
-      EeePListBlocks    ,
+      EeePFindSmbiosBlock    ,
       (CurOffset>MaxDeviceLen),
       EAPI_STATUS_ERROR
       );

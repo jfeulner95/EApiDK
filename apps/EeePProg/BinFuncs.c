@@ -18,10 +18,10 @@
  *I
  *I  File Name            : BinFuncs.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 74 $
+ *I  Last committed       : $Revision: 75 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
- *I  ID                   : $Id: BinFuncs.c 74 2010-06-23 19:26:50Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-29 01:50:38 +0200 (Di, 29. Jun 2010) $
+ *I  ID                   : $Id: BinFuncs.c 75 2010-06-28 23:50:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -29,6 +29,15 @@
 
 #include <EeePApp.h>
 
+/*
+ *
+ *
+ *
+ *  Ckecksum
+ *
+ *
+ *
+ */
 uint32_t 
 u32ChecksumBlock(
 	const void *pcvBuffer, 
@@ -384,8 +393,15 @@ PrintHexAsciiTable(
 
 
 
-
-
+/*
+ *
+ *
+ *
+ *  File Access Routines
+ *
+ *
+ *
+ */
 EApiStatus_t 
 LclWriteFile(
     __IN const char *cszFilename, 
@@ -534,6 +550,15 @@ ReadTextFile(
   return LclReadFile(cszFilename, pvBuffer, pstReadBCnt, "r");
 }
 
+/*
+ *
+ *
+ *
+ *  Machine Independant Endian Access
+ *
+ *
+ *
+ */
 /*
  * CPU Independent Multi Byte 
  * Big Endian Memory Access

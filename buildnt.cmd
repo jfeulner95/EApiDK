@@ -27,10 +27,10 @@ GOTO Skip_Header
 @REM I
 @REM I  File Name            : buildnt.cmd
 @REM I  File Location        : 
-@REM I  Last committed       : $Revision: 74 $
+@REM I  Last committed       : $Revision: 75 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
-@REM I  ID                   : $Id: buildnt.cmd 74 2010-06-23 19:26:50Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-06-29 01:50:38 +0200 (Di, 29. Jun 2010) $
+@REM I  ID                   : $Id: buildnt.cmd 75 2010-06-28 23:50:38Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -86,7 +86,7 @@ IF /I "%~1"=="BUILD_LIB" GOTO Exit
   GOTO :EOF
 
 :BUILD_APP2
-  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c Str2Value.c CfgParser.c CfgPHelper.c ArgParse.c TokenFunc.c RangeFunc.c"
+  CALL :BUILD_APP_S EeePProg "EeePProg.c BinFuncs.c EeePDB.c EeePCfg.c StrFuncs.c StrPrint.c Str2Value.c CfgParser.c CfgPHelper.c ArgParse.c TokenFunc.c RangeFunc.c"
   GOTO :EOF
 
 :PACK_BUILD
@@ -307,7 +307,7 @@ REM Usage
 REM ########################################################################
 :Usage
   ECHO ===============================================================================
-  ECHO I  %~nx0                                              $$Rev: 74 $
+  ECHO I  %~nx0                                              $$Rev: 75 $
   ECHO ===============================================================================
   ECHO I  
   ECHO I  Description:

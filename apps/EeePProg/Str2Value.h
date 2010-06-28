@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 74 $
+ *I  Last committed       : $Revision: 75 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-23 21:26:50 +0200 (Mi, 23. Jun 2010) $
- *I  ID                   : $Id: Str2Value.h 74 2010-06-23 19:26:50Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-29 01:50:38 +0200 (Di, 29. Jun 2010) $
+ *I  ID                   : $Id: Str2Value.h 75 2010-06-28 23:50:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -47,13 +47,18 @@ ulConvertStr2NumEx(
 
 EApiStatus_t
 ExpandEnviromentVariables(
-    __IN  const char   *cszString,
-    __OUT char        **pszExpStr
+    __INOUT  DStrDesc_t   *pStrDesc
   );
 
 EApiStatus_t
 ParseAsciiEqu(
     __IN  const char       *cszString,
+    __OUT signed long long *psllValue
+  );
+EApiStatus_t
+ParseAsciiEquEx(
+    __IN  const char       *cszString,
+    __IN  MacroList_t      *pMacros  ,
     __OUT signed long long *psllValue
   );
 
@@ -86,12 +91,20 @@ RecoverValue_VA(
     __IN  void             *pvalue,
     __IN  signed int        siElementSize
   );
+  
 EApiStatus_t
 RecoverValue_VAB(
     __OUT signed long long *psllValue,
     __IN  void             *pValue,
     __IN  signed int        siBitOffset ,
     __IN  signed int        siBitLen    ,
+    __IN  signed int        siElementSize
+  );
+EApiStatus_t
+ParseAsciiEquEx_VA(
+    __IN  const char       *cszString     ,
+    __IN  MacroList_t      *pMacros       ,
+    __OUT void             *pvalue        ,
     __IN  signed int        siElementSize
   );
 

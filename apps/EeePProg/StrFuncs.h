@@ -18,10 +18,10 @@
  *I
  *I  File Name            : StrFuncs.h
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 61 $
+ *I  Last committed       : $Revision: 75 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-03-01 00:31:47 +0100 (Mo, 01. Mrz 2010) $
- *I  ID                   : $Id: StrFuncs.h 61 2010-02-28 23:31:47Z dethrophes $
+ *I  Last changed date    : $Date: 2010-06-29 01:50:38 +0200 (Di, 29. Jun 2010) $
+ *I  ID                   : $Id: StrFuncs.h 75 2010-06-28 23:50:38Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -76,7 +76,47 @@ strrstr(
     __IN const char *cszSearchString
     );
 
+typedef struct MacroItem_s{
+  const char *cszMacroName;
+  const char *cszMacroValue;
+}MacroItem_t;
 
+typedef struct MacroList_s{
+  MacroItem_t *pMacros;
+  size_t       stMacroCnt;
+}MacroList_t;
+
+char * 
+szFindWord(
+    __IN     const char             *szStr,
+    __IN     const MacroList_t      *pDesc,
+    __OUTOPT const MacroItem_t     **pElement
+    );
+
+typedef struct DStrDesc_s{
+  char  *szStr;
+  size_t stStrLen;
+  size_t stAllocLen;
+}DStrDesc_t;
+
+EApiStatus_t
+ReplaceSubStr(
+    __INOUT DStrDesc_t *pStrDesc      ,
+    __IN    size_t      stStartPos    ,
+    __IN    size_t      stEndPos      ,
+    __IN  const char   *cszReplaceStr
+  );
+
+EApiStatus_t
+FreeStrDesc(
+    __INOUT DStrDesc_t *pStrDesc
+  );
+
+EApiStatus_t
+InitStrDesc(
+    __INOUT DStrDesc_t *pStrDesc      ,
+    __IN  const char   *cszInitStr
+  );
 
 #ifdef __cplusplus
 }
