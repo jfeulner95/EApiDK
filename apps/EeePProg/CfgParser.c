@@ -25,10 +25,10 @@
  *I
  *I  File Name            : CfgParser.c
  *I  File Location        : apps\EeePProg
- *I  Last committed       : $Revision: 75 $
+ *I  Last committed       : $Revision: 76 $
  *I  Last changed by      : $Author: dethrophes $
- *I  Last changed date    : $Date: 2010-06-29 01:50:38 +0200 (Di, 29. Jun 2010) $
- *I  ID                   : $Id: CfgParser.c 75 2010-06-28 23:50:38Z dethrophes $
+ *I  Last changed date    : $Date: 2010-07-08 14:47:42 +0200 (Do, 08. Jul 2010) $
+ *I  ID                   : $Id: CfgParser.c 76 2010-07-08 12:47:42Z dethrophes $
  *I
  *+=========================================================================
  *</KHeader>
@@ -458,11 +458,13 @@ ParseCfgFile_sub(
 
       switch(StatusCode){
         case EAPI_STATUS_SUCCESS:
-          EAPI_APP_RETURN_ERROR_IF_S(
-              ParseCfgFile,
-              (pCurElement->Element.Instances.stUsedCnt+1>pCurElement->Element.Instances.stTotalCnt),
-              EAPI_STATUS_ERROR
+          if(pCurElement->Element.Instances.stUsedCnt+1>pCurElement->Element.Instances.stTotalCnt){
+            siFormattedMessage_SC(
+                'E', __FILE__, "ParseCfgFile_sub", __LINE__, StatusCode,
+                "ERROR Too Many Instances of %s at line %li\n", szValue, pCtxt->ulLineNum
             );
+            EAPI_APP_EXIT;
+          }
           StatusCode=pCurElement->Element.pHandlers->Handler(
                 (CfgElementDesc_t*)pCurElement, 
                 EAPI_CREATE_PTR(

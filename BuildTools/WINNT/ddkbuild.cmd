@@ -15,10 +15,10 @@
 @REM I
 @REM I  File Name            : ddkbuild.cmd
 @REM I  File Location        : BuildTools\WINNT
-@REM I  Last committed       : $Revision: 38 $
+@REM I  Last committed       : $Revision: 76 $
 @REM I  Last changed by      : $Author: dethrophes $
-@REM I  Last changed date    : $Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
-@REM I  ID                   : $Id: ddkbuild.cmd 38 2010-01-26 06:48:22Z dethrophes $
+@REM I  Last changed date    : $Date: 2010-07-08 14:47:42 +0200 (Do, 08. Jul 2010) $
+@REM I  ID                   : $Id: ddkbuild.cmd 76 2010-07-08 12:47:42Z dethrophes $
 @REM I
 @REM +=========================================================================
 @REM </KHeader>
@@ -33,7 +33,7 @@ goto :EOF
 findstr /? > NUL 2>&1 || echo "FINDSTR is a prerequisite but wasn't found!" && goto :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-::    $Id: ddkbuild.cmd 38 2010-01-26 06:48:22Z dethrophes $
+::    $Id: ddkbuild.cmd 76 2010-07-08 12:47:42Z dethrophes $
 ::
 ::    This software is supplied for instructional purposes only.
 ::
@@ -157,12 +157,12 @@ setlocal ENABLEEXTENSIONS & pushd .
 reg /? > NUL 2>&1 && set OSR_REGAVAILABLE=1
 
 :: This is set by client-side keyword substitution
-set SVN_REVISION=$Revision: 38 $
+set SVN_REVISION=$Revision: 76 $
 :: Extract the revision number from the revision keyword
 set SVN_REVISION=%SVN_REVISION:~0,-2%
 set SVN_REVISION=%SVN_REVISION:~11%
 :: This is set by client-side keyword substitution
-set SVN_REVDATE=$Date: 2010-01-26 07:48:22 +0100 (Di, 26. Jan 2010) $
+set SVN_REVDATE=$Date: 2010-07-08 14:47:42 +0200 (Do, 08. Jul 2010) $
 :: Extract the date from the Date keyword
 set SVN_REVDATE=%SVN_REVDATE:~7,10%
 set VERSION=%VERSION%/r%SVN_REVISION%
@@ -219,7 +219,7 @@ if "%OSR_TARGET%" == "" goto :USAGE
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: In the build directory check for this script and call it if it exists.
 :: This allows to override any global system variable setting, if desired.
-if not "%3" == "" call :GetCustomEnvironment "%~f3"
+if not "%~3" == "" call :GetCustomEnvironment "%~f3"
 if not "%OSR_ERRCODE%" == "0" goto :USAGE
 :: Additional error handling for better usability
 :: These subroutines will also attempt to locate the requested DDK!!!
@@ -616,9 +616,9 @@ pushd .
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 %OSR_ECHO% %OSR_BUILDNAME%
 set OSR_ARGS= + argument(s):
-if not "%3" == "" set OSR_ARGS=%OSR_ARGS% %3
-if not "%4" == "" set OSR_ARGS=%OSR_ARGS% %4
-if not "%5" == "" set OSR_ARGS=%OSR_ARGS% %5
+if not "%~3" == "" set OSR_ARGS=%OSR_ARGS% %3
+if not "%~4" == "" set OSR_ARGS=%OSR_ARGS% %4
+if not "%~5" == "" set OSR_ARGS=%OSR_ARGS% %5
 if /i "%OSR_ARGS%" == " + argument(s):" set OSR_ARGS=
 %OSR_ECHO% Directory: %buildDirectory%%OSR_ARGS%
 %OSR_ECHO% %BASEDIRVAR%: %BASEDIR%
@@ -629,10 +629,10 @@ set bscFlags=
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :ContinueParsing
-if "%3" == "" goto :DONE
-if "%3" == "/a" goto :RebuildallFound
-if /i "%3" == "-WDF" goto :WDFFound
-if /i "%3" == "-PREFAST" goto :PrefastFound
+if "%~3" == "" goto :DONE
+if "%~3" == "/a" goto :RebuildallFound
+if /i "%~3" == "-WDF" goto :WDFFound
+if /i "%~3" == "-PREFAST" goto :PrefastFound
 set bscFlags=/n
 set bFlags=%bFlags% %3
 :: Remove next arg
@@ -799,12 +799,12 @@ goto :EOF
 :SetMode
 set BuildMode=
 if /i "%OSR_TARGET%" == "WLH2K" goto :SetModeWLH2K
-for %%f in (free fre) do if /i "%%f" == "%1" set BuildMode=free
-for %%f in (checked chk) do if /i "%%f" == "%1" set BuildMode=checked
+for %%f in (free fre) do if /i "%%f" == "%~1" set BuildMode=free
+for %%f in (checked chk) do if /i "%%f" == "%~1" set BuildMode=checked
 goto :SetModeCommonEnd
 :SetModeWLH2K
-for %%f in (free fre) do if /i "%%f" == "%1" set BuildMode=f
-for %%f in (checked chk) do if /i "%%f" == "%1" set BuildMode=c
+for %%f in (free fre) do if /i "%%f" == "%~1" set BuildMode=f
+for %%f in (checked chk) do if /i "%%f" == "%~1" set BuildMode=c
 :SetModeCommonEnd
 %OSR_TRACE% Mode set to ^"%BuildMode%^"
 if "%BuildMode%" == "" set OSR_ERRCODE=5
